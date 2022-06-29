@@ -12,5 +12,13 @@
     <guid>http://liyongzheng666.github.io/first/</guid>
     <description><![CDATA[生活从来都不是一帆风顺 充满波折的世界永远属于喜欢探索的人 我们首次进行更新 我们必须意 这次为什么可以了 官方的主题教程 https://hugoloveit.com/zh-cn/theme-documentation-basics/ 第一次非常有用的git推送]]></description>
 </item>
+<item>
+    <title></title>
+    <link>http://liyongzheng666.github.io/docker/</link>
+    <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
+    <author>剑指牛马</author>
+    <guid>http://liyongzheng666.github.io/docker/</guid>
+    <description><![CDATA[#首先是标题 title: &ldquo;Docker入门&rdquo; description: &ldquo;如果你还在为配置环境一系列的问题而烦忧，现在就开始拥抱docker]]></description>
+</item>
 </channel>
 </rss>

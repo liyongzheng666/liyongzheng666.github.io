@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Shell - Category - 跑路指南</title>
+        <link>http://liyongzheng666.github.io/categories/shell/</link>
+        <description>Shell - Category - 跑路指南</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>liyongzheng618@163.com (剑指牛马)</managingEditor>
+            <webMaster>liyongzheng618@163.com (剑指牛马)</webMaster><lastBuildDate>Tue, 28 Jun 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://liyongzheng666.github.io/categories/shell/" rel="self" type="application/rss+xml" /><item>
+    <title>Shell学习总结</title>
+    <link>http://liyongzheng666.github.io/shell%E5%BF%85%E4%BC%9A/</link>
+    <pubDate>Tue, 28 Jun 2022 00:00:00 &#43;0000</pubDate>
+    <author>剑指牛马</author>
+    <guid>http://liyongzheng666.github.io/shell%E5%BF%85%E4%BC%9A/</guid>
+    <description><![CDATA[:alien:Shell应知应会 第一个Shell程序 解释器的交互环境 优点： 及时看到代码结果 缺点： 代码不能永久保存 把代码写入文件中，脚本程序 优]]></description>
+</item>
+</channel>
+</rss>
