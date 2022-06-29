@@ -4,21 +4,29 @@
         <link>http://liyongzheng666.github.io/posts/</link>
         <description>All Posts | 跑路指南</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>liyongzheng618@163.com (剑指牛马)</managingEditor>
-            <webMaster>liyongzheng618@163.com (剑指牛马)</webMaster><lastBuildDate>Wed, 22 Jun 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://liyongzheng666.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>liyongzheng618@163.com (剑指牛马)</webMaster><lastBuildDate>Tue, 28 Jun 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://liyongzheng666.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Shell学习总结</title>
+    <link>http://liyongzheng666.github.io/shell/</link>
+    <pubDate>Tue, 28 Jun 2022 00:00:00 &#43;0000</pubDate>
+    <author>剑指牛马</author>
+    <guid>http://liyongzheng666.github.io/shell/</guid>
+    <description><![CDATA[Shell应知应会 第一个Shell程序 解释器的交互环境 优点： 及时看到代码结果 缺点： 代码不能永久保存 把代码写入文件中，脚本程序 优点： 程序永久保]]></description>
+</item>
+<item>
+    <title>Docker入门</title>
+    <link>http://liyongzheng666.github.io/docker/</link>
+    <pubDate>Mon, 27 Jun 2022 00:00:00 &#43;0000</pubDate>
+    <author>剑指牛马</author>
+    <guid>http://liyongzheng666.github.io/docker/</guid>
+    <description><![CDATA[Docker初步入门 这里不在介绍docker的理论知识，重点是对用到的一些内容进行总结，方便日后使用 Docker安装 这里我们是在云服务器进行]]></description>
+</item>
+<item>
     <title>First Blog</title>
     <link>http://liyongzheng666.github.io/first/</link>
     <pubDate>Wed, 22 Jun 2022 00:00:00 &#43;0000</pubDate>
     <author>剑指牛马</author>
     <guid>http://liyongzheng666.github.io/first/</guid>
     <description><![CDATA[生活从来都不是一帆风顺 充满波折的世界永远属于喜欢探索的人 我们首次进行更新 我们必须意 这次为什么可以了 官方的主题教程 https://hugoloveit.com/zh-cn/theme-documentation-basics/ 第一次非常有用的git推送]]></description>
-</item>
-<item>
-    <title></title>
-    <link>http://liyongzheng666.github.io/docker/</link>
-    <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
-    <author>剑指牛马</author>
-    <guid>http://liyongzheng666.github.io/docker/</guid>
-    <description><![CDATA[#首先是标题 title: &ldquo;Docker入门&rdquo; description: &ldquo;如果你还在为配置环境一系列的问题而烦忧，现在就开始拥抱docker]]></description>
 </item>
 </channel>
 </rss>

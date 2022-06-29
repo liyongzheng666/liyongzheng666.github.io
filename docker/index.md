@@ -1,31 +1,5 @@
-# 
+# Docker入门
 
-<!--
- * @Author: liyongzheng666 liyongzheng618@163.com
- * @Date: 2022-06-27 10:06:55
- * @LastEditors: liyongzheng666 liyongzheng618@163.com
- * @LastEditTime: 2022-06-28 17:06:30
- * @FilePath: /blog/content/posts/Docker.md
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
-
----
-#首先是标题
-title: "Docker入门"
-description: "如果你还在为配置环境一系列的问题而烦忧，现在就开始拥抱docker吧！"
-#下面是标签，文章重点内容
-#tags: [ "Docker", "必备技能"]
-tags: [ "Docker"]
-#最后编辑日期
-lastmod: 2022-06-27
-#创始时间
-date: "2022-06-27"
-#在什么种类的文件夹下可以找到
-categories:
-  - "Docker"
-
-slug: "Docker必会！"
----
 # Docker初步入门
 **这里不在介绍docker的理论知识，重点是对用到的一些内容进行总结，方便日后使用** 
 

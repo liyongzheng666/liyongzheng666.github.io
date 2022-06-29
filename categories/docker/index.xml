@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Docker - Category - 跑路指南</title>
+        <link>http://liyongzheng666.github.io/categories/docker/</link>
+        <description>Docker - Category - 跑路指南</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>liyongzheng618@163.com (剑指牛马)</managingEditor>
+            <webMaster>liyongzheng618@163.com (剑指牛马)</webMaster><lastBuildDate>Mon, 27 Jun 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://liyongzheng666.github.io/categories/docker/" rel="self" type="application/rss+xml" /><item>
+    <title>Docker入门</title>
+    <link>http://liyongzheng666.github.io/docker/</link>
+    <pubDate>Mon, 27 Jun 2022 00:00:00 &#43;0000</pubDate>
+    <author>剑指牛马</author>
+    <guid>http://liyongzheng666.github.io/docker/</guid>
+    <description><![CDATA[Docker初步入门 这里不在介绍docker的理论知识，重点是对用到的一些内容进行总结，方便日后使用 Docker安装 这里我们是在云服务器进行]]></description>
+</item>
+</channel>
+</rss>
