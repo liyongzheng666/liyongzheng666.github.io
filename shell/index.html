@@ -30,7 +30,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/liyongzheng666.github.io\/shell\/"
-        },"genre": "posts","keywords": "Shell","wordcount":  2021 ,
+        },"genre": "posts","keywords": "Shell","wordcount":  3531 ,
         "url": "http:\/\/liyongzheng666.github.io\/shell\/","datePublished": "2022-06-28T00:00:00+00:00","dateModified": "2022-06-29T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -105,8 +105,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Shell学习总结</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="http://liyongzheng666.github.io" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>剑指牛马</a></span>&nbsp;<span class="post-category">included in <a href="/categories/shell/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Shell</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-06-28">2022-06-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2021 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-06-28">2022-06-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3531 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;8 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="true">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -123,6 +123,7 @@
       <ul>
         <li><a href="#变量">变量</a></li>
         <li><a href="#变量值的处理">变量值的处理</a></li>
+        <li><a href="#元字符流程控制">元字符&amp;&amp;流程控制</a></li>
       </ul>
     </li>
   </ul>
@@ -552,7 +553,353 @@ $1 $2是在脚本运行后面的变量赋值到脚本程序中使用</li>
 </div>
 </div></li>
 <li>替换：进行字符串变量的部分内容替换
-1.</li>
+<ol>
+<li>部分成员替换
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1">#进行部分词语替换</span>
+</span></span><span class="line"><span class="cl"><span class="nv">curl</span><span class="o">=</span><span class="s2">&#34;www.baidu.com.cn&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#对curl里面的baidu进行sina替换</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="si">${</span><span class="nv">curl</span><span class="p">/baidu/sina</span><span class="si">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#对curl里面所有c的字符进行C替换</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="si">${</span><span class="nv">curl</span><span class="p">//c/C</span><span class="si">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>文件名字替换
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1">#这里介绍一下文件名字的替换</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#首先创建一堆空文件名字，然后对统一的名字进行重命名</span>
+</span></span><span class="line"><span class="cl">touch egon_2022_<span class="o">{</span>01..05<span class="o">}</span>_linux.txt
+</span></span><span class="line"><span class="cl"><span class="k">for</span> f in <span class="sb">`</span>ls .<span class="sb">`</span><span class="p">;</span><span class="c1">#对文件中所有的文件名进行赋值到f</span>
+</span></span><span class="line"><span class="cl"><span class="k">do</span> mv <span class="nv">$f</span> <span class="si">${</span><span class="nv">f</span><span class="p">/_linux/</span><span class="si">}</span><span class="p">;</span> <span class="k">done</span> <span class="c1">#d都用来执行这一句画画</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>let和unset替换
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1">#let命令非常有用！！</span>
+</span></span><span class="line"><span class="cl"><span class="nb">let</span> x++#自加
+</span></span><span class="line"><span class="cl"><span class="nb">let</span> x--#自减 
+</span></span><span class="line"><span class="cl"><span class="c1">#unset就是释放一个变量</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#但是我们插入一个变量输出提示</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#假设这里x没有赋值</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="si">${</span><span class="nv">x</span><span class="k">:-</span><span class="nv">没有对应值输出</span><span class="si">}</span> <span class="c1">#若x没有赋值所以这里输出为-后面的内容,但是没有将后面的数值赋给x </span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="si">${</span><span class="nv">x</span><span class="p">:?没有对应值输出</span><span class="si">}</span> <span class="c1">#这里只是给一个提醒 </span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="si">${</span><span class="nv">x</span><span class="p">:=没有对应值输出</span><span class="si">}</span> <span class="c1">#若x没有赋值所以这里输出=后面的内容，并且把=后面的内容赋给x</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#假设这里x已经赋值</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="si">${</span><span class="nv">x</span><span class="p">+没有对应值输出</span><span class="si">}</span> <span class="c1">#若x已经赋值所以这里输出+后面的内容，并且把+后面的内容赋给x      </span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+</li>
+<li>算术运算符
+<ol>
+<li>浮点运算：bc
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1">#首先安装bc</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;scale=2;10/3&#34;</span> <span class="p">|</span> bc <span class="c1">#对10/3进行运算</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;scale=2;10/3&#34;</span> <span class="p">|</span> bc <span class="p">|</span> cut -d.-f2#对10/3进行运算后取小数点后的位置且取两位
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>整数运算
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1">#主要的方式</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#expr</span>
+</span></span><span class="line"><span class="cl">expr <span class="nv">$x</span> +<span class="nv">$y</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#$(())</span>
+</span></span><span class="line"><span class="cl"><span class="k">$((</span><span class="m">1</span><span class="o">+</span><span class="m">2</span><span class="k">))</span>
+</span></span><span class="line"><span class="cl"><span class="k">$((</span> <span class="nv">$x</span> <span class="o">+</span> <span class="nv">$y</span> <span class="k">))</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#$[这里面可以写一些判断]</span>
+</span></span><span class="line"><span class="cl">$<span class="o">[</span> <span class="nv">$x</span> + <span class="nv">$y</span> <span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#let</span>
+</span></span><span class="line"><span class="cl"><span class="nb">let</span> <span class="nv">$a</span>++#这里让a这个变量自加1
+</span></span><span class="line"><span class="cl"><span class="c1">#let这种方式只能是++或者--这一种方式</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#如果是想a自加10，则需要使用双括号</span>
+</span></span><span class="line"><span class="cl"><span class="o">((</span><span class="nv">a</span><span class="o">+=</span>10<span class="o">))</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#如果出现乘法需要对*符号进行转译,前面加\</span>
+</span></span><span class="line"><span class="cl">$<span class="o">[</span> <span class="nv">$x</span> <span class="se">\*</span> <span class="nv">$y</span> <span class="o">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1">#写一个自动加减乘除的脚本</span>
+</span></span><span class="line"><span class="cl"><span class="nv">a</span><span class="o">=</span><span class="nv">$1</span>
+</span></span><span class="line"><span class="cl"><span class="nv">b</span><span class="o">=</span><span class="nv">$2</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#这里重点介绍一下下面的判断语句</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#[]括号里面是一个简短的判断后面则是不满足的情况下应该输出</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#[-ne]代表的是不等于的意思</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span> <span class="nv">$#</span> -ne <span class="m">2</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">   <span class="nb">echo</span> <span class="s2">&#34;请输入两位数字信息&#34;</span>
+</span></span><span class="line"><span class="cl">   <span class="nb">exit</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;a-b=</span><span class="k">$((</span><span class="nv">$1</span><span class="o">-</span><span class="nv">$2</span><span class="k">))</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;a+b=</span><span class="k">$((</span><span class="nv">$1</span><span class="o">+</span><span class="nv">$2</span><span class="k">))</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;a/b=</span><span class="k">$((</span><span class="nv">$1</span><span class="o">/</span><span class="nv">$2</span><span class="k">))</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;a*b=</span><span class="k">$((</span><span class="nv">$1</span><span class="o">*</span><span class="nv">$2</span><span class="k">))</span><span class="s2">&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+</li>
+<li>测试运算符:test与[]同意思
+<ol>
+<li>测试一个文件夹(目录)是否存在-&gt;test -d
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span> -d ~/test_sh<span class="o">(</span>文件路径<span class="o">)</span> <span class="o">]</span> <span class="p">;</span> <span class="nb">echo</span> <span class="nv">$?</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#返回1为假，返回0为真</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>测试一个文件or文件夹内部是否有东西-&gt; test -s
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span> -s 1.txt <span class="o">]</span> <span class="p">;</span> <span class="nb">echo</span> <span class="nv">$?</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#返回1为假，返回0为真</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>测试该文件是否为标准文件-f/该文件是否有写权限-w
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span> -f 1.txt <span class="o">]</span> <span class="p">;</span> <span class="nb">echo</span> <span class="nv">$?</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#返回1为假，返回0为真</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span> -w 1.txt <span class="o">]</span> <span class="p">;</span> <span class="nb">echo</span> <span class="nv">$?</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#返回1为假，返回0为真            </span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>测试一个文件是否为链接文件-&gt;-L
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ln -s 1.txt 3.txt#
+</span></span><span class="line"><span class="cl"><span class="o">[</span> -L 3.txt <span class="o">]</span> <span class="p">;</span> <span class="nb">echo</span> <span class="nv">$?</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#返回1为假，返回0为真</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+:star::字符串在[]中使用的过程中必须要有引号既“$x”
+5. 字符串长度测试是否为零-n
+6. 字符串长度是否为非零-z
+7. 判断字符串是否相等
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span> <span class="s2">&#34;abc&#34;</span> <span class="o">=</span> <span class="s2">&#34;ab&#34;</span> <span class="o">]</span><span class="p">;</span><span class="nb">echo</span> <span class="nv">$?</span><span class="c1">#不相等返回1</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#拓展：如果判断的东西为数字的时候</span>
+</span></span><span class="line"><span class="cl">      <span class="o">=</span>----&gt;-eq
+</span></span><span class="line"><span class="cl">      &gt;----&gt;-gt
+</span></span><span class="line"><span class="cl">      &lt;----&gt;-lt
+</span></span><span class="line"><span class="cl">     &gt;<span class="o">=</span>----&gt;-ge
+</span></span><span class="line"><span class="cl">     &lt;<span class="o">=</span>----&gt;-le
+</span></span><span class="line"><span class="cl">     !<span class="o">=</span>----&gt;-ne
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="8">
+<li>简单的测试
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">read</span> -p <span class="s2">&#34;usrname&gt;&gt;&gt;&gt;&gt;&gt;:&#34;</span> in_usr
+</span></span><span class="line"><span class="cl">usrname&gt;&gt;&gt;&gt;&gt;&gt;:li
+</span></span><span class="line"><span class="cl"><span class="nb">read</span> -p <span class="s2">&#34;usrlogin&gt;&gt;&gt;&gt;&gt;&gt;:&#34;</span> in_login
+</span></span><span class="line"><span class="cl">usrname&gt;&gt;&gt;&gt;&gt;&gt;:123
+</span></span><span class="line"><span class="cl"><span class="o">[</span> <span class="s2">&#34;</span><span class="nv">$in_usr</span><span class="s2">&#34;</span> <span class="o">=</span> <span class="s2">&#34;li&#34;</span> -a <span class="s2">&#34;</span><span class="nv">$in_login</span><span class="s2">&#34;</span> <span class="o">=</span> <span class="s2">&#34;123&#34;</span> <span class="o">]</span><span class="p">;</span><span class="nb">echo</span> <span class="nv">$?</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#返回值为0</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<h3 id="元字符流程控制">元字符&amp;&amp;流程控制</h3>
+<ol>
+<li>元字符
+<ol>
+<li>
+<p>[[]]这种形式是支持正则表达式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span> <span class="nv">$#</span> -ne <span class="m">1</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&#34;只可以传入一个参数&#34;</span> <span class="o">&amp;&amp;</span> <span class="nb">exit</span>
+</span></span><span class="line"><span class="cl"><span class="o">[[</span> ! <span class="nv">$1</span> <span class="o">=</span>~ ^<span class="o">[</span>0-9<span class="o">]</span>+$ <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&#34;只能传入数字&#34;</span> <span class="o">&amp;&amp;</span> <span class="nb">exit</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1">#写一个只能传入两个数值信息的脚本，然后输出脚本比较大小的情况</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span> <span class="nv">$#</span> -ne <span class="m">2</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&#34;Usage: </span><span class="nv">$0</span><span class="s2"> arg1 arg2&#34;</span> <span class="o">&amp;&amp;</span> <span class="nb">exit</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#下面这两个语句是正则表达式，判断这两个输入参数是否为整形或者浮点型</span>
+</span></span><span class="line"><span class="cl"><span class="o">[[</span> ! <span class="nv">$1</span> <span class="o">=</span>~ ^<span class="o">[</span>0-9<span class="o">]</span>+<span class="o">(</span><span class="se">\.</span><span class="o">[</span>0-9<span class="o">]</span>+<span class="o">)</span>?$ <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&#34;第一个参数必须是整数&#34;</span> <span class="o">&amp;&amp;</span> <span class="nb">exit</span>
+</span></span><span class="line"><span class="cl"><span class="o">[[</span> ! <span class="nv">$2</span> <span class="o">=</span>~ ^<span class="o">[</span>0-9<span class="o">]</span>+<span class="o">(</span><span class="se">\.</span><span class="o">[</span>0-9<span class="o">]</span>+<span class="o">)</span>?$ <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&#34;第二个参数必须是整数&#34;</span> <span class="o">&amp;&amp;</span> <span class="nb">exit</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#下面这部分可以使用bc命令来实现</span>
+</span></span><span class="line"><span class="cl"><span class="nv">res</span><span class="o">=</span><span class="sb">`</span><span class="o">[</span> <span class="nv">$1</span> -gt <span class="nv">$2</span><span class="o">]</span> <span class="p">|</span> bc<span class="sb">`</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1">#介绍一些符号的使用</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#！的使用，当文件夹下面有这些文件</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#1.txt 2.txt 3.txt 4.txt a.txt b.txt</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#筛选出那些字母开头的内容</span>
+</span></span><span class="line"><span class="cl">ls <span class="o">[</span>!0-9<span class="o">]</span>.txt
+</span></span><span class="line"><span class="cl">ls <span class="o">[</span>^0-9<span class="o">]</span>.txt
+</span></span><span class="line"><span class="cl"><span class="c1">#筛选出那些非字母开头的内容</span>
+</span></span><span class="line"><span class="cl">ls <span class="o">[</span>0-9<span class="o">]</span>.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1">#并发运行程序</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+</li>
+<li>流程控制
+<ol>
+<li>if判断</li>
+<li>while循环</li>
+<li>for循环</li>
+<li></li>
 </ol>
 </li>
 </ol>
@@ -563,7 +910,7 @@ $1 $2是在脚本运行后面的变量赋值到脚本程序中使用</li>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s1">&#39;注意两端的括号都是单引号&#39;</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s1">&#39;注意两端的括号都是单引号&#39;</span>.
 </span></span></code></pre></td></tr></table>
 </div>
 </div></div><div class="post-footer" id="post-footer">
