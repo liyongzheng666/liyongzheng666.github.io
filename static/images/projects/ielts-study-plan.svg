@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-labelledby="title desc">
+  <title id="title">雅思 9 个月学习计划网页预览</title>
+  <desc id="desc">天空蓝背景上的纸张卡片，左侧是学习计划标题，右侧是每周节奏终端面板。</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#98d8ff"/>
+      <stop offset="1" stop-color="#d2f0ff"/>
+    </linearGradient>
+    <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fffdf1"/>
+      <stop offset="1" stop-color="#fff3cf"/>
+    </linearGradient>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M28 0H0V28" fill="none" stroke="#fff" stroke-opacity=".18" stroke-width="2"/>
+    </pattern>
+    <filter id="shadow" x="-10%" y="-10%" width="130%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="5" flood-color="#6f5530" flood-opacity=".28"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="750" fill="url(#sky)"/>
+  <rect width="1200" height="750" fill="url(#grid)"/>
+
+  <g filter="url(#shadow)">
+    <rect x="58" y="38" width="1084" height="78" rx="13" fill="#fffdf1" stroke="#74552c" stroke-width="4"/>
+    <rect x="78" y="55" width="47" height="47" rx="9" fill="#edb951" stroke="#9a6a27" stroke-width="2"/>
+    <text x="101.5" y="84" text-anchor="middle" font-family="monospace" font-size="16" font-weight="700" fill="#352617">7.5</text>
+    <text x="141" y="72" font-family="Arial, sans-serif" font-size="17" font-weight="800" fill="#352617">IELTS STUDY LAB</text>
+    <text x="141" y="94" font-family="Arial, sans-serif" font-size="13" fill="#6c5a42">9 个月计划 · 月度执行 · 学习成果模版</text>
+    <g font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#352617">
+      <rect x="796" y="58" width="62" height="38" rx="8" fill="#fff8e7" stroke="#cbb897" stroke-width="2"/>
+      <text x="827" y="82" text-anchor="middle">路线</text>
+      <rect x="868" y="58" width="62" height="38" rx="8" fill="#fff8e7" stroke="#cbb897" stroke-width="2"/>
+      <text x="899" y="82" text-anchor="middle">节奏</text>
+      <rect x="940" y="58" width="72" height="38" rx="8" fill="#fff8e7" stroke="#cbb897" stroke-width="2"/>
+      <text x="976" y="82" text-anchor="middle">计划库</text>
+      <rect x="1022" y="58" width="72" height="38" rx="8" fill="#fff8e7" stroke="#cbb897" stroke-width="2"/>
+      <text x="1058" y="82" text-anchor="middle">进度</text>
+    </g>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="58" y="146" width="568" height="430" rx="16" fill="url(#paper)" stroke="#74552c" stroke-width="4"/>
+    <rect x="82" y="174" width="184" height="37" rx="8" fill="#ffe2a3" stroke="#c8a66d" stroke-width="2"/>
+    <text x="174" y="198" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#5f4321">冲 7.5 · 保 7.0 · 数据调整</text>
+    <text x="82" y="278" font-family="Arial, sans-serif" font-size="58" font-weight="800" fill="#355329">雅思 9 个月</text>
+    <text x="82" y="350" font-family="Arial, sans-serif" font-size="58" font-weight="800" fill="#355329">学习计划</text>
+    <text x="82" y="398" font-family="Arial, sans-serif" font-size="18" fill="#6c5a42">固定周节奏 · 反馈回路 · 阶段验收</text>
+    <rect x="82" y="436" width="142" height="46" rx="8" fill="#8bc34f" stroke="#5f7d38" stroke-width="2"/>
+    <text x="153" y="465" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#203016">开始阅读总计划</text>
+    <g font-family="Arial, sans-serif" fill="#352617">
+      <rect x="82" y="510" width="154" height="52" rx="9" fill="#fffdf1" stroke="#c7b38d" stroke-width="2"/>
+      <text x="98" y="536" font-size="23" font-weight="800">9</text><text x="98" y="554" font-size="11">个月周期</text>
+      <rect x="248" y="510" width="154" height="52" rx="9" fill="#fffdf1" stroke="#c7b38d" stroke-width="2"/>
+      <text x="264" y="536" font-size="23" font-weight="800">8.2h</text><text x="264" y="554" font-size="11">每周投入</text>
+      <rect x="414" y="510" width="154" height="52" rx="9" fill="#fffdf1" stroke="#c7b38d" stroke-width="2"/>
+      <text x="430" y="536" font-size="23" font-weight="800">7.5</text><text x="430" y="554" font-size="11">目标总分</text>
+    </g>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="646" y="146" width="496" height="430" rx="16" fill="#101827" stroke="#74552c" stroke-width="4"/>
+    <path d="M646 198H1142" stroke="#334155" stroke-width="2"/>
+    <circle cx="672" cy="172" r="6" fill="#fb7185"/><circle cx="692" cy="172" r="6" fill="#fbbf24"/><circle cx="712" cy="172" r="6" fill="#86efac"/>
+    <text x="1110" y="177" text-anchor="end" font-family="monospace" font-size="13" fill="#b8c5d6">study-week.sh</text>
+    <g font-family="monospace" font-size="16">
+      <text x="678" y="238" fill="#86efac">$</text><text x="700" y="238" fill="#e5edf6">start ielts-week</text>
+      <text x="678" y="278" fill="#7dd3fc">MON</text><text x="740" y="278" fill="#e5edf6">精读 + 同义替换</text>
+      <text x="678" y="316" fill="#7dd3fc">TUE</text><text x="740" y="316" fill="#e5edf6">精听 + 跟读</text>
+      <text x="678" y="354" fill="#7dd3fc">WED</text><text x="740" y="354" fill="#e5edf6">阅读题 + 错因</text>
+      <text x="678" y="392" fill="#7dd3fc">THU</text><text x="740" y="392" fill="#e5edf6">精听 + 难句</text>
+      <text x="678" y="430" fill="#7dd3fc">FRI</text><text x="740" y="430" fill="#e5edf6">口语录音 + AI 反馈</text>
+      <text x="678" y="468" fill="#fbbf24">SAT</text><text x="740" y="468" fill="#e5edf6">读写专场 · 120 min</text>
+      <text x="678" y="506" fill="#fbbf24">SUN</text><text x="740" y="506" fill="#e5edf6">听说专场 · 120 min</text>
+      <text x="678" y="548" fill="#86efac">✓ input → output → feedback</text>
+    </g>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="58" y="606" width="1084" height="108" rx="15" fill="url(#paper)" stroke="#74552c" stroke-width="4"/>
+    <text x="82" y="638" font-family="monospace" font-size="12" font-weight="700" letter-spacing="2" fill="#4f7b31">LEARNING PATH</text>
+    <text x="82" y="680" font-family="Arial, sans-serif" font-size="32" font-weight="800" fill="#355329">五阶段学习路线</text>
+    <g font-family="monospace" font-size="15" font-weight="700">
+      <rect x="490" y="630" width="108" height="54" rx="8" fill="#d8eff6" stroke="#95b9c4" stroke-width="2"/><text x="544" y="662" text-anchor="middle" fill="#3e6fa9">01 地基</text>
+      <rect x="608" y="630" width="108" height="54" rx="8" fill="#eee4f5" stroke="#baa4c9" stroke-width="2"/><text x="662" y="662" text-anchor="middle" fill="#695597">02 题型</text>
+      <rect x="726" y="630" width="108" height="54" rx="8" fill="#ffe6aa" stroke="#d1ad59" stroke-width="2"/><text x="780" y="662" text-anchor="middle" fill="#9f671e">03 反馈</text>
+      <rect x="844" y="630" width="108" height="54" rx="8" fill="#ffe0d3" stroke="#d2a08e" stroke-width="2"/><text x="898" y="662" text-anchor="middle" fill="#9b4e43">04 模考</text>
+      <rect x="962" y="630" width="108" height="54" rx="8" fill="#e5efc8" stroke="#aebd81" stroke-width="2"/><text x="1016" y="662" text-anchor="middle" fill="#4f7b31">05 冲刺</text>
+    </g>
+  </g>
+</svg>

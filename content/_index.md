@@ -26,6 +26,7 @@ layout: hextra-home
 ## 最新整理
 
 {{< cards cols="3" >}}
+  {{< card link="https://liyongzheng666.github.io/ielts-study-plan/" title="雅思 9 个月学习计划" icon="academic-cap" tag="学习计划" tagType="info" subtitle="总计划、月度执行方案、学习成果模版与九个月进度记录整合成一个网页入口。" >}}
   {{< card link="https://liyongzheng666.github.io/fish-terminal-setup-guide-pages/" title="终端与 AI 工具网页书架" icon="collection" tag="统一入口" tagType="info" subtitle="Fish、tmux、Codex、Claude Code 等学习网页现在统一维护在一个静态仓库。" >}}
   {{< card link="https://liyongzheng666.github.io/fish-terminal-setup-guide-pages/claude-code-training/" title="Claude Code 命令培训" icon="terminal" tag="网页指南" tagType="info" subtitle="系统学习 Claude Code CLI、斜杠命令、权限模式、MCP、Hooks 与日常工作流。" >}}
   {{< card link="https://liyongzheng666.github.io/Print/" title="3D Graph Visualization" icon="cube" tag="工具" tagType="info" subtitle="浏览器里的 2D / 3D 边数据可视化工具。" >}}

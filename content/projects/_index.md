@@ -322,8 +322,8 @@ layout: wide
       <p>这里放的是已经能直接打开的远端静态页面。每个项目都配了一张真实预览图，下面按工具、指南和资料入口分组，方便快速回看。</p>
     </div>
     <div class="project-stats" aria-label="项目统计">
-      <div class="project-stat"><strong>5</strong><span>已上线页面</span></div>
-      <div class="project-stat"><strong>4</strong><span>网页指南</span></div>
+      <div class="project-stat"><strong>6</strong><span>已上线页面</span></div>
+      <div class="project-stat"><strong>5</strong><span>学习指南</span></div>
       <div class="project-stat"><strong>1</strong><span>交互工具</span></div>
     </div>
   </section>
@@ -363,13 +363,33 @@ layout: wide
   <section class="project-section">
     <div class="project-section-head">
       <div>
-        <div class="project-meta">Terminal Notes</div>
-        <h2>终端环境指南</h2>
+        <div class="project-meta">Learning Guides</div>
+        <h2>学习与终端指南</h2>
       </div>
-      <p class="project-section-lead">独立网页指南，适合给自己和别人当速查入口。</p>
+      <p class="project-section-lead">独立网页指南，适合持续学习、快速回看和分享给别人。</p>
     </div>
 
     <div class="project-grid">
+      <article class="project-card">
+        <a class="project-shot project-shot-fit" href="https://liyongzheng666.github.io/ielts-study-plan/" target="_blank" rel="noreferrer" aria-label="打开雅思 9 个月学习计划">
+          <img src="/images/projects/ielts-study-plan.svg" alt="雅思 9 个月学习计划网页预览图" loading="eager" decoding="sync">
+        </a>
+        <div class="project-info">
+          <div class="project-tags">
+            <span class="project-tag">IELTS</span>
+            <span class="project-tag">9 个月计划</span>
+            <span class="project-tag">进度记录</span>
+          </div>
+          <h3>雅思 9 个月学习计划</h3>
+          <p>把总计划、月度执行方案和学习成果模版整合成一个可阅读、可切换、可打印的网页，并提供保存在浏览器本地的九个月进度板。</p>
+          <div class="project-actions">
+            <a class="project-action project-action-primary" href="https://liyongzheng666.github.io/ielts-study-plan/" target="_blank" rel="noreferrer">访问页面 ↗</a>
+            <a class="project-action" href="https://github.com/liyongzheng666/ielts-study-plan" target="_blank" rel="noreferrer">查看源码</a>
+          </div>
+          <div class="project-note">适合按总纲理解路线，再按月份执行并在浏览器里记录阶段进度。</div>
+        </div>
+      </article>
+
       <article class="project-card">
         <a class="project-shot" href="https://liyongzheng666.github.io/fish-terminal-setup-guide-pages/fish-terminal-setup/" target="_blank" rel="noreferrer" aria-label="打开 Fish Terminal Setup Guide">
           <img src="/images/projects/fish-terminal.png" alt="Fish Terminal Setup Guide 首页截图" loading="eager" decoding="sync">
