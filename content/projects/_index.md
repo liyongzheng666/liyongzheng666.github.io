@@ -381,12 +381,12 @@ layout: wide
             <span class="project-tag">进度记录</span>
           </div>
           <h3>雅思 9 个月学习计划</h3>
-          <p>把总计划、月度执行方案和学习成果模版整合成一个可阅读、可切换、可打印的网页，并提供保存在浏览器本地的九个月进度板。</p>
+          <p>把总计划、月度执行方案和学习成果示范整合成一个可阅读、可切换、可打印的网页，并提供保存在浏览器本地的九个月进度板；成果示范现已含逐篇精读样例，从词卡、同义替换、错题归因一直做到写作与口语。</p>
           <div class="project-actions">
             <a class="project-action project-action-primary" href="https://liyongzheng666.github.io/ielts-study-plan/" target="_blank" rel="noreferrer">访问页面 ↗</a>
             <a class="project-action" href="https://github.com/liyongzheng666/ielts-study-plan" target="_blank" rel="noreferrer">查看源码</a>
           </div>
-          <div class="project-note">适合按总纲理解路线，再按月份执行并在浏览器里记录阶段进度。</div>
+          <div class="project-note">适合按总纲理解路线、按月份执行进度，并照「成果示范」把每篇精读榨出 7 类产出。</div>
         </div>
       </article>
 
