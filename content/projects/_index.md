@@ -318,8 +318,8 @@ layout: wide
   <section class="project-hero">
     <div>
       <div class="project-kicker">GitHub Pages Portfolio</div>
-      <h2>把散落的静态网页收进一个书架</h2>
-      <p>这里放的是已经能直接打开的远端静态页面。每个项目都配了一张真实预览图，下面按工具、指南和资料入口分组，方便快速回看。</p>
+      <h2>上线作品的一方书架</h2>
+      <p>把已经能直接打开的静态网页，像书一样陈列在一处。每个项目配真实预览，按工具、指南与资料入口分组，随手取阅。</p>
     </div>
     <div class="project-stats" aria-label="项目统计">
       <div class="project-stat"><strong>6</strong><span>已上线页面</span></div>
