@@ -125,6 +125,10 @@ layout: hextra-home
     box-shadow: 0 26px 55px rgba(15, 23, 42, 0.1);
   }
 
+  .focus-card + .focus-card {
+    margin-top: 1.4rem;
+  }
+
   .focus-shot {
     background: #edf7fb;
     border-right: 1px solid rgba(148, 163, 184, 0.2);
@@ -362,6 +366,21 @@ layout: hextra-home
     <div class="home-section-head">
       <span class="home-section-label" id="home-focus-label">焦点 · Featured</span>
     </div>
+    <a class="focus-card" href="https://liyongzheng666.github.io/geometry-engineer-ai-road/" target="_blank" rel="noreferrer" aria-label="打开几何算法工程师的AI之路">
+      <div class="focus-shot">
+        <img src="/images/projects/geometry-engineer-ai-road.svg" alt="几何算法工程师的AI之路网页预览图" loading="eager" decoding="sync">
+      </div>
+      <div class="focus-body">
+        <div class="focus-tags">
+          <span>12 周课程</span>
+          <span>验证闭环</span>
+          <span>C++ 几何</span>
+        </div>
+        <h2>几何算法工程师的 AI 之路</h2>
+        <p>面向几何造型算法工程师的 12 周 AI 提效课程：每周一个"粘贴即验证"C++ 工作台，配计划拆解、代码解读与补充知识（CMake、退化容差、Eigen）。前 3 周已上线，含 8 个验证闭环 harness。</p>
+        <span class="focus-open">打开课程主页 ↗</span>
+      </div>
+    </a>
     <a class="focus-card" href="https://liyongzheng666.github.io/ielts-study-plan/" target="_blank" rel="noreferrer" aria-label="打开雅思 9 个月学习计划">
       <div class="focus-shot">
         <img src="/images/projects/ielts-study-plan.svg" alt="雅思 9 个月学习计划网页预览图" loading="eager" decoding="sync">

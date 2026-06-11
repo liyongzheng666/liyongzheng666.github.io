@@ -371,6 +371,26 @@ layout: wide
 
     <div class="project-grid">
       <article class="project-card">
+        <a class="project-shot project-shot-fit" href="https://liyongzheng666.github.io/geometry-engineer-ai-road/" target="_blank" rel="noreferrer" aria-label="打开几何算法工程师的AI之路">
+          <img src="/images/projects/geometry-engineer-ai-road.svg" alt="几何算法工程师的AI之路网页预览图" loading="eager" decoding="sync">
+        </a>
+        <div class="project-info">
+          <div class="project-tags">
+            <span class="project-tag">12 周课程</span>
+            <span class="project-tag">验证闭环</span>
+            <span class="project-tag">C++ 几何</span>
+          </div>
+          <h3>几何算法工程师的 AI 之路</h3>
+          <p>面向几何造型算法工程师的 12 周 AI 提效课程主页：展望与路线、每周计划拆解、harness 代码解读和补充知识点（CMake 构建、退化容差、Eigen 集成），内容直接读自 GitHub 仓库。</p>
+          <div class="project-actions">
+            <a class="project-action project-action-primary" href="https://liyongzheng666.github.io/geometry-engineer-ai-road/" target="_blank" rel="noreferrer">访问页面 ↗</a>
+            <a class="project-action" href="https://github.com/liyongzheng666/geometry-engineer-ai-road" target="_blank" rel="noreferrer">查看源码</a>
+          </div>
+          <div class="project-note">前 3 周已上线（8 个验证闭环 harness），第 4–12 周按同一范式持续更新。</div>
+        </div>
+      </article>
+
+      <article class="project-card">
         <a class="project-shot project-shot-fit" href="https://liyongzheng666.github.io/ielts-study-plan/" target="_blank" rel="noreferrer" aria-label="打开雅思 9 个月学习计划">
           <img src="/images/projects/ielts-study-plan.svg" alt="雅思 9 个月学习计划网页预览图" loading="eager" decoding="sync">
         </a>

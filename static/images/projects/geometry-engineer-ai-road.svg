@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-labelledby="title desc">
+  <title id="title">几何算法工程师的AI之路网页预览</title>
+  <desc id="desc">蓝图网格背景，左侧是课程标题与一条带控制点的 Bezier 曲线，右侧是验证闭环终端面板。</desc>
+  <defs>
+    <linearGradient id="blueprint" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#46549f"/>
+      <stop offset="1" stop-color="#2e3a78"/>
+    </linearGradient>
+    <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fbfcff"/>
+      <stop offset="1" stop-color="#e9eeff"/>
+    </linearGradient>
+    <linearGradient id="chip" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#b7c4f7"/>
+      <stop offset="1" stop-color="#5b6ee1"/>
+    </linearGradient>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M30 0H0V30" fill="none" stroke="#fff" stroke-opacity=".14" stroke-width="2"/>
+    </pattern>
+  </defs>
+
+  <!-- 背景：蓝图 + 网格 -->
+  <rect width="1200" height="750" fill="url(#blueprint)"/>
+  <rect width="1200" height="750" fill="url(#grid)"/>
+  <!-- 装饰：圆规圆 -->
+  <circle cx="1060" cy="92" r="58" fill="none" stroke="#fff" stroke-opacity=".22" stroke-width="3"/>
+  <circle cx="1060" cy="92" r="34" fill="none" stroke="#fff" stroke-opacity=".16" stroke-width="3" stroke-dasharray="8 7"/>
+
+  <!-- 左侧纸张卡片 -->
+  <rect x="64" y="84" width="630" height="576" rx="18" fill="url(#paper)" stroke="#222c5e" stroke-width="5"/>
+  <rect x="76" y="96" width="606" height="552" rx="12" fill="none" stroke="#5b6ee1" stroke-opacity=".25" stroke-width="2"/>
+
+  <!-- eyebrow 徽章 -->
+  <rect x="104" y="128" width="318" height="42" rx="9" fill="#dbe2fb" stroke="#5b6ee1" stroke-opacity=".5" stroke-width="2"/>
+  <text x="120" y="157" font-family="Menlo, Monaco, monospace" font-size="20" font-weight="700" fill="#2b3470">12 周 · 验证闭环 · PROMPT 工程</text>
+
+  <!-- 标题 -->
+  <text x="104" y="248" font-family="'Trebuchet MS','PingFang SC',sans-serif" font-size="62" font-weight="800" fill="#2b3470">几何算法工程师</text>
+  <text x="104" y="328" font-family="'Trebuchet MS','PingFang SC',sans-serif" font-size="62" font-weight="800" fill="#2b3470">的 AI 之路</text>
+
+  <!-- 三阶段 chips -->
+  <rect x="104" y="362" width="128" height="38" rx="8" fill="#aac7ff" fill-opacity=".55" stroke="#3e5fa9" stroke-width="2"/>
+  <text x="126" y="389" font-family="'Trebuchet MS','PingFang SC',sans-serif" font-size="21" font-weight="700" fill="#2c4884">表达精度</text>
+  <rect x="246" y="362" width="128" height="38" rx="8" fill="#e2d8ff" fill-opacity=".8" stroke="#695597" stroke-width="2"/>
+  <text x="268" y="389" font-family="'Trebuchet MS','PingFang SC',sans-serif" font-size="21" font-weight="700" fill="#574788">数学引擎</text>
+  <rect x="388" y="362" width="158" height="38" rx="8" fill="#a9e2d4" fill-opacity=".6" stroke="#1f6e63" stroke-width="2"/>
+  <text x="410" y="389" font-family="'Trebuchet MS','PingFang SC',sans-serif" font-size="21" font-weight="700" fill="#1f6e63">调优工作流</text>
+
+  <!-- 曲线演示区 -->
+  <g>
+    <!-- 控制多边形 -->
+    <polyline points="128,596 268,452 472,452 632,592" fill="none" stroke="#8e9ac4" stroke-width="3" stroke-dasharray="9 8"/>
+    <!-- Bezier 曲线 -->
+    <path d="M128,596 C268,452 472,452 632,592" fill="none" stroke="#4f74c9" stroke-width="7" stroke-linecap="round"/>
+    <!-- 控制点 -->
+    <circle cx="128" cy="596" r="11" fill="#d9534f" stroke="#7c2320" stroke-width="3"/>
+    <circle cx="268" cy="452" r="11" fill="#d9534f" stroke="#7c2320" stroke-width="3"/>
+    <circle cx="472" cy="452" r="11" fill="#d9534f" stroke="#7c2320" stroke-width="3"/>
+    <circle cx="632" cy="592" r="11" fill="#d9534f" stroke="#7c2320" stroke-width="3"/>
+    <!-- 曲线上的采样点 -->
+    <circle cx="380" cy="488" r="8" fill="#2e9e8f" stroke="#14564d" stroke-width="3"/>
+    <text x="402" y="496" font-family="Menlo, Monaco, monospace" font-size="19" fill="#3a4373">B(t) · 双算对照</text>
+  </g>
+
+  <!-- 右侧终端面板 -->
+  <g>
+    <rect x="740" y="178" width="396" height="404" rx="14" fill="#0f172a" stroke="#222c5e" stroke-width="5"/>
+    <rect x="740" y="178" width="396" height="52" rx="14" fill="#182235"/>
+    <rect x="740" y="216" width="396" height="14" fill="#182235"/>
+    <circle cx="770" cy="204" r="7" fill="#fb7185"/>
+    <circle cx="794" cy="204" r="7" fill="#fbbf24"/>
+    <circle cx="818" cy="204" r="7" fill="#86efac"/>
+    <text x="846" y="211" font-family="Menlo, Monaco, monospace" font-size="17" fill="#b8c5d6">verify-loop.sh</text>
+
+    <text x="768" y="276" font-family="Menlo, Monaco, monospace" font-size="20" fill="#e5edf6"><tspan fill="#86efac">$</tspan> ./test_nurbs</text>
+    <text x="768" y="318" font-family="Menlo, Monaco, monospace" font-size="20" fill="#e5edf6"><tspan fill="#86efac" font-weight="700">[PASS]</tspan> |P(0.25)| = 1</text>
+    <text x="768" y="360" font-family="Menlo, Monaco, monospace" font-size="20" fill="#e5edf6"><tspan fill="#86efac" font-weight="700">[PASS]</tspan> |P(0.50)| = 1</text>
+    <text x="768" y="402" font-family="Menlo, Monaco, monospace" font-size="20" fill="#e5edf6"><tspan fill="#86efac" font-weight="700">[PASS]</tspan> 端点插值</text>
+    <text x="768" y="444" font-family="Menlo, Monaco, monospace" font-size="20" fill="#e5edf6"><tspan fill="#fbbf24" font-weight="700">[OBSV]</tspan> 权重全 1 → 非圆</text>
+    <text x="768" y="498" font-family="Menlo, Monaco, monospace" font-size="20" fill="#86efac">✓ nurbs_output.svg</text>
+    <line x1="768" y1="524" x2="1108" y2="524" stroke="#475569" stroke-width="2" stroke-dasharray="6 6"/>
+    <text x="768" y="556" font-family="Menlo, Monaco, monospace" font-size="17" fill="#94a3b8">验证闭环 → 可信代码</text>
+  </g>
+
+  <!-- 底部统计 -->
+  <text x="740" y="636" font-family="'Trebuchet MS','PingFang SC',sans-serif" font-size="24" font-weight="700" fill="#ffffff" fill-opacity=".92">12 周课程 · 3 周已上线 · 8 个验证闭环</text>
+</svg>
