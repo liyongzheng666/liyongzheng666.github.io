@@ -31,8 +31,8 @@
   <rect x="76" y="96" width="606" height="552" rx="12" fill="none" stroke="#5b6ee1" stroke-opacity=".25" stroke-width="2"/>
 
   <!-- eyebrow 徽章 -->
-  <rect x="104" y="128" width="318" height="42" rx="9" fill="#dbe2fb" stroke="#5b6ee1" stroke-opacity=".5" stroke-width="2"/>
-  <text x="120" y="157" font-family="Menlo, Monaco, monospace" font-size="20" font-weight="700" fill="#2b3470">12 周 · 验证闭环 · PROMPT 工程</text>
+  <rect x="104" y="128" width="412" height="42" rx="9" fill="#dbe2fb" stroke="#5b6ee1" stroke-opacity=".5" stroke-width="2"/>
+  <text x="130" y="157" font-family="Menlo, Monaco, monospace" font-size="20" font-weight="700" fill="#2b3470">12 周 · 验证闭环 · PROMPT 工程</text>
 
   <!-- 标题 -->
   <text x="104" y="248" font-family="'Trebuchet MS','PingFang SC',sans-serif" font-size="62" font-weight="800" fill="#2b3470">几何算法工程师</text>
