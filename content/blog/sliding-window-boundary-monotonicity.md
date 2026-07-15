@@ -156,6 +156,11 @@ answer = max(answer, right - left + 1)
 
 这里求的是最长合法窗口，所以在“出现重复、窗口非法”时收缩，恢复合法后更新最大长度。
 
+<figure>
+  <img src="/images/blog/sliding-window/longest-no-repeat.gif" width="1200" height="640" loading="lazy" alt="无重复字符的最长子串滑动窗口逐帧演示：右端加入重复字符后，左端持续右移直到窗口重新合法">
+  <figcaption>动图 1：在 <code>abcabcbb</code> 上，窗口只在新字符造成重复时收缩；每次恢复合法后再更新最长长度。</figcaption>
+</figure>
+
 ### 例 2：[1004. 最大连续 1 的个数 III](https://leetcode.cn/problems/max-consecutive-ones-iii/)
 
 题目允许把最多 `k` 个 0 改成 1。把“修改次数”看成预算，则违规成本就是窗口中的 0 数量：
@@ -193,6 +198,11 @@ while sum >= target:
 
 注意这里在“窗口合法”时收缩，因为题目求的是最短满足窗口。正数限制不是装饰条件；如果允许负数，收缩对总和的影响方向就不再确定。
 
+<figure>
+  <img src="/images/blog/sliding-window/minimum-positive-sum.gif" width="1200" height="640" loading="lazy" alt="正整数数组中长度最小子数组的滑动窗口演示：总和达到 7 后持续收缩并更新最短长度">
+  <figcaption>动图 2：在 <code>[2,3,1,2,4,3]</code> 中寻找和至少为 7 的最短窗口；注意答案是在满足条件的收缩过程中得到的。</figcaption>
+</figure>
+
 ### 例 5：[76. 最小覆盖子串](https://leetcode.cn/problems/minimum-window-substring/)
 
 这道题的窗口状态不是简单的长度或总和，而是字符覆盖关系。可以维护：
@@ -216,6 +226,11 @@ while sum >= target:
 
 固定窗口不需要通过合法性决定左端点，左端点由窗口长度唯一确定。它仍属于滑动窗口，但不依赖可变窗口中的“非法后收缩”逻辑。
 
+<figure>
+  <img src="/images/blog/sliding-window/fixed-anagram-window.gif" width="1200" height="640" loading="lazy" alt="固定长度为 3 的窗口在 cbaebabacd 上逐格移动，并检查是否与 abc 具有相同字符频次">
+  <figcaption>动图 3：固定窗口不需要判断“何时缩”；右端每前进一步，左端同步前进一步，只比较长度为 3 的窗口。</figcaption>
+</figure>
+
 ### 例 7：[713. 乘积小于 K 的子数组](https://leetcode.cn/problems/subarray-product-less-than-k/)
 
 数组元素均为正数，窗口乘积过大时，删除左端因子会让乘积不增，因此可以收缩到 `product < k`。当 `[left, right]` 合法时，以 `right` 结尾的这些窗口都合法：
@@ -225,6 +240,11 @@ while sum >= target:
 ```
 
 一共有 `right - left + 1` 个，所以每轮把这个数量加入答案。另需单独处理 `k <= 1`：正整数乘积不可能小于 1，答案为 0。
+
+<figure>
+  <img src="/images/blog/sliding-window/product-count-contribution.gif" width="1200" height="640" loading="lazy" alt="乘积小于 100 的子数组计数演示：窗口恢复合法后，以当前右端点结尾的合法后缀数量为 right-left+1">
+  <figcaption>动图 4：当窗口合法时，所有从 <code>left</code> 到 <code>right</code> 之间起步、并以 <code>right</code> 结尾的后缀都合法，因此新增数量是 <code>right-left+1</code>。</figcaption>
+</figure>
 
 ### 例 8：[992. K 个不同整数的子数组](https://leetcode.cn/problems/subarrays-with-k-different-integers/)
 
@@ -250,6 +270,11 @@ exactly(K) = atMost(K) - atMost(K - 1)
 - `sum > target` 不再意味着“左端应该右移”。
 
 此时应使用前缀和。若 `prefix[j] - prefix[i] = k`，只需查询此前是否出现过 `prefix[j] - k`，因此 LeetCode 560 的标准方法是前缀和加哈希表。
+
+<figure>
+  <img src="/images/blog/sliding-window/negative-sum-counterexample.gif" width="1200" height="640" loading="lazy" alt="含负数数组中错误滑动窗口的反例：在 1、4、负2 上因总和大于 3 提前收缩，最终漏掉和为 3 的完整区间">
+  <figcaption>动图 5：这是一个刻意展示的错误算法。它在读到 4 时因总和过大而丢弃左边界，随后无法利用 -2 把总和拉回 3。</figcaption>
+</figure>
 
 [862. 和至少为 K 的最短子数组](https://leetcode.cn/problems/shortest-subarray-with-sum-at-least-k/) 同样允许负数，普通窗口也会失去总和单调性。它使用前缀和加单调队列，在前缀和序列上维护有价值的候选左边界。
 
