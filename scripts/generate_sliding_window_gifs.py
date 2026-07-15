@@ -345,7 +345,16 @@ def validate_spec(spec: dict) -> None:
     values = spec["values"]
     previous_left = -1
     previous_right = -1
+    previous_phase = None
+    phase_total = 0
     for state in spec["states"]:
+        phase = state.get("phase")
+        if previous_phase is not None and phase != previous_phase:
+            previous_left = -1
+            previous_right = -1
+            phase_total = 0
+        previous_phase = phase
+
         left = state["left"]
         right = state["right"]
         assert left >= previous_left, f"left moved backwards in {spec['slug']}"
@@ -358,10 +367,25 @@ def validate_spec(spec: dict) -> None:
         if check == "unique":
             actual = max(Counter(window).values(), default=0) <= 1
             assert actual == state["valid"]
+        elif check == "zero_budget":
+            zero_count = window.count(0)
+            assert zero_count == state["zero_count"]
+            assert (zero_count <= spec["budget"]) == state["valid"]
+        elif check == "replacement":
+            max_frequency = max(Counter(window).values(), default=0)
+            replacement_cost = len(window) - max_frequency
+            assert max_frequency == state["max_frequency"]
+            assert replacement_cost == state["replacement_cost"]
+            assert (replacement_cost <= spec["budget"]) == state["valid"]
         elif check == "minimum_sum":
             actual_sum = sum(window)
             assert actual_sum == state["sum"]
             assert (actual_sum >= spec["target"]) == state["meets"]
+        elif check == "coverage":
+            window_counts = Counter(window)
+            need_counts = Counter(spec["target_values"])
+            covers = all(window_counts[value] >= count for value, count in need_counts.items())
+            assert covers == state["covers"]
         elif check == "anagram":
             actual = len(window) == len(spec["pattern"]) and Counter(window) == Counter(spec["pattern"])
             assert actual == state["is_match"]
@@ -369,6 +393,13 @@ def validate_spec(spec: dict) -> None:
             actual_product = math.prod(window) if window else 1
             assert actual_product == state["product"]
             assert (actual_product < spec["target"]) == state["valid"]
+        elif check == "exact_distinct" and not state.get("review"):
+            distinct = len(set(window))
+            assert distinct == state["distinct"]
+            assert distinct <= state["limit"]
+            assert state["contribution"] == right - left + 1
+            phase_total += state["contribution"]
+            assert phase_total == state["total"]
         elif check == "negative_failure" and not state.get("review"):
             assert sum(window) == state["sum"]
 
@@ -448,6 +479,48 @@ SPECS = [
         ],
     },
     {
+        "slug": "max-consecutive-ones-budget",
+        "title": "LC 1004 · 最大连续 1 的个数 III",
+        "rule": "最长合法窗口：把 0 的数量当作修改成本；while zeroCount > k 时移动 L",
+        "values": [1, 1, 0, 0, 1, 1, 1, 0],
+        "budget": 2,
+        "check": "zero_budget",
+        "states": [
+            {"left": 0, "right": 0, "zero_count": 0, "valid": True, "condition": "zeroCount=0 ≤ 2", "action": "ans = 1", "tone": "valid", "note": "最多可以把 k=2 个 0 改成 1。"},
+            {"left": 0, "right": 1, "zero_count": 0, "valid": True, "condition": "zeroCount=0 ≤ 2", "action": "ans = 2", "tone": "valid", "note": "没有消耗修改预算，窗口继续扩张。"},
+            {"left": 0, "right": 2, "zero_count": 1, "valid": True, "condition": "zeroCount=1 ≤ 2", "action": "ans = 3", "tone": "valid", "note": "第一个 0 消耗一次修改预算。"},
+            {"left": 0, "right": 3, "zero_count": 2, "valid": True, "condition": "zeroCount=2 ≤ 2", "action": "ans = 4", "tone": "valid", "note": "修改预算恰好用完，窗口仍然合法。"},
+            {"left": 0, "right": 4, "zero_count": 2, "valid": True, "condition": "zeroCount=2 ≤ 2", "action": "ans = 5", "tone": "valid", "note": "加入 1 不增加违规成本。"},
+            {"left": 0, "right": 5, "zero_count": 2, "valid": True, "condition": "zeroCount=2 ≤ 2", "action": "ans = 6", "tone": "valid", "note": "窗口继续保持合法。"},
+            {"left": 0, "right": 6, "zero_count": 2, "valid": True, "condition": "zeroCount=2 ≤ 2", "action": "ans = 7", "tone": "match", "action_tone": "match", "match": [0, 1, 2, 3, 4, 5, 6], "note": "当前最优窗口 [0,6] 长度为 7。", "duration": 2300},
+            {"left": 0, "right": 7, "zero_count": 3, "valid": False, "condition": "zeroCount=3 > 2", "action": "移出索引 0 的 1", "tone": "invalid", "special": [2, 3, 7], "note": "加入第三个 0 后窗口非法，开始执行 while。", "duration": 1900},
+            {"left": 1, "right": 7, "zero_count": 3, "valid": False, "condition": "zeroCount仍为3", "action": "移出索引 1 的 1", "tone": "invalid", "special": [2, 3, 7], "note": "删除 1 不减少 zeroCount，所以仍需收缩。"},
+            {"left": 2, "right": 7, "zero_count": 3, "valid": False, "condition": "zeroCount仍为3", "action": "移出索引 2 的 0", "tone": "invalid", "special": [2, 3, 7], "note": "一个新元素可能需要多次移动 left，不能只写 if。"},
+            {"left": 3, "right": 7, "zero_count": 2, "valid": True, "condition": "zeroCount=2 ≤ 2", "action": "最终 ans = 7", "tone": "valid", "action_tone": "match", "note": "移出一个 0 后恢复合法；历史最优长度仍为 7。", "duration": 2800},
+        ],
+    },
+    {
+        "slug": "replacement-cost-window",
+        "title": "LC 424 · 替换后的最长重复字符",
+        "rule": "合法条件：窗口长度 - 窗口内真实最高频次 ≤ k；本例 k=1",
+        "values": list("AABABBA"),
+        "budget": 1,
+        "check": "replacement",
+        "states": [
+            {"left": 0, "right": 0, "max_frequency": 1, "replacement_cost": 0, "valid": True, "condition": "1-1=0 ≤ 1", "action": "ans = 1", "tone": "valid", "note": "保留最高频字符，替换窗口中的其余字符。"},
+            {"left": 0, "right": 1, "max_frequency": 2, "replacement_cost": 0, "valid": True, "condition": "2-2=0 ≤ 1", "action": "ans = 2", "tone": "valid", "note": "窗口 AA 不需要任何替换。"},
+            {"left": 0, "right": 2, "max_frequency": 2, "replacement_cost": 1, "valid": True, "condition": "3-2=1 ≤ 1", "action": "ans = 3", "tone": "valid", "note": "AAB 中替换一个 B 即可全部变成 A。"},
+            {"left": 0, "right": 3, "max_frequency": 3, "replacement_cost": 1, "valid": True, "condition": "4-3=1 ≤ 1", "action": "ans = 4", "tone": "match", "action_tone": "match", "match": [0, 1, 2, 3], "note": "AABA 只需替换一个 B，得到长度 4 的答案。", "duration": 2300},
+            {"left": 0, "right": 4, "max_frequency": 3, "replacement_cost": 2, "valid": False, "condition": "5-3=2 > 1", "action": "移出左端 A", "tone": "invalid", "special": [2, 4], "note": "AABAB 至少需要替换两个 B，超过预算。", "duration": 1900},
+            {"left": 1, "right": 4, "max_frequency": 2, "replacement_cost": 2, "valid": False, "condition": "4-2=2 > 1", "action": "继续移出 A", "tone": "invalid", "special": [1, 3], "note": "按当前窗口重新计算 maxFrequency，窗口仍然非法。"},
+            {"left": 2, "right": 4, "max_frequency": 2, "replacement_cost": 1, "valid": True, "condition": "3-2=1 ≤ 1", "action": "恢复合法", "tone": "valid", "note": "BAB 只需把 A 替换成 B。"},
+            {"left": 2, "right": 5, "max_frequency": 3, "replacement_cost": 1, "valid": True, "condition": "4-3=1 ≤ 1", "action": "ans 仍为 4", "tone": "valid", "note": "BABB 仍可用一次替换变成相同字符。"},
+            {"left": 2, "right": 6, "max_frequency": 3, "replacement_cost": 2, "valid": False, "condition": "5-3=2 > 1", "action": "移出左端 B", "tone": "invalid", "note": "BABBA 的替换成本再次超过预算。"},
+            {"left": 3, "right": 6, "max_frequency": 2, "replacement_cost": 2, "valid": False, "condition": "4-2=2 > 1", "action": "继续移出 A", "tone": "invalid", "note": "ABBA 中 A、B 各出现两次，至少要替换两个。"},
+            {"left": 4, "right": 6, "max_frequency": 2, "replacement_cost": 1, "valid": True, "condition": "3-2=1 ≤ 1", "action": "最终 ans = 4", "tone": "valid", "action_tone": "match", "note": "BBA 恢复合法，历史最长答案保持为 4。", "duration": 2800},
+        ],
+    },
+    {
         "slug": "minimum-positive-sum",
         "title": "LC 209 · 长度最小的子数组",
         "rule": "最短满足窗口：正整数保证 sum 单调；while sum ≥ 7 时更新答案并继续收缩",
@@ -465,6 +538,30 @@ SPECS = [
             {"left": 3, "right": 4, "sum": 6, "meets": False, "condition": "sum=6 < 7", "action": "停止收缩", "tone": "waiting", "note": "窗口第一次变为不满足，while 结束。"},
             {"left": 3, "right": 5, "sum": 9, "meets": True, "condition": "sum=9 ≥ 7", "action": "ans仍3；移出 2", "tone": "valid", "note": "加入最后一个 3 后，再次开始压缩窗口。"},
             {"left": 4, "right": 5, "sum": 7, "meets": True, "condition": "sum=7 ≥ 7", "action": "ans = 2", "tone": "match", "action_tone": "match", "match": [4, 5], "note": "找到最短窗口 [4,5]，即 [4,3]，长度为 2。", "duration": 2800},
+        ],
+    },
+    {
+        "slug": "minimum-cover-window",
+        "title": "LC 76 · 最小覆盖子串",
+        "rule": "目标 t=ABC：formed=3 表示完整覆盖；覆盖后更新最短答案，并持续移动 L",
+        "values": list("ADOBECODEBANC"),
+        "target_values": list("ABC"),
+        "check": "coverage",
+        "states": [
+            {"left": 0, "right": 0, "covers": False, "condition": "formed=1/3", "action": "继续扩张 R", "tone": "waiting", "window": "[0,0] A", "note": "当前只有 A 达到需要的频次，还缺 B 和 C。"},
+            {"left": 0, "right": 5, "covers": True, "condition": "formed=3/3，已覆盖", "action": "ans=6；移出 A", "tone": "valid", "window": "[0,5] ADOBEC", "note": "第一次覆盖 ABC；因为求最短，立即进入 while 收缩。", "duration": 2100},
+            {"left": 1, "right": 5, "covers": False, "condition": "formed=2/3，缺 A", "action": "扩张 R 到索引 10", "tone": "waiting", "window": "[1,5] DOBEC", "note": "移出唯一的 A 后覆盖失效，停止收缩。"},
+            {"left": 1, "right": 10, "covers": True, "condition": "formed=3/3，已覆盖", "action": "ans仍6；移出 D", "tone": "valid", "window": "[1,10] DOBECODEBA", "note": "右端扩张到新的 A 后，再次完整覆盖。"},
+            {"left": 2, "right": 10, "covers": True, "condition": "formed=3/3，已覆盖", "action": "移出 O", "tone": "valid", "window": "[2,10] OBECODEBA", "note": "D 不是必需字符，删除后仍然覆盖。"},
+            {"left": 3, "right": 10, "covers": True, "condition": "formed=3/3，已覆盖", "action": "移出 B", "tone": "valid", "window": "[3,10] BECODEBA", "note": "窗口中有两个 B，移出左侧 B 后仍有一个。"},
+            {"left": 4, "right": 10, "covers": True, "condition": "formed=3/3，已覆盖", "action": "移出 E", "tone": "valid", "window": "[4,10] ECODEBA", "note": "非必需字符可以继续丢弃。"},
+            {"left": 5, "right": 10, "covers": True, "condition": "formed=3/3，已覆盖", "action": "移出 C", "tone": "valid", "window": "[5,10] CODEBA", "note": "长度回到 6，答案暂时仍为 ADOBEC。"},
+            {"left": 6, "right": 10, "covers": False, "condition": "formed=2/3，缺 C", "action": "扩张 R 到索引 12", "tone": "waiting", "window": "[6,10] ODEBA", "note": "移出唯一的 C 后覆盖失效，while 停止。"},
+            {"left": 6, "right": 12, "covers": True, "condition": "formed=3/3，已覆盖", "action": "移出 O", "tone": "valid", "window": "[6,12] ODEBANC", "note": "加入索引 12 的 C 后恢复覆盖，再次尝试收缩。"},
+            {"left": 7, "right": 12, "covers": True, "condition": "formed=3/3，已覆盖", "action": "移出 D", "tone": "valid", "window": "[7,12] DEBANC", "note": "删除 O 后仍覆盖，继续收缩。"},
+            {"left": 8, "right": 12, "covers": True, "condition": "formed=3/3，已覆盖", "action": "ans=5；移出 E", "tone": "valid", "window": "[8,12] EBANC", "note": "窗口 EBANC 长度为 5，刷新最短答案。"},
+            {"left": 9, "right": 12, "covers": True, "condition": "formed=3/3，已覆盖", "action": "ans = 4；移出 B", "tone": "match", "action_tone": "match", "match": [9, 10, 11, 12], "window": "[9,12] BANC", "note": "BANC 长度为 4，是本题最终最短覆盖子串。", "duration": 2800},
+            {"left": 10, "right": 12, "covers": False, "condition": "formed=2/3，缺 B", "action": "最终答案 BANC", "tone": "waiting", "action_tone": "match", "window": "[10,12] ANC", "note": "移出唯一的 B 后覆盖失效；最短答案保持为 BANC。", "duration": 2800},
         ],
     },
     {
@@ -500,6 +597,26 @@ SPECS = [
             {"left": 0, "right": 2, "product": 100, "valid": False, "condition": "product=100，不合法", "action": "移出左端 10", "tone": "invalid", "special": [0, 1, 2], "note": "题目要求严格小于 100；等于 100 也必须收缩。", "duration": 2000},
             {"left": 1, "right": 2, "product": 10, "valid": True, "condition": "product=10 < 100", "action": "新增2；total=5", "tone": "valid", "note": "新增 [5,2] 与 [2]；所有更短后缀也合法。", "duration": 1900},
             {"left": 1, "right": 3, "product": 60, "valid": True, "condition": "product=60 < 100", "action": "新增3；total=8", "tone": "match", "action_tone": "match", "match": [1, 2, 3], "note": "新增 [5,2,6]、[2,6]、[6]，最终答案为 8。", "duration": 3000},
+        ],
+    },
+    {
+        "slug": "exact-k-distinct",
+        "title": "LC 992 · 恰好 K 个不同整数的子数组",
+        "rule": "本例 K=2：exactly(2) = atMost(2) - atMost(1)，两次都按右端点累计贡献",
+        "values": [1, 2, 1, 2, 3],
+        "check": "exact_distinct",
+        "states": [
+            {"phase": "atMost2", "left": 0, "right": 0, "limit": 2, "distinct": 1, "contribution": 1, "total": 1, "condition": "atMost(2)：1种", "action": "新增1；total=1", "tone": "valid", "note": "先计算不同整数至多为 2 的子数组数量。"},
+            {"phase": "atMost2", "left": 0, "right": 1, "limit": 2, "distinct": 2, "contribution": 2, "total": 3, "condition": "atMost(2)：2种", "action": "新增2；total=3", "tone": "valid", "note": "以索引 1 结尾的合法后缀有 [1,2] 和 [2]。"},
+            {"phase": "atMost2", "left": 0, "right": 2, "limit": 2, "distinct": 2, "contribution": 3, "total": 6, "condition": "atMost(2)：2种", "action": "新增3；total=6", "tone": "valid", "note": "加入 1 没有增加不同整数种类。"},
+            {"phase": "atMost2", "left": 0, "right": 3, "limit": 2, "distinct": 2, "contribution": 4, "total": 10, "condition": "atMost(2)：2种", "action": "新增4；total=10", "tone": "valid", "note": "以索引 3 结尾共有 4 个合法后缀。"},
+            {"phase": "atMost2", "left": 3, "right": 4, "limit": 2, "distinct": 2, "contribution": 2, "total": 12, "condition": "atMost(2)：恢复为2种", "action": "新增2；total=12", "tone": "valid", "note": "加入 3 后曾有三种整数；left 从 0 移到 3 才恢复合法。", "duration": 2100},
+            {"phase": "atMost1", "left": 0, "right": 0, "limit": 1, "distinct": 1, "contribution": 1, "total": 1, "condition": "atMost(1)：1种", "action": "新增1；total=1", "tone": "valid", "note": "第二次独立运行窗口，计算至多 1 种的数量。"},
+            {"phase": "atMost1", "left": 1, "right": 1, "limit": 1, "distinct": 1, "contribution": 1, "total": 2, "condition": "atMost(1)：1种", "action": "新增1；total=2", "tone": "valid", "note": "加入 2 后需移出 1，只保留单一整数。"},
+            {"phase": "atMost1", "left": 2, "right": 2, "limit": 1, "distinct": 1, "contribution": 1, "total": 3, "condition": "atMost(1)：1种", "action": "新增1；total=3", "tone": "valid", "note": "每次值发生变化，left 都收缩到当前元素。"},
+            {"phase": "atMost1", "left": 3, "right": 3, "limit": 1, "distinct": 1, "contribution": 1, "total": 4, "condition": "atMost(1)：1种", "action": "新增1；total=4", "tone": "valid", "note": "截至索引 3，atMost(1) 累计为 4。"},
+            {"phase": "atMost1", "left": 4, "right": 4, "limit": 1, "distinct": 1, "contribution": 1, "total": 5, "condition": "atMost(1)：1种", "action": "新增1；total=5", "tone": "valid", "note": "完整 atMost(1) 结果为 5。"},
+            {"phase": "result", "left": 4, "right": 4, "review": True, "hide_pointers": True, "condition": "exactly(2)", "action": "12 - 5 = 7", "tone": "review", "action_tone": "match", "window": "atMost(2)=12；atMost(1)=5", "note": "恰好 2 种的子数组数量为 7；作差排除只有 1 种的情况。", "duration": 3400},
         ],
     },
     {

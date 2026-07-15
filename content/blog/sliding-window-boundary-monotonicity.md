@@ -172,6 +172,11 @@ answer = max(answer, right - left + 1)
 
 删除左端元素不会让 0 的数量增加，因此收缩方向明确。这道题和 [904. 水果成篮](https://leetcode.cn/problems/fruit-into-baskets/) 本质相同，后者只是把条件换成 `distinctCount <= 2`。
 
+<figure>
+  <img src="/images/blog/sliding-window/max-consecutive-ones-budget.gif" width="1200" height="640" loading="lazy" alt="最多修改两个零时的最长连续一窗口演示：第三个零进入后，左端连续右移直到零的数量重新不超过二">
+  <figcaption>动图 2：<code>zeroCount</code> 就是违规成本。加入第三个 0 后，移出两个 1 仍不能恢复合法，必须继续移出一个 0；把它替换为 <code>distinctCount</code>，就是 LC 904 的同构窗口。</figcaption>
+</figure>
+
 ### 例 3：[424. 替换后的最长重复字符](https://leetcode.cn/problems/longest-repeating-character-replacement/)
 
 若想把整个窗口变成同一个字符，最省的做法是保留窗口内出现次数最多的字符，替换其余字符：
@@ -183,6 +188,11 @@ replacementCost = windowLength - maxFrequency
 ```
 
 这道题真正困难的不是双指针，而是正确写出“至少需要替换多少次”。一旦成本公式确定，窗口条件就随之确定。为了先保证概念准确，可以根据 26 个大写字母的频次重新计算 `maxFrequency`；熟悉证明后，再使用只增不减的历史最高频次优化常数。
+
+<figure>
+  <img src="/images/blog/sliding-window/replacement-cost-window.gif" width="1200" height="640" loading="lazy" alt="在 AABABBA 中最多替换一个字符的滑动窗口演示：逐帧计算窗口长度减去真实最高字符频次">
+  <figcaption>动图 3：在 <code>AABABBA</code>、<code>k=1</code> 中，每帧都按当前窗口重新计算真实 <code>maxFrequency</code>；成本超过 1 时持续收缩，最终最长长度为 4。</figcaption>
+</figure>
 
 ### 例 4：[209. 长度最小的子数组](https://leetcode.cn/problems/minimum-size-subarray-sum/)
 
@@ -200,7 +210,7 @@ while sum >= target:
 
 <figure>
   <img src="/images/blog/sliding-window/minimum-positive-sum.gif" width="1200" height="640" loading="lazy" alt="正整数数组中长度最小子数组的滑动窗口演示：总和达到 7 后持续收缩并更新最短长度">
-  <figcaption>动图 2：在 <code>[2,3,1,2,4,3]</code> 中寻找和至少为 7 的最短窗口；注意答案是在满足条件的收缩过程中得到的。</figcaption>
+  <figcaption>动图 4：在 <code>[2,3,1,2,4,3]</code> 中寻找和至少为 7 的最短窗口；注意答案是在满足条件的收缩过程中得到的。</figcaption>
 </figure>
 
 ### 例 5：[76. 最小覆盖子串](https://leetcode.cn/problems/minimum-window-substring/)
@@ -213,6 +223,11 @@ while sum >= target:
 - `required`：目标字符串中的不同字符种类数。
 
 窗口满足条件是 `formed == required`。因为要求最短覆盖，所以每次满足后都更新答案并尝试删除左端；若某个必需字符的频次从“刚好足够”降到“不足”，就减少 `formed`，停止收缩并继续扩张右端。
+
+<figure>
+  <img src="/images/blog/sliding-window/minimum-cover-window.gif" width="1200" height="640" loading="lazy" alt="ADOBECODEBANC 覆盖 ABC 的最小窗口演示：formed 达到三后持续收缩，最终得到 BANC">
+  <figcaption>动图 5：<code>formed=3/3</code> 时窗口已经覆盖 <code>ABC</code>，因此一边更新答案一边收缩；移出唯一必需字符后覆盖失效，再继续扩张，最终得到 <code>BANC</code>。</figcaption>
+</figure>
 
 ### 例 6：[438. 找到字符串中所有字母异位词](https://leetcode.cn/problems/find-all-anagrams-in-a-string/)
 
@@ -228,7 +243,7 @@ while sum >= target:
 
 <figure>
   <img src="/images/blog/sliding-window/fixed-anagram-window.gif" width="1200" height="640" loading="lazy" alt="固定长度为 3 的窗口在 cbaebabacd 上逐格移动，并检查是否与 abc 具有相同字符频次">
-  <figcaption>动图 3：固定窗口不需要判断“何时缩”；右端每前进一步，左端同步前进一步，只比较长度为 3 的窗口。</figcaption>
+  <figcaption>动图 6：固定窗口不需要判断“何时缩”；右端每前进一步，左端同步前进一步，只比较长度为 3 的窗口。</figcaption>
 </figure>
 
 ### 例 7：[713. 乘积小于 K 的子数组](https://leetcode.cn/problems/subarray-product-less-than-k/)
@@ -243,7 +258,7 @@ while sum >= target:
 
 <figure>
   <img src="/images/blog/sliding-window/product-count-contribution.gif" width="1200" height="640" loading="lazy" alt="乘积小于 100 的子数组计数演示：窗口恢复合法后，以当前右端点结尾的合法后缀数量为 right-left+1">
-  <figcaption>动图 4：当窗口合法时，所有从 <code>left</code> 到 <code>right</code> 之间起步、并以 <code>right</code> 结尾的后缀都合法，因此新增数量是 <code>right-left+1</code>。</figcaption>
+  <figcaption>动图 7：当窗口合法时，所有从 <code>left</code> 到 <code>right</code> 之间起步、并以 <code>right</code> 结尾的后缀都合法，因此新增数量是 <code>right-left+1</code>。</figcaption>
 </figure>
 
 ### 例 8：[992. K 个不同整数的子数组](https://leetcode.cn/problems/subarrays-with-k-different-integers/)
@@ -256,6 +271,11 @@ exactly(K) = atMost(K) - atMost(K - 1)
 ```
 
 `atMost(K)` 中，每次把窗口恢复到不同元素数量不超过 K 后，累加 `right-left+1`。这个转换也常用于“恰好 K 个奇数”等计数问题。
+
+<figure>
+  <img src="/images/blog/sliding-window/exact-k-distinct.gif" width="1200" height="640" loading="lazy" alt="数组一二一二三中恰好两个不同整数的计数演示：分别计算至多两种和至多一种，再用十二减五得到七">
+  <figcaption>动图 8：对 <code>[1,2,1,2,3]</code> 分别运行 <code>atMost(2)</code> 和 <code>atMost(1)</code>，逐右端点累计得到 12 与 5；两者作差，恰好 2 种的子数组共有 7 个。</figcaption>
+</figure>
 
 ## 七、为什么有负数时普通求和窗口经常失效
 
@@ -273,7 +293,7 @@ exactly(K) = atMost(K) - atMost(K - 1)
 
 <figure>
   <img src="/images/blog/sliding-window/negative-sum-counterexample.gif" width="1200" height="640" loading="lazy" alt="含负数数组中错误滑动窗口的反例：在 1、4、负2 上因总和大于 3 提前收缩，最终漏掉和为 3 的完整区间">
-  <figcaption>动图 5：这是一个刻意展示的错误算法。它在读到 4 时因总和过大而丢弃左边界，随后无法利用 -2 把总和拉回 3。</figcaption>
+  <figcaption>反例动图：这是一个刻意展示的错误算法。它在读到 4 时因总和过大而丢弃左边界，随后无法利用 -2 把总和拉回 3。</figcaption>
 </figure>
 
 [862. 和至少为 K 的最短子数组](https://leetcode.cn/problems/shortest-subarray-with-sum-at-least-k/) 同样允许负数，普通窗口也会失去总和单调性。它使用前缀和加单调队列，在前缀和序列上维护有价值的候选左边界。
