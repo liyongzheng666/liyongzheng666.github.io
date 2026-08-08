@@ -35,6 +35,11 @@ f(n) = g(n) + h(n)
 
 但这也说明了 A* 的性质：**它不改变最坏情况复杂度**。堆操作仍然是 `O(E log V)`，`h` 只是常数级剪枝。如果 `h` 给不出有效信息，A* 就退回 Dijkstra；如果 `h` 给出了错误信息，A* 会更快地给出错误答案。
 
+<figure>
+  <img src="/images/blog/a-star/astar-grid-expansion.gif" width="1200" height="640" loading="lazy" alt="A* 在八连通网格上逐个弹出节点的演示：优先队列按 f=g+h 取最小值，搜索被推向右下角的终点">
+  <figcaption>动图 1：每一帧弹出 <code>f</code> 最小的节点并定型。同一张网格上，A* 扩展 35 个格子，Dijkstra 需要 70 个，两者得到同样的最优代价 14。</figcaption>
+</figure>
+
 ## 二、"有一个距离估计"只是必要信号
 
 和滑动窗口那篇里的讨论类似，可以把两个命题记为：
@@ -55,6 +60,11 @@ f(n) = g(n) + h(n)
 | `g(n) + w·h(n)`，`w > 1` | Weighted A* | 代价不超过最优解的 `w` 倍 |
 
 这张表比记忆模板更有用：它说明 A* 不是一个孤立技巧，而是 Dijkstra 上的一个连续旋钮。把 `h` 关掉是 Dijkstra，把 `g` 关掉是贪心最佳优先，把 `h` 放大是拿最优性换速度。
+
+<figure>
+  <img src="/images/blog/a-star/search-family-sort-key.gif" width="1200" height="640" loading="lazy" alt="同一张网格上 Dijkstra、A* 与贪心最佳优先的扩展范围对比：三者只有优先队列排序键不同">
+  <figcaption>动图 2：同一张图、同一份代码，只换排序键。Dijkstra 扩展 70 个、代价 14；A* 扩展 35 个、代价仍是 14；贪心最佳优先只扩展 29 个，但代价 15 已经不是最优。</figcaption>
+</figure>
 
 ## 三、A* 成立的三个条件
 
@@ -121,6 +131,11 @@ g'(v) = g(v) - h(s) + h(v) = f(v) - h(s)
 - **为什么可以维护 closed 集合、节点弹出后就不再更新？** 因为这正是 Dijkstra 的"弹出即定型"，而定型的前提是新图边权非负，也就是 `h` 一致。
 - **为什么可采纳但不一致时，带 closed 集合的 `A*` 可能出错？** 因为此时新图里存在负权边，Dijkstra 的前提被破坏了。
 
+<figure>
+  <img src="/images/blog/a-star/potential-reweighting.gif" width="1200" height="640" loading="lazy" alt="势函数重加权演示：逐条边计算 cost 减 h(u) 加 h(v)，全部非负后 A* 与新图上的 Dijkstra 扩展顺序完全一致">
+  <figcaption>动图 3：逐条边算出 <code>cost'</code>，六条边全部非负——这就是一致性。最后一帧对照两者的扩展顺序，A* 在原图上是 S → B → A → C → G，Dijkstra 在新图上一模一样，因为 <code>g'(v) = f(v) − h(S)</code> 只差一个常数。</figcaption>
+</figure>
+
 ## 五、把题目条件翻译成"乐观下界"
 
 构造 `h` 不需要灵感。通用方法只有一条：
@@ -140,6 +155,11 @@ g'(v) = g(v) - h(s) + h(v) = f(v) - h(s)
 最后两行值得单独说。滑动拼图里，"方块只能移到空格"是很强的约束；一旦允许每个方块自由移动，每个方块各走各的曼哈顿距离就是答案，这个值显然不超过真实步数。同理，单词接龙里每步只能改一个字母，那么与目标不同的字符位数就是步数的下界。
 
 这种表达比记忆"网格题用曼哈顿距离"稳定得多，因为你是在推导一个下界，而不是套用一个印象。
+
+<figure>
+  <img src="/images/blog/a-star/heuristic-lower-bound.gif" width="1200" height="640" loading="lazy" alt="松弛问题构造启发式的演示：先给出真实剩余代价，再删掉障碍得到切比雪夫距离，最后展示曼哈顿距离在八连通网格上高估">
+  <figcaption>动图 4：删掉障碍这个约束，松弛问题的最优解就是切比雪夫距离，它在全部 70 个自由格上都不超过 <code>h*</code>。换成曼哈顿距离后，50 个格子立刻高估，最大高估量达到 4。</figcaption>
+</figure>
 
 ## 六、典型题目逐题推导
 
@@ -248,6 +268,11 @@ h(B) ≤ cost(B, A) + h(A)  ⟹  3 ≤ 1 + 0 = 1   ✗
 ```
 
 答案 5，而最优是 4。`A` 第一次被弹出时 `g` 并不是最优的，closed 集合把这个次优值锁死了——这正是负权边下 Dijkstra 会犯的错误。
+
+<figure>
+  <img src="/images/blog/a-star/inconsistent-heuristic-counterexample.gif" width="1200" height="640" loading="lazy" alt="可采纳但不一致的启发式反例：A 被提前定型后，经 B 发现的更短路径被 closed 集合丢弃，最终返回次优解">
+  <figcaption>动图 5：逐步弹出四个节点。第 5 帧是出错的一瞬间——扩展 B 时发现到 A 只要 <code>g=2</code>，但 A 已在 closed 里，这条更优路径被直接丢弃。最终返回 5，而最优是 4；等价地说，重加权后 <code>cost'(B,A) = -2</code>，新图里出现了负权边。</figcaption>
+</figure>
 
 两种修法：
 
