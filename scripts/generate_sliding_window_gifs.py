@@ -48,6 +48,33 @@ def font(size: int, *, bold: bool = False, mono: bool = False) -> ImageFont.Free
     return ImageFont.truetype(path, size=size)
 
 
+_GLYPH_CACHE: dict[tuple[str, str], bool] = {}
+
+
+def font_path(*, bold: bool = False, mono: bool = False) -> str:
+    return FONT_MONO if mono else FONT_BOLD if bold else FONT_REGULAR
+
+
+def has_glyph(path: str, character: str) -> bool:
+    """True if the font really has this glyph.
+
+    A missing character renders as .notdef — a hollow box in STHeiti — which
+    reads as a typo rather than a bug. Menlo has no CJK; STHeiti has no check
+    marks. Comparing against an unassigned code point makes this exact.
+    """
+    key = (path, character)
+    if key not in _GLYPH_CACHE:
+        probe = ImageFont.truetype(path, 32)
+
+        def render(char: str) -> bytes:
+            canvas = Image.new("L", (72, 72), 0)
+            ImageDraw.Draw(canvas).text((8, 8), char, font=probe, fill=255)
+            return canvas.tobytes()
+
+        _GLYPH_CACHE[key] = render(character) != render(chr(0xFFFF))
+    return _GLYPH_CACHE[key]
+
+
 def text_width(draw: ImageDraw.ImageDraw, text: str, text_font: ImageFont.FreeTypeFont) -> int:
     box = draw.textbbox((0, 0), text, font=text_font)
     return box[2] - box[0]
@@ -65,6 +92,10 @@ def draw_fitted_text(
     mono: bool = False,
     align: str = "left",
 ) -> None:
+    path = font_path(bold=bold, mono=mono)
+    missing = sorted({ch for ch in text if ord(ch) > 127 and not has_glyph(path, ch)})
+    assert not missing, f"{Path(path).name} 缺少字形 {missing}，文本：{text!r}"
+
     x1, y1, x2, y2 = box
     chosen = font(size, bold=bold, mono=mono)
     while text_width(draw, text, chosen) > x2 - x1 and size > min_size:
@@ -426,13 +457,42 @@ def save_contact_sheet(slug: str, frames: list[Image.Image]) -> None:
     sheet.save(QA_DIR / f"{slug}-contact.png")
 
 
+def rgb(hex_colour: str) -> tuple[int, int, int]:
+    return tuple(int(hex_colour[i : i + 2], 16) for i in (1, 3, 5))
+
+
+def build_palette(frames: list[Image.Image]) -> Image.Image:
+    """Palette with every brand colour pinned, adaptive for the rest.
+
+    Deriving it from frames[0] alone silently drops any accent colour that
+    only appears later: the red "this algorithm is wrong" frames used to be
+    remapped to the nearest grey, deleting the visual signal entirely.
+    """
+    forced = list(dict.fromkeys(COLORS.values()))
+    thumb = (WIDTH // 3, HEIGHT // 3)
+    strip = Image.new("RGB", (thumb[0], thumb[1] * len(frames)))
+    for index, frame in enumerate(frames):
+        strip.paste(frame.resize(thumb, Image.Resampling.NEAREST), (0, index * thumb[1]))
+    adaptive = strip.convert("P", palette=Image.Palette.ADAPTIVE, colors=256 - len(forced))
+
+    data: list[int] = []
+    for hex_colour in forced:
+        data.extend(rgb(hex_colour))
+    data.extend(adaptive.getpalette()[: (256 - len(forced)) * 3])
+    data = (data + [0] * 768)[:768]
+
+    palette_image = Image.new("P", (1, 1))
+    palette_image.putpalette(data)
+    return palette_image
+
+
 def save_gif(spec: dict) -> dict:
     validate_spec(spec)
     frames = [
         render_frame(spec, state, index + 1, len(spec["states"]))
         for index, state in enumerate(spec["states"])
     ]
-    palette = frames[0].convert("P", palette=Image.Palette.ADAPTIVE, colors=192)
+    palette = build_palette(frames)
     quantized = [frame.quantize(palette=palette, dither=Image.Dither.NONE) for frame in frames]
     durations = [state.get("duration", 1400) for state in spec["states"]]
     output_path = OUTPUT_DIR / f"{spec['slug']}.gif"
@@ -450,6 +510,15 @@ def save_gif(spec: dict) -> dict:
     with Image.open(output_path) as result:
         assert result.size == (WIDTH, HEIGHT)
         assert result.n_frames == len(frames)
+        for index in range(result.n_frames):
+            result.seek(index)
+            rendered = set(result.convert("RGB").get_flattened_data())
+            source = set(frames[index].get_flattened_data())
+            for accent in {status_colors(t)[1] for t in ("valid", "invalid", "waiting", "match", "review")}:
+                if rgb(accent) in source:
+                    assert rgb(accent) in rendered, (
+                        f"{spec['slug']} 第 {index + 1} 帧的强调色 {accent} 被调色板丢弃"
+                    )
 
     return {
         "file": str(output_path.relative_to(ROOT)),
