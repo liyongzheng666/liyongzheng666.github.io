@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>16 周刷题打卡计划 · LeetCode 经典题</title>
+<style>
+:root{
+  --bg:#0f1117; --card:#171a23; --card2:#1e2230; --line:#2a2f3f;
+  --tx:#e6e8ee; --tx2:#9aa3b5; --acc:#4f8cff; --ok:#3fb96f; --warn:#e0a93c; --bad:#e55c5c;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.6 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+header{position:sticky;top:0;z-index:10;background:linear-gradient(180deg,#131625 0%,#131625e6 100%);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:14px 20px}
+h1{font-size:19px;margin:0 0 10px}
+h1 small{color:var(--tx2);font-weight:400;font-size:13px;margin-left:8px}
+.stats{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:6px 14px;text-align:center}
+.stat b{display:block;font-size:18px;color:var(--acc)}
+.stat span{font-size:11px;color:var(--tx2)}
+#btnCheckin{margin-left:auto;background:var(--acc);border:0;color:#fff;border-radius:10px;padding:9px 16px;font-size:14px;cursor:pointer}
+#btnCheckin.done{background:var(--ok)}
+#cal{display:flex;gap:5px;margin-top:10px;align-items:center;flex-wrap:wrap}
+#cal .d{width:22px;height:22px;border-radius:6px;background:var(--card2);border:1px solid var(--line);font-size:10px;display:flex;align-items:center;justify-content:center;color:var(--tx2)}
+#cal .d.on{background:var(--ok);color:#08130c;border-color:var(--ok)}
+#cal .d.today{border-color:var(--acc)}
+#streakLine{font-size:12px;color:var(--tx2)}
+#toc{display:flex;gap:6px;flex-wrap:wrap;padding:12px 20px 0}
+#toc a{color:var(--tx2);text-decoration:none;font-size:12px;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:3px 9px}
+#toc a:hover{color:var(--acc);border-color:var(--acc)}
+main{max-width:980px;margin:0 auto;padding:14px 20px 40px}
+.week{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:14px 0;overflow:hidden}
+.week.now{border-color:var(--acc);box-shadow:0 0 0 1px var(--acc)}
+.wh{padding:12px 16px;border-bottom:1px solid var(--line);display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;background:var(--card2)}
+.wh .wt{font-weight:700;font-size:16px}
+.wh .wd{color:var(--tx2);font-size:12px}
+.wh .badge{margin-left:auto;font-size:11px;border-radius:8px;padding:2px 9px}
+.badge.now{background:var(--acc);color:#fff}
+.badge.done{background:var(--ok);color:#08130c}
+.badge.part{background:var(--card2);color:var(--tx2);border:1px solid var(--line)}
+.goal{font-size:12px;color:var(--tx2);padding:0 16px 2px;width:100%}
+.wp{padding:0 16px 4px;display:flex;align-items:center;gap:10px}
+.wp .bar{flex:1;height:6px;background:var(--card2);border-radius:3px;overflow:hidden}
+.wp .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--acc),var(--ok));width:0}
+.wp .pt{font-size:12px;color:var(--tx2);white-space:nowrap}
+.wb{padding:8px 16px 14px}
+.wb h4{margin:10px 0 6px;font-size:13px;color:var(--acc)}
+.wb h4.ex{color:var(--warn)}
+.item{display:flex;align-items:center;gap:8px;padding:4px 6px;border-radius:8px;cursor:pointer}
+.item:hover{background:var(--card2)}
+.item input{accent-color:var(--acc);width:15px;height:15px;flex:none}
+.item a{color:var(--tx);text-decoration:none;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.item a:hover{color:var(--acc)}
+.item a.done{color:var(--tx2);text-decoration:line-through}
+.diff{font-size:10px;font-weight:700;border-radius:5px;padding:1px 6px;flex:none}
+.diff.E{background:#1d3a2a;color:#57c98b}.diff.M{background:#3a2f16;color:#e8b95a}.diff.H{background:#3a1d1d;color:#f08a8a}
+.star{background:none;border:0;color:var(--tx2);cursor:pointer;font-size:14px;flex:none}
+.star.on{color:var(--warn)}
+#wrongbook{max-width:980px;margin:0 auto 30px;padding:0 20px}
+#wrongbook .inner{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 16px}
+#wrongbook h3{margin:0 0 8px;font-size:14px;color:var(--warn)}
+#wrongbook .item{padding:2px 6px}
+footer{max-width:980px;margin:0 auto;padding:10px 20px 50px;color:var(--tx2);font-size:12px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+footer button{background:var(--card);color:var(--tx2);border:1px solid var(--line);border-radius:8px;padding:4px 10px;cursor:pointer;font-size:12px}
+footer button:hover{color:var(--acc);border-color:var(--acc)}
+</style>
+</head>
+<body>
+<header>
+  <h1>🎯 16 周刷题打卡计划 <small>经典题 + 适度加难 + 拓展巩固 · 数据只存本机浏览器</small></h1>
+  <div class="stats">
+    <div class="stat"><b id="sDone">0</b><span id="sTotal">/ 0 题</span></div>
+    <div class="stat"><b id="sPct">0%</b><span>总完成率</span></div>
+    <div class="stat"><b id="sStreak">0</b><span>连续打卡(天)</span></div>
+    <button id="btnCheckin">📅 今日打卡</button>
+  </div>
+  <div id="cal"></div>
+</header>
+<nav id="toc"></nav>
+<main id="weeks"></main>
+<section id="wrongbook"><div class="inner">
+  <h3>⭐ 错题本（点 ★ 收藏，冲刺周从这里重做）</h3>
+  <div id="wbList"><span style="color:var(--tx2)">还没有错题——遇到卡住的题就点旁边的 ★。</span></div>
+</div></section>
+<footer>
+  <span>数据只存在本机浏览器（localStorage），换浏览器/清缓存会丢 → 定期「导出」。</span>
+  <button id="btnExport">导出 JSON</button>
+  <button id="btnImport">导入 JSON</button>
+  <button id="btnReset">重置</button>
+  <span>周赛入口：<a href="https://leetcode.cn/contest/" target="_blank" style="color:var(--acc)">leetcode.cn/contest</a>（每周日雷打不动）</span>
+</footer>
+<script>
+"use strict";
+// ---------- 数据：16 周安排（W1 = 2026-08-17 周一） ----------
+// 每行: [题号, slug, 中文名, 难度 E/M/H]
+var WEEKS = [
+{w:1, t:"数组 · 哈希 · 字符串（摸底恢复）", d:"8/17 – 8/23", goal:"手感恢复；周日首次周赛取基线分", note:"每天 2–3 题，只求独立 AC，不限速",
+ core:[["1","two-sum","两数之和","E"],["217","contains-duplicate","存在重复元素","E"],["242","valid-anagram","有效的字母异位词","E"],["49","group-anagrams","字母异位词分组","M"],["3","longest-substring-without-repeating-characters","无重复字符的最长子串","M"],["128","longest-consecutive-sequence","最长连续序列","M"],["560","subarray-sum-equals-k","和为 K 的子数组","M"]],
+ extra:[["202","happy-number","快乐数","E"],["344","reverse-string","反转字符串","E"],["36","valid-sudoku","有效的数独","M"],["454","4sum-ii","四数相加 II","M"],["438","find-all-anagrams-in-a-string","找到字符串中所有字母异位词","M"],["525","contiguous-array","连续数组","M"]]},
+
+{w:2, t:"双指针 · 滑动窗口 · 前缀和", d:"8/24 – 8/30", goal:"medium 独立 AC ≥60%；滑窗模板烂熟", note:"滑窗 = 窗口定义 + 收缩条件；双指针 = 谁动、什么时候动",
+ core:[["11","container-with-most-water","盛最多水的容器","M"],["15","3sum","三数之和","M"],["283","move-zeroes","移动零","E"],["209","minimum-size-subarray-sum","长度最小的子数组","M"],["713","subarray-product-less-than-k","乘积小于 K 的子数组","M"],["1248","count-number-of-nice-subarrays","统计「优美子数组」","M"],["76","minimum-window-substring","最小覆盖子串","H"]],
+ extra:[["88","merge-sorted-array","合并两个有序数组","E"],["724","find-pivot-index","寻找数组的中心下标","E"],["633","sum-of-square-numbers","平方数之和","M"],["238","product-of-array-except-self","除自身以外数组的乘积","M"],["30","substring-with-concatenation-of-all-words","串联所有单词的子串","H"],["42","trapping-rain-water","接雨水（双指针解法）","H"]]},
+
+{w:3, t:"二分（含二分答案）+ 栈 / 单调栈", d:"8/31 – 9/6", goal:"裸二分模板 10min bug-free；单调栈 why/when 能讲", note:"二分答案 = 把「求最优」转「判定可行」",
+ core:[["704","binary-search","二分查找（模板题）","E"],["34","find-first-and-last-position-of-element-in-sorted-array","在排序数组中查找元素的第一个和最后一个位置","M"],["33","search-in-rotated-sorted-array","搜索旋转排序数组","M"],["153","find-minimum-in-rotated-sorted-array","寻找旋转排序数组中的最小值","M"],["875","koko-eating-bananas","爱吃香蕉的珂珂","M"],["1011","capacity-to-ship-packages-within-d-days","在 D 天内送达包裹的能力","M"],["20","valid-parentheses","有效的括号","E"],["155","min-stack","最小栈","M"],["739","daily-temperatures","每日温度","M"]],
+ extra:[["4","median-of-two-sorted-arrays","寻找两个正序数组的中位数","H"],["240","search-a-2d-matrix-ii","搜索二维矩阵 II","M"],["150","evaluate-reverse-polish-notation","逆波兰表达式求值","M"],["394","decode-string","字符串解码","M"],["316","remove-duplicate-letters","去除重复字母","M"],["84","largest-rectangle-in-histogram","柱状图中最大的矩形（预习 W10）","H"]]},
+
+{w:4, t:"链表 + 树（遍历 / BST / LCA）", d:"9/7 – 9/13", goal:"反转链表迭代+递归双写 8min；树遍历闭眼写", note:"链表画图；树先想「单节点做什么」，再递归",
+ core:[["206","reverse-linked-list","反转链表","E"],["21","merge-two-sorted-lists","合并两个有序链表","E"],["141","linked-list-cycle","环形链表","E"],["142","linked-list-cycle-ii","环形链表 II","M"],["19","remove-nth-node-from-end-of-list","删除链表的倒数第 N 个结点","M"],["25","reverse-nodes-in-k-group","K 个一组翻转链表","H"],["102","binary-tree-level-order-traversal","二叉树的层序遍历","M"],["98","validate-binary-search-tree","验证二叉搜索树","M"],["236","lowest-common-ancestor-of-a-binary-tree","二叉树的最近公共祖先","M"]],
+ extra:[["24","swap-nodes-in-pairs","两两交换链表中的节点","M"],["92","reverse-linked-list-ii","反转链表 II","M"],["234","palindrome-linked-list","回文链表","E"],["23","merge-k-sorted-lists","合并 K 个升序链表（W5 再刷堆解法）","H"],["543","diameter-of-binary-tree","二叉树的直径","E"],["124","binary-tree-maximum-path-sum","二叉树中的最大路径和","H"],["297","serialize-and-deserialize-binary-tree","二叉树的序列化与反序列化","H"],["105","construct-binary-tree-from-preorder-and-inorder-traversal","从前序与中序遍历序列构造二叉树","M"]]},
+
+{w:5, t:"堆 + 位运算 + 哈希扩展", d:"9/14 – 9/20", goal:"Top-K 类 15min；位运算常见套路成条件反射", note:"堆 = 第 K 大/小、流式中位数；位运算 = 异或消重、n&(n-1)",
+ core:[["215","kth-largest-element-in-an-array","数组中的第 K 个最大元素","M"],["347","top-k-frequent-elements","前 K 个高频元素","M"],["23","merge-k-sorted-lists","合并 K 个升序链表（堆版重刷）","H"],["295","find-median-from-data-stream","数据流的中位数","H"],["621","task-scheduler","任务调度器","M"],["136","single-number","只出现一次的数字","E"],["338","counting-bits","比特位计数","E"]],
+ extra:[["692","top-k-frequent-words","前 K 个高频单词","M"],["703","kth-largest-element-in-a-stream","数据流中的第 K 大元素","E"],["767","reorganize-string","重构字符串","M"],["260","single-number-iii","只出现一次的数字 III","M"],["137","single-number-ii","只出现一次的数字 II","M"],["190","reverse-bits","颠倒二进制位","E"]]},
+
+{w:6, t:"回溯 + 贪心 + 网格 DFS / BFS", d:"9/21 – 9/27", goal:"全排列/子集类秒出框架；网格题一次写对", note:"回溯三问：路径/选择/结束条件；贪心 = 局部最优为什么全局最优（要能证）",
+ core:[["46","permutations","全排列","M"],["39","combination-sum","组合总和","M"],["40","combination-sum-ii","组合总和 II","M"],["78","subsets","子集","M"],["22","generate-parentheses","括号生成","M"],["79","word-search","单词搜索","M"],["200","number-of-islands","岛屿数量","M"],["695","max-area-of-island","岛屿的最大面积","M"],["55","jump-game","跳跃游戏","M"],["45","jump-game-ii","跳跃游戏 II","M"]],
+ extra:[["47","permutations-ii","全排列 II","M"],["90","subsets-ii","子集 II","M"],["131","palindrome-partitioning","分割回文串","M"],["130","surrounded-regions","被围绕的区域","M"],["994","rotting-oranges","腐烂的橘子","M"],["435","non-overlapping-intervals","无重叠区间","M"],["763","partition-labels","划分字母区间","M"],["134","gas-station","加油站","M"]]},
+
+{w:7, t:"图 I：拓扑 · 并查集 · 最短路 + 错题清算", d:"9/28 – 10/4", goal:"🔴 中检：累计 ≥150 题、周赛稳定 2 题", note:"周日前半周清算 1–6 周错题本；本周末周赛冲 2 题",
+ core:[["207","course-schedule","课程表","M"],["210","course-schedule-ii","课程表 II","M"],["547","number-of-provinces","省份数量","M"],["684","redundant-connection","冗余连接","M"],["399","evaluate-division","除法求值","M"],["743","network-delay-time","网络延迟时间","M"],["133","clone-graph","克隆图","M"],["841","keys-and-rooms","钥匙和房间","M"]],
+ extra:[["127","word-ladder","单词接龙","H"],["787","cheapest-flights-within-k-stops","K 站中转内最便宜的航班","M"],["752","open-the-lock","打开转盘锁","M"],["785","is-graph-bipartite","判断二分图","M"],["417","pacific-atlantic-water-flow","太平洋大西洋水流问题","M"],["1584","min-cost-to-connect-all-points","连接所有点的最小费用","M"]]},
+
+{w:8, t:"DP I：线性 + 背包", d:"10/5 – 10/11", goal:"一维 DP 模板无卡顿；0-1/完全背包分清", note:"DP 三件套：状态定义 → 转移 → 边界；先想「最后一步」",
+ core:[["53","maximum-subarray","最大子数组和","M"],["70","climbing-stairs","爬楼梯","E"],["198","house-robber","打家劫舍","M"],["213","house-robber-ii","打家劫舍 II","M"],["322","coin-change","零钱兑换","M"],["518","coin-change-ii","零钱兑换 II","M"],["416","partition-equal-subset-sum","分割等和子集","M"],["300","longest-increasing-subsequence","最长递增子序列","M"],["139","word-break","单词拆分","M"]],
+ extra:[["62","unique-paths","不同路径","M"],["63","unique-paths-ii","不同路径 II","M"],["64","minimum-path-sum","最小路径和","M"],["1143","longest-common-subsequence","最长公共子序列","M"],["279","perfect-squares","完全平方数","M"],["377","combination-sum-iv","组合总和 Ⅳ","M"],["152","maximum-product-subarray","乘积最大子数组","M"],["72","edit-distance","编辑距离","H"]]},
+
+{w:9, t:"DP II：区间 · 状态机 · 树形", d:"10/12 – 10/18", goal:"股票族 4 题全会；区间 DP 会枚举 len", note:"区间 DP 外层枚举长度；状态机 = 当天持有/不持有",
+ core:[["5","longest-palindromic-substring","最长回文子串","M"],["516","longest-palindromic-subsequence","最长回文子序列","M"],["312","burst-balloons","戳气球","H"],["121","best-time-to-buy-and-sell-stock","买卖股票的最佳时机","E"],["122","best-time-to-buy-and-sell-stock-ii","买卖股票的最佳时机 II","M"],["309","best-time-to-buy-and-sell-stock-with-cooldown","最佳买卖股票时机含冷冻期","M"],["337","house-robber-iii","打家劫舍 III","M"]],
+ extra:[["123","best-time-to-buy-and-sell-stock-iii","买卖股票的最佳时机 III","H"],["188","best-time-to-buy-and-sell-stock-iv","买卖股票的最佳时机 IV","H"],["714","best-time-to-buy-and-sell-stock-with-transaction-fee","买卖股票的最佳时机含手续费","M"],["647","palindromic-substrings","回文子串","M"],["221","maximal-square","最大正方形","M"],["32","longest-valid-parentheses","最长有效括号","H"],["10","regular-expression-matching","正则表达式匹配","H"],["1000","minimum-cost-to-merge-stones","合并石头的最低成本","H"]]},
+
+{w:10, t:"hard 专题：单调栈 · 滑动窗口最值 · 二分答案", d:"10/19 – 10/25", goal:"hard 45min 能出主框架；每题会讲 why", note:"这些是面试 hard 的最高频来源，逐个吃透，不求数量",
+ core:[["84","largest-rectangle-in-histogram","柱状图中最大的矩形（重刷）","H"],["42","trapping-rain-water","接雨水（单调栈版重刷）","H"],["239","sliding-window-maximum","滑动窗口最大值","H"],["862","shortest-subarray-with-sum-at-least-k","和至少为 K 的最短子数组","H"],["410","split-array-largest-sum","分割数组的最大值","H"],["719","find-k-th-smallest-pair-distance","找出第 K 小的数对距离","H"]],
+ extra:[["85","maximal-rectangle","最大矩形","H"],["480","sliding-window-median","滑动窗口中位数","H"],["321","create-maximum-number","拼接最大数","H"],["1547","minimum-cost-to-cut-a-stick","切棍子的最小成本","H"],["887","super-egg-drop","鸡蛋掉落","H"]]},
+
+{w:11, t:"图 hard + 高频企业真题", d:"10/26 – 11/1", goal:"🔴 投递 gate：累计 ≥240 题、周赛 2–3 题", note:"本周末用周赛分决定投递节奏",
+ core:[["329","longest-increasing-path-in-a-matrix","矩阵中的最长递增路径","H"],["815","bus-routes","公交路线","H"],["778","swim-in-rising-water","水位上升的泳池中游泳","H"],["1334","find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance","阈值距离内邻居最少的城市","M"],["301","remove-invalid-parentheses","删除无效的括号","H"],["135","candy","分发糖果","H"]],
+ extra:[["847","shortest-path-visiting-all-nodes","访问所有节点的最短路径","H"],["864","shortest-path-to-get-all-keys","获取所有钥匙的最短路径","H"],["1489","find-critical-and-pseudo-critical-edges-in-minimum-spanning-tree","找到最小生成树里的关键边和伪关键边","H"],["980","unique-paths-iii","不同路径 III","H"],["399","evaluate-division","除法求值（重刷）","M"]]},
+
+{w:12, t:"综合卷 ①（OA 模拟 · 高频经典）", d:"11/2 – 11/8", goal:"90min 限时做 4 题，正确率 ≥60%", note:"模拟 OA：自测时不看题解、不查资料",
+ core:[["3","longest-substring-without-repeating-characters","无重复字符的最长子串","M"],["33","search-in-rotated-sorted-array","搜索旋转排序数组","M"],["53","maximum-subarray","最大子数组和","M"],["102","binary-tree-level-order-traversal","二叉树的层序遍历","M"],["200","number-of-islands","岛屿数量","M"],["215","kth-largest-element-in-an-array","数组中的第 K 个最大元素","M"],["322","coin-change","零钱兑换","M"]],
+ extra:[["121","best-time-to-buy-and-sell-stock","买卖股票的最佳时机","E"],["146","lru-cache","LRU 缓存","M"],["560","subarray-sum-equals-k","和为 K 的子数组","M"]]},
+
+{w:13, t:"综合卷 ②（OA 模拟）", d:"11/9 – 11/15", goal:"90min 限时 4 题；练手公司开始投递", note:"投递后 1–2 周面试落地——本卷当笔试热身",
+ core:[["5","longest-palindromic-substring","最长回文子串","M"],["15","3sum","三数之和","M"],["22","generate-parentheses","括号生成","M"],["25","reverse-nodes-in-k-group","K 个一组翻转链表","H"],["46","permutations","全排列","M"],["739","daily-temperatures","每日温度","M"],["1143","longest-common-subsequence","最长公共子序列","M"]],
+ extra:[["92","reverse-linked-list-ii","反转链表 II","M"],["240","search-a-2d-matrix-ii","搜索二维矩阵 II","M"],["394","decode-string","字符串解码","M"]]},
+
+{w:14, t:"综合卷 ③（OA 模拟 · 偏难）", d:"11/16 – 11/22", goal:"90min 限时 3 题；错的题进错题本", note:"此卷偏难，允许先做对 3 题再提速",
+ core:[["42","trapping-rain-water","接雨水","H"],["76","minimum-window-substring","最小覆盖子串","H"],["84","largest-rectangle-in-histogram","柱状图中最大的矩形","H"],["127","word-ladder","单词接龙","H"],["300","longest-increasing-subsequence","最长递增子序列","M"],["416","partition-equal-subset-sum","分割等和子集","M"],["295","find-median-from-data-stream","数据流的中位数","H"]],
+ extra:[["239","sliding-window-maximum","滑动窗口最大值","H"],["312","burst-balloons","戳气球","H"],["207","course-schedule","课程表","M"]]},
+
+{w:15, t:"综合卷 ④（OA 模拟）", d:"11/23 – 11/29", goal:"全卷 60min 内完成；表达转化并行", note:"本周与模拟面试并行，题量降、质量升",
+ core:[["4","median-of-two-sorted-arrays","寻找两个正序数组的中位数","H"],["23","merge-k-sorted-lists","合并 K 个升序链表","H"],["124","binary-tree-maximum-path-sum","二叉树中的最大路径和","H"],["297","serialize-and-deserialize-binary-tree","二叉树的序列化与反序列化","H"],["560","subarray-sum-equals-k","和为 K 的子数组","M"],["621","task-scheduler","任务调度器","M"]],
+ extra:[["72","edit-distance","编辑距离","H"],["139","word-break","单词拆分","M"],["236","lowest-common-ancestor-of-a-binary-tree","二叉树的最近公共祖先","M"]]},
+
+{w:16, t:"冲刺维持 + 错题重做（面试季）", d:"11/30 – 12/6", goal:"手感不断：每天 1–2 题 + 错题本清零", note:"11/30 起投目标公司；面试逆排期优先",
+ core:[["206","reverse-linked-list","反转链表（必背）","E"],["704","binary-search","二分查找（必背）","E"],["20","valid-parentheses","有效的括号（必背）","E"],["102","binary-tree-level-order-traversal","层序遍历（必背）","M"],["200","number-of-islands","岛屿数量（必背）","M"],["53","maximum-subarray","最大子数组和（必背）","M"],["322","coin-change","零钱兑换（必背）","M"],["300","longest-increasing-subsequence","最长递增子序列（必背）","M"],["215","kth-largest-element-in-an-array","第 K 大（必背）","M"],["46","permutations","全排列（必背）","M"]],
+ extra:[["146","lru-cache","LRU 缓存（手写双链表版）","M"],["2","add-two-numbers","两数相加","M"],["206","reverse-linked-list","反转链表（迭代+递归双写）","E"]]}
+];
+// W17–W19（12/7–12/27）：面试季，只做错题本重做 + 面试当天热身 1 题，无新题安排。
+
+var KEY = "lc16w_plan_v1";
+var state = null;
+function load(){
+  try{ state = JSON.parse(localStorage.getItem(KEY)) || {}; }catch(e){ state = {}; }
+  state.done = state.done || {};
+  state.star = state.star || {};
+  state.checkins = state.checkins || [];
+}
+function save(){ localStorage.setItem(KEY, JSON.stringify(state)); }
+
+function todayStr(){
+  var d = new Date();
+  return d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0");
+}
+function slug(s){ return s; }
+
+// ---------- 渲染 ----------
+function weekRange(w){ // 2026 年 W1=8/17
+  var base = new Date(2026, 7, 17); // 2026-08-17
+  base.setDate(base.getDate() + (w-1)*7);
+  var end = new Date(base); end.setDate(end.getDate()+6);
+  return [base, end];
+}
+function isCurrentWeek(w){
+  var r = weekRange(w), n = new Date();
+  return n >= r[0] && n <= r[1];
+}
+function totalCounts(){
+  var core=0, extra=0;
+  WEEKS.forEach(function(wk){ core += wk.core.length; extra += wk.extra.length; });
+  return [core, extra];
+}
+function renderToc(){
+  var el = document.getElementById("toc"); el.innerHTML = "";
+  WEEKS.forEach(function(wk){
+    var a = document.createElement("a");
+    a.href = "#w" + wk.w; a.textContent = "W" + wk.w;
+    el.appendChild(a);
+  });
+}
+function itemHtml(n, s, t, d, isExtra){
+  var key = s + (isExtra ? "|x" : "");
+  var done = !!state.done[key];
+  var starred = !!state.star[key];
+  return '<label class="item">' +
+    '<input type="checkbox" data-key="' + key + '"' + (done ? " checked" : "") + '>' +
+    '<a href="https://leetcode.cn/problems/' + s + '/" target="_blank" rel="noopener"' + (done ? ' class="done"' : "") + '>№' + n + ' ' + t + '</a>' +
+    '<span class="diff ' + d + '">' + d + '</span>' +
+    '<button type="button" class="star' + (starred ? " on" : "") + '" data-star="' + key + '">' + (starred ? "★" : "☆") + '</button>' +
+    '</label>';
+}
+function renderWeeks(){
+  var el = document.getElementById("weeks"); el.innerHTML = "";
+  WEEKS.forEach(function(wk){
+    var now = isCurrentWeek(wk.w);
+    var total = wk.core.length + wk.extra.length;
+    var done = 0;
+    wk.core.concat(wk.extra).forEach(function(p){
+      if (state.done[p[1]]) done++;
+      if (state.done[p[1] + "|x"]) done++;
+    });
+    // 双 key 去重统计（核心题也可能以 |x 形式存在历史数据，按任一命中计）
+    var keysDone = {};
+    wk.core.concat(wk.extra).forEach(function(p){ keysDone[p[1]] = keysDone[p[1]] || state.done[p[1]] || state.done[p[1]+"|x"]; });
+    done = Object.values(keysDone).filter(Boolean).length;
+    var pct = Math.round(done/total*100);
+    var badge = now ? '<span class="badge now">本周</span>' : (done===total ? '<span class="badge done">✓ 完成</span>' : '<span class="badge part">' + pct + '%</span>');
+    var html = '<section class="week' + (now ? " now" : "") + '" id="w' + wk.w + '">' +
+      '<div class="wh"><span class="wt">W' + wk.w + ' · ' + wk.t + '</span><span class="wd">' + wk.d + '</span>' + badge +
+      '<div class="goal">🎯 ' + wk.goal + (wk.note ? '　·　📌 ' + wk.note : '') + '</div></div>' +
+      '<div class="wp"><div class="bar"><i style="width:' + pct + '%"></i></div><span class="pt">' + done + '/' + total + '</span></div>' +
+      '<div class="wb"><h4>核心题（必刷）</h4>' + wk.core.map(function(p){ return itemHtml(p[0], p[1], p[2], p[3], false); }).join("") +
+      '<h4 class="ex">拓展巩固（做完核心再刷）</h4>' + wk.extra.map(function(p){ return itemHtml(p[0], p[1], p[2], p[3], true); }).join("") +
+      '</div></section>';
+    el.insertAdjacentHTML("beforeend", html);
+  });
+}
+function renderStats(){
+  var tc = totalCounts();
+  var total = tc[0] + tc[1];
+  var done = 0;
+  WEEKS.forEach(function(wk){
+    wk.core.concat(wk.extra).forEach(function(p){
+      if (state.done[p[1]] || state.done[p[1]+"|x"]) done++;
+    });
+  });
+  document.getElementById("sDone").textContent = done;
+  document.getElementById("sTotal").textContent = "/ " + total + " 题（核心 " + tc[0] + " + 拓展 " + tc[1] + "）";
+  document.getElementById("sPct").textContent = Math.round(done/total*100) + "%";
+}
+function streakDays(){
+  if (!state.checkins.length) return 0;
+  var set = {};
+  state.checkins.forEach(function(d){ set[d] = 1; });
+  var n = 0, d = new Date();
+  if (!set[todayStr()]) d.setDate(d.getDate()-1); // 今天还没打，从昨天起算
+  while (set[d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0")]) {
+    n++; d.setDate(d.getDate()-1);
+  }
+  return n;
+}
+function renderCal(){
+  var el = document.getElementById("cal"); el.innerHTML = "";
+  var set = {};
+  state.checkins.forEach(function(d){ set[d] = 1; });
+  var today = todayStr();
+  var dots = [];
+  for (var i = 13; i >= 0; i--){
+    var d = new Date(); d.setDate(d.getDate() - i);
+    var s = d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0");
+    dots.push('<span class="d' + (set[s] ? " on" : "") + (s === today ? " today" : "") + '" title="' + s + '">' + d.getDate() + '</span>');
+  }
+  el.innerHTML = dots.join("") + '<span id="streakLine">🔥 连续 ' + streakDays() + ' 天</span>';
+  var btn = document.getElementById("btnCheckin");
+  var done = !!set[today];
+  btn.textContent = done ? "✅ 今日已打卡" : "📅 今日打卡";
+  btn.className = done ? "done" : "";
+}
+function renderWrongBook(){
+  var el = document.getElementById("wbList"); el.innerHTML = "";
+  var keys = Object.keys(state.star).filter(function(k){ return state.star[k]; });
+  if (!keys.length){
+    el.innerHTML = '<span style="color:var(--tx2)">还没有错题——遇到卡住的题就点旁边的 ★。</span>';
+    return;
+  }
+  var html = "";
+  WEEKS.forEach(function(wk){
+    wk.core.concat(wk.extra).forEach(function(p){
+      if (state.star[p[1]] || state.star[p[1]+"|x"]) {
+        html += '<div class="item" style="cursor:default"><span style="color:var(--warn)">★</span><a href="https://leetcode.cn/problems/' + p[1] + '/" target="_blank" rel="noopener">№' + p[0] + ' ' + p[2] + '</a><span class="diff ' + p[3] + '">' + p[3] + '</span><span style="font-size:11px;color:var(--tx2)">W' + wk.w + '</span></div>';
+      }
+    });
+  });
+  el.innerHTML = html || '<span style="color:var(--tx2)">还没有错题。</span>';
+}
+function renderAll(){ renderStats(); renderCal(); renderToc(); renderWeeks(); renderWrongBook(); }
+
+// ---------- 事件 ----------
+document.addEventListener("change", function(e){
+  var t = e.target;
+  if (t.matches("input[data-key]")){
+    if (t.checked) state.done[t.dataset.key] = 1; else delete state.done[t.dataset.key];
+    save(); renderStats(); renderWeeks();
+  }
+});
+document.addEventListener("click", function(e){
+  var t = e.target;
+  if (t.matches(".star")){
+    var k = t.dataset.star;
+    state.star[k] = state.star[k] ? 0 : 1;
+    save(); renderWrongBook(); renderWeeks();
+  }
+  if (t.id === "btnCheckin"){
+    var today = todayStr();
+    if (state.checkins.indexOf(today) < 0) state.checkins.push(today);
+    state.checkins.sort();
+    save(); renderCal();
+  }
+  if (t.id === "btnExport"){
+    var blob = new Blob([JSON.stringify(state, null, 2)], {type:"application/json"});
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "lc16w_plan_backup_" + todayStr() + ".json";
+    a.click();
+  }
+  if (t.id === "btnReset"){
+    if (confirm("确定清空全部打卡/勾选/错题数据？建议先导出备份。")){
+      state = {done:{}, star:{}, checkins:[]};
+      save(); renderAll();
+    }
+  }
+});
+document.getElementById("btnImport").addEventListener("click", function(){
+  var inp = document.createElement("input");
+  inp.type = "file"; inp.accept = ".json";
+  inp.onchange = function(){
+    var f = inp.files[0]; if (!f) return;
+    var rd = new FileReader();
+    rd.onload = function(){
+      try{
+        var d = JSON.parse(rd.result);
+        if (d && d.done && d.star) { state = d; save(); renderAll(); alert("导入成功"); }
+        else alert("文件格式不对");
+      }catch(e){ alert("解析失败：" + e); }
+    };
+    rd.readAsText(f);
+  };
+  inp.click();
+});
+
+// ---------- 启动 ----------
+load(); renderAll();
+</script>
+</body>
+</html>
