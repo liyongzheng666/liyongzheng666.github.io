@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="title desc">
+  <title id="title">freecad-occt-debug-kit — 田园风项目封面</title>
+  <desc id="desc">暖色田园背景中，放大镜观察一个几何小方块，代表根因诊断 Agent。</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fbf6ec"/>
+      <stop offset="1" stop-color="#f4ead9"/>
+    </linearGradient>
+    <linearGradient id="hill1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9db98f"/>
+      <stop offset="1" stop-color="#7f9f76"/>
+    </linearGradient>
+    <linearGradient id="hill2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7f9f76"/>
+      <stop offset="1" stop-color="#5f7f5b"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#sky)"/>
+  <circle cx="650" cy="100" r="52" fill="#e9c46a" opacity="0.85"/>
+  <path d="M0 380 Q200 300 420 370 T800 360 L800 500 L0 500 Z" fill="url(#hill1)"/>
+  <path d="M0 440 Q260 370 520 430 T800 420 L800 500 L0 500 Z" fill="url(#hill2)"/>
+  <path d="M200 500 Q300 420 430 500" fill="none" stroke="#fbf6ec" stroke-width="8" stroke-linecap="round" opacity="0.7"/>
+  <g stroke="#4a6b46" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.75">
+    <path d="M80 330 q8 -18 26 -20 q18 -2 24 16 q-20 4 -34 12 q-12 6 -16 -8Z"/>
+    <path d="M130 345 q6 -14 20 -16 q14 -2 19 12 q-16 3 -27 10 q-9 5 -12 -6Z"/>
+    <path d="M680 330 q8 -18 26 -20 q18 -2 24 16 q-20 4 -34 12 q-12 6 -16 -8Z"/>
+    <path d="M730 345 q6 -14 20 -16 q14 -2 19 12 q-16 3 -27 10 q-9 5 -12 -6Z"/>
+  </g>
+  <g transform="translate(400 250)">
+    <ellipse cx="0" cy="0" rx="128" ry="118" fill="#fbf6ec" fill-opacity="0.55"/>
+    <ellipse cx="0" cy="0" rx="118" ry="108" fill="none" stroke="#c47b5a" stroke-width="3" stroke-dasharray="2 9" stroke-linecap="round" opacity="0.55"/>
+    <circle cx="-10" cy="-6" r="74" fill="none" stroke="#8c6a4f" stroke-width="14" opacity="0.25"/>
+    <circle cx="-10" cy="-6" r="70" fill="none" stroke="#7d9b76" stroke-width="5"/>
+    <rect x="-52" y="-62" width="76" height="76" rx="10" fill="#e9c46a" stroke="#8c6a4f" stroke-width="4"/>
+    <path d="M-28 -36 L-8 -16 M-8 -36 L-28 -16 M-14 -28 L-30 -12 M-12 -24 L-28 -8" stroke="#8c6a4f" stroke-width="2.4" opacity="0.5"/>
+    <path d="M-36 -22 L-18 -40 L10 -22 L-8 -4 Z" fill="#9db98f" stroke="#5f7f5b" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M-18 -40 L10 -22" fill="none" stroke="#5f7f5b" stroke-width="2.4"/>
+    <path d="M-6 -14 L20 -36 L52 -12 L26 10 Z" fill="#c47b5a" stroke="#8c6a4f" stroke-width="3" stroke-linejoin="round" opacity="0.9"/>
+    <path d="M20 -36 L52 -12" fill="none" stroke="#8c6a4f" stroke-width="2.4"/>
+    <circle cx="-10" cy="-6" r="70" fill="none" stroke="#5f7f5b" stroke-width="5"/>
+    <path d="M52 -52 L72 -32" stroke="#8c6a4f" stroke-width="8" stroke-linecap="round"/>
+    <path d="M72 -32 L76 -28" stroke="#8c6a4f" stroke-width="8" stroke-linecap="round"/>
+    <path d="M62 -42 L80 -24" stroke="#e9c46a" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  <text x="400" y="452" text-anchor="middle" font-family="Georgia, 'Noto Serif SC', serif" font-size="24" fill="#4a6b46" letter-spacing="2">Root-Cause Agent</text>
+</svg>

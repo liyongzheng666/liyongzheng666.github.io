@@ -366,6 +366,22 @@ layout: hextra-home
     <div class="home-section-head">
       <span class="home-section-label" id="home-focus-label">焦点 · Featured</span>
     </div>
+    <a class="focus-card" href="/freecad-occt-debug-kit/" aria-label="打开 freecad-occt-debug-kit 项目介绍">
+      <div class="focus-shot">
+        <img src="/images/projects/freecad-occt-debug-kit.svg" alt="freecad-occt-debug-kit 项目田园风封面图" loading="eager" decoding="sync">
+      </div>
+      <div class="focus-body">
+        <div class="focus-tags">
+          <span>Agent</span>
+          <span>OCCT / FreeCAD</span>
+          <span>Root-Cause</span>
+          <span>5 维 Eval</span>
+        </div>
+        <h2>freecad-occt-debug-kit</h2>
+        <p>面向 OCCT/FreeCAD 圆角与倒角失败场景的根因诊断 Agent + 量化 Eval 工具链：从可复现构建、几何采集到自动化根因定位与五维评分，把调试过程变成可回归的闭环。</p>
+        <span class="focus-open">进入项目介绍 ↗</span>
+      </div>
+    </a>
     <a class="focus-card" href="https://liyongzheng666.github.io/geometry-engineer-ai-road/" target="_blank" rel="noreferrer" aria-label="打开几何算法工程师的AI之路">
       <div class="focus-shot">
         <img src="/images/projects/geometry-engineer-ai-road.svg" alt="几何算法工程师的AI之路网页预览图" loading="eager" decoding="sync">
@@ -379,21 +395,6 @@ layout: hextra-home
         <h2>几何算法工程师的 AI 之路</h2>
         <p>面向几何造型算法工程师的 12 周 AI 提效课程：每周一个"粘贴即验证"C++ 工作台，配计划拆解、代码解读与补充知识（CMake、退化容差、Eigen）。前 3 周已上线，含 8 个验证闭环 harness。</p>
         <span class="focus-open">打开课程主页 ↗</span>
-      </div>
-    </a>
-    <a class="focus-card" href="https://liyongzheng666.github.io/ielts-study-plan/" target="_blank" rel="noreferrer" aria-label="打开雅思 9 个月学习计划">
-      <div class="focus-shot">
-        <img src="/images/projects/ielts-study-plan.svg" alt="雅思 9 个月学习计划网页预览图" loading="eager" decoding="sync">
-      </div>
-      <div class="focus-body">
-        <div class="focus-tags">
-          <span>IELTS</span>
-          <span>9 个月计划</span>
-          <span>进度记录</span>
-        </div>
-        <h2>雅思 9 个月学习计划</h2>
-        <p>可阅读、可切换、可打印的备考网页：总计划、月度执行方案、九个月本地进度板，外加逐篇精读样例——从词卡、同义替换、错题归因一直做到写作与口语。</p>
-        <span class="focus-open">打开学习计划 ↗</span>
       </div>
     </a>
   </section>
@@ -461,6 +462,23 @@ layout: hextra-home
         <span>认识 Ally 与这个站点。</span>
       </a>
     </div>
+  </section>
+
+  <section class="home-section" aria-labelledby="home-study-label">
+    <div class="home-section-head">
+      <span class="home-section-label" id="home-study-label">备考记录 · Study</span>
+    </div>
+    <ul class="home-list">
+      <li>
+        <a href="https://liyongzheng666.github.io/ielts-study-plan/" target="_blank" rel="noreferrer">
+          <span class="home-list-text">
+            <span class="home-list-title">雅思 9 个月学习计划</span>
+            <span class="home-list-desc">可阅读、可切换、可打印的备考网页：总计划、月度执行方案、九个月本地进度板，外加逐篇精读样例——从词卡、同义替换、错题归因一直做到写作与口语。</span>
+          </span>
+          <span class="home-list-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+    </ul>
   </section>
 </div>
 {{< /rawhtml >}}
