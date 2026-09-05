@@ -13,6 +13,11 @@ draft: false
 
 [**打开完整 HTML 学习计划 →**](/knapsack-8-days/)
 
+[**获取 C++ 训练仓库 →**](https://github.com/liyongzheng666/knapsack-dp-cpp)
+
+仓库按 day01—day08 与 exam 排列，包含每日起步代码、参考实现、测试，以及完整的
+CMake / VS Code 调试模板。克隆后打开 cpp-debug.code-workspace，从 day01/README.md 开始。
+
 <!--more-->
 
 | 日期 | 学习重点 |

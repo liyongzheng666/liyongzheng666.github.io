@@ -213,6 +213,13 @@ function makeStarterBlock(lesson) {
   filename.className = "starter-filename";
   filename.textContent = lesson.filename;
 
+  const repositoryLink = document.createElement("a");
+  const directory = `day${String(lesson.day).padStart(2, "0")}`;
+  repositoryLink.href = `https://github.com/liyongzheng666/knapsack-dp-cpp/tree/main/${directory}`;
+  repositoryLink.target = "_blank";
+  repositoryLink.rel = "noopener";
+  repositoryLink.textContent = `打开完整工程 / ${directory} ↗`;
+
   const copy = document.createElement("button");
   copy.className = "copy-starter";
   copy.type = "button";
@@ -231,7 +238,7 @@ function makeStarterBlock(lesson) {
   const code = document.createElement("code");
   code.textContent = lesson.code;
   pre.append(code);
-  toolbar.append(filename, copy);
+  toolbar.append(filename, repositoryLink, copy);
   body.append(note, toolbar, pre);
   details.append(body);
   return details;
