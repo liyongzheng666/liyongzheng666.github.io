@@ -121,4 +121,4 @@ document.querySelectorAll('.quiz').forEach(form=>form.addEventListener('submit',
 }));
 const today=new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
 document.querySelectorAll('[data-date]').forEach(a=>{if(a.dataset.date===today)a.setAttribute('aria-current','date');});
-</script></body></html>
+</script><script src="starter-snippets.js"></script></body></html>
