@@ -27,7 +27,7 @@ hugo server --disableFastRender
 
 文章 front matter 的 `topic` 使用 `ai-cad`、`algorithms`、`tooling` 或 `english`。专题会自动收录相应文章；近期文章与目录数量由内容生成。独立项目在统一清单维护一次，首页和专题复用。
 
-AIwithCaD 只提供既有加密站点入口，不在此仓库保存私有源码、密码或解密后的正文。刷题与背包静态应用保留原 URL。
+AIwithCaD 提供独立研判站的直接阅读入口，其页面和源码在独立项目维护。刷题与背包静态应用保留原 URL。
 
 ## 构建与发布
 

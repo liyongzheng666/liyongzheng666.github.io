@@ -12,7 +12,7 @@
     </div>
     {{ range where site.Data.library.projects "id" "aiwithcad" }}
     <article class="core-project">
-      <div class="core-top"><span class="eyebrow">核心项目</span><span class="access-label">需访问密码</span></div>
+      <div class="core-top"><span class="eyebrow">核心项目</span></div>
       <div><p class="project-coordinate">RESEARCH / 01</p><h2>AI for CAD<br>研判库</h2><p>{{ .description }}</p></div>
       <a class="core-link" href="{{ .url }}">打开核心项目 <span aria-hidden="true">↗</span></a>
     </article>

@@ -17,7 +17,6 @@ body { color: var(--ink); }
 .core-project { min-height: 346px; padding: 30px; background: #142b50; border-radius: 8px; color: #d7e3f8; display: flex; flex-direction: column; justify-content: space-between; gap: 24px; }
 .core-top { display: flex; justify-content: space-between; gap: 12px; align-items: center; }
 .core-top .eyebrow { color: #c2d7f7; margin: 0; }
-.access-label { font-size: .8125rem; padding: 3px 9px; border: 1px solid currentColor; border-radius: 4px; white-space: nowrap; }
 .core-project h2 { color: white; font-size: 2.4rem; margin: 5px 0 12px; line-height: 1.2; }
 .core-project p:not(.eyebrow):not(.project-coordinate) { font-size: .9375rem; line-height: 1.8; max-width: 330px; }
 .project-coordinate { color: #91b7f5; margin: 0; font-size: .75rem; }

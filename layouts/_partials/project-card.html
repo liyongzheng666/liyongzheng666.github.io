@@ -1,5 +1,5 @@
-<article class="project-card{{ if .protected }} project-card-core{{ end }}">
-  <div class="card-kicker"><span>{{ .kind }}</span>{{ if .protected }}<span class="access-label">需访问密码</span>{{ end }}</div>
+<article class="project-card{{ if eq .id "aiwithcad" }} project-card-core{{ end }}">
+  <div class="card-kicker"><span>{{ .kind }}</span></div>
   <h3><a href="{{ .url }}">{{ .title }} <span aria-hidden="true">↗</span></a></h3>
   <p>{{ .description }}</p>
   {{ with .repo }}<a class="source-link" href="https://github.com/liyongzheng666/{{ . }}">项目源码 <span aria-hidden="true">↗</span></a>{{ end }}
