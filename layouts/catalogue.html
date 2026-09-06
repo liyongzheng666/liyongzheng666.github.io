@@ -1,0 +1,16 @@
+{{ define "main" }}
+{{ .Store.Set "enableFooterSwitches" true }}
+<div class="knowledge-layout">
+{{ partial "sidebar.html" (dict "context" . "disableSidebar" true "displayPlaceholder" false) }}
+<main id="content" class="knowledge-shell">
+  <header class="topic-header"><p class="eyebrow">THE KNOWLEDGE INDEX</p><h1>内容目录</h1>{{ .Content }}<p class="catalog-count">{{ len site.Data.library.projects }} 个项目与指南 · {{ len (where site.RegularPages "Section" "blog") }} 篇文章</p></header>
+  <nav class="catalog-nav" aria-label="跳至内容主题">{{ range site.Data.library.topics }}<a href="#{{ .id }}">{{ .title }}</a>{{ end }}</nav>
+  {{ range site.Data.library.topics }}
+  <section id="{{ .id }}" class="home-section catalog-section">
+    <div class="section-heading"><div><p class="eyebrow">{{ .number }} / {{ .label }}</p><h2>{{ .title }}</h2></div><a class="text-link" href="/{{ .id }}/">进入专题 <span aria-hidden="true">→</span></a></div>
+    <div class="project-grid">{{ range where site.Data.library.projects "topic" .id }}{{ partial "project-card.html" . }}{{ end }}</div>
+  </section>{{ end }}
+  <a class="text-link" href="/blog/">按时间阅读全部文章 <span aria-hidden="true">→</span></a>
+</main>
+</div>
+{{ end }}

@@ -1,65 +1,38 @@
-# 个人博客（Hugo + Hextra）
+# Ally · AI 与 CAD
 
-本项目基于 Hextra 官方文档中的「Git 子模块」方式搭建：
+以 AI / CAD 为核心的个人知识站，使用 Hugo 0.157.0 与 Hextra。项目、指南和文章按主题连接；功能站与配套源码仍独立维护。
 
-- 主题：`themes/hextra`（Git submodule）
-- 配置：`hugo.yaml` 中 `theme: hextra`
+## 本地运行
 
-## 前置要求
+安装 Hugo Extended 0.157.0，克隆时初始化主题子模块：
 
-- Hugo（建议扩展版）
-- Git
-
-如果你本机已经安装 Hugo，直接使用 `hugo` 命令即可。  
-如果还没安装，可临时使用当前目录里的 `./bin/hugo`。
-
-## 本地启动
-
-```bash
-hugo server --buildDrafts --disableFastRender
+```sh
+git submodule update --init --recursive
+hugo server --disableFastRender
 ```
 
-启动后访问：`http://localhost:1313`
+访问终端显示的本地地址，使用 Ctrl+C 关闭当前预览。
 
-## 关闭预览
+## 内容在哪里维护
 
-```bash
-pkill -f "hugo.*server"
-```
+| 内容 | 维护位置 |
+|---|---|
+| 主题、项目标题、介绍、入口、源码链接 | `data/library.json` |
+| 首页排布 | `layouts/knowledge-home.html` |
+| 内容目录 | `layouts/catalogue.html` |
+| 主题页及其可搜索项目列表 | `content/<主题>/_index.md`、`layouts/topic.html`、`layouts/_shortcodes/topic-projects.html` |
+| 文章 | `content/blog/*.md` |
+| 全站导航与站点信息 | `hugo.yaml` |
+| 共用样式 | `assets/css/custom.css` |
 
-## 新建文章
+文章 front matter 的 `topic` 使用 `ai-cad`、`algorithms`、`tooling` 或 `english`。专题会自动收录相应文章；近期文章与目录数量由内容生成。独立项目在统一清单维护一次，首页和专题复用。
 
-```bash
-hugo new content/blog/my-post.md
-```
+AIwithCaD 只提供既有加密站点入口，不在此仓库保存私有源码、密码或解密后的正文。刷题与背包静态应用保留原 URL。
 
-## 构建静态文件
+## 构建与发布
 
-```bash
+```sh
 hugo --gc --minify
 ```
 
-构建产物位于 `public/` 目录。
-
-## GitHub 账号
-
-站点菜单中的 GitHub 链接当前指向：`https://github.com/liyongzheng666`
-
-## 部署到 GitHub Pages（`*.github.io`）
-
-仓库名请使用：`liyongzheng666.github.io`
-
-本项目已包含工作流文件：
-`.github/workflows/pages.yaml`
-
-首次发布步骤：
-
-```bash
-git add .
-git commit -m "init blog with hextra and pages workflow"
-git remote add origin git@github.com:liyongzheng666/liyongzheng666.github.io.git
-git push -u origin main
-```
-
-然后到 GitHub 仓库设置：
-`Settings -> Pages -> Build and deployment -> Source = GitHub Actions`
+生产站为 https://www.goudanx.top/ 。`.github/workflows/pages.yaml` 在 main 更新时构建并发布 GitHub Pages。改动应先在本地或工作分支验证；项目仓库与独立站的删除、改名、归档另行确认。

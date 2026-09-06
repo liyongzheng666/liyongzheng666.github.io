@@ -1,0 +1,35 @@
+{{ define "main" }}
+{{ .Store.Set "enableFooterSwitches" true }}
+<div class="knowledge-layout">
+{{ partial "sidebar.html" (dict "context" . "disableSidebar" true "displayPlaceholder" false) }}
+<main id="content" class="knowledge-shell">
+  <section class="home-intro" aria-labelledby="home-title">
+    <div class="intro-copy">
+      <p class="eyebrow">ALLY / ENGINEERING NOTES</p>
+      <h1 id="home-title">AI 与 CAD，<br><span>从研究到实践。</span></h1>
+      <p class="intro-description">从几何问题出发，探索 AI 如何参与设计、编码与验证。这里记录项目，也整理走向工程实践的学习路径。</p>
+      <a class="text-link" href="/ai-cad/">探索 AI / CAD 专题 <span aria-hidden="true">↗</span></a>
+    </div>
+    {{ range where site.Data.library.projects "id" "aiwithcad" }}
+    <article class="core-project">
+      <div class="core-top"><span class="eyebrow">核心项目</span><span class="access-label">需访问密码</span></div>
+      <div><p class="project-coordinate">RESEARCH / 01</p><h2>AI for CAD<br>研判库</h2><p>{{ .description }}</p></div>
+      <a class="core-link" href="{{ .url }}">打开核心项目 <span aria-hidden="true">↗</span></a>
+    </article>
+    {{ end }}
+  </section>
+  <section class="home-section" aria-labelledby="practice-title">
+    <div class="section-heading"><div><p class="eyebrow">LEARN → BUILD → VERIFY</p><h2 id="practice-title">让研究落到工程里</h2></div><a class="text-link" href="/ai-cad/">全部 AI / CAD 内容 <span aria-hidden="true">→</span></a></div>
+    <div class="practice-grid">{{ range where site.Data.library.projects "featured" true }}{{ if ne .id "aiwithcad" }}{{ partial "project-card.html" . }}{{ end }}{{ end }}</div>
+  </section>
+  <section class="home-section" aria-labelledby="directions-title">
+    <div class="section-heading"><div><p class="eyebrow">SUPPORTING PRACTICE</p><h2 id="directions-title">支撑主线的日常积累</h2></div></div>
+    <div class="topic-grid">{{ range site.Data.library.topics }}{{ if ne .id "ai-cad" }}<a class="topic-card" href="/{{ .id }}/"><span class="topic-number">{{ .number }} / {{ .label }}</span><h3>{{ .title }} <span aria-hidden="true">↗</span></h3><p>{{ .summary }}</p></a>{{ end }}{{ end }}</div>
+  </section>
+  <section class="home-section" aria-labelledby="notes-title">
+    <div class="section-heading"><div><p class="eyebrow">RECENT NOTES</p><h2 id="notes-title">最近的思考与实践</h2></div><a class="text-link" href="/blog/">全部文章 <span aria-hidden="true">→</span></a></div>
+    <div class="article-rows">{{ range first 3 (where site.RegularPages "Section" "blog").ByDate.Reverse }}<a class="article-row" href="{{ .RelPermalink }}"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time><h3>{{ .Title }}</h3><span aria-hidden="true">↗</span></a>{{ end }}</div>
+  </section>
+</main>
+</div>
+{{ end }}

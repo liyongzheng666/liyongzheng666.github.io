@@ -1,24 +1,23 @@
-baseURL: "https://liyongzheng666.github.io/"
+baseURL: "https://www.goudanx.top/"
 languageCode: "zh-CN"
 defaultContentLanguage: "zh-cn"
-title: "Ally 的个人博客"
+title: "Ally · AI 与 CAD"
 theme: "hextra"
 hasCJKLanguage: true
 enableRobotsTXT: true
-
 menu:
   main:
     - name: 首页
-      pageRef: /
+      url: /
       weight: 1
-    - name: 项目
-      pageRef: /projects
+    - name: AI / CAD
+      pageRef: /ai-cad
       weight: 2
-    - name: 博客
-      pageRef: /blog
+    - name: 内容目录
+      pageRef: /projects
       weight: 3
-    - name: 刷题
-      url: "/leetcode-plan/"
+    - name: 文章
+      pageRef: /blog
       weight: 4
     - name: 关于
       pageRef: /about
@@ -32,9 +31,8 @@ menu:
       weight: 7
       params:
         icon: github
-
 params:
-  description: "记录技术、写作、项目与静态网页作品。"
+  description: "以 AI 与 CAD 为主线，记录几何工程、算法实践与持续学习。"
   navbar:
     displayTitle: true
     displayLogo: false
@@ -55,7 +53,6 @@ params:
     enable: true
     displayCopyright: true
     displayPoweredBy: true
-
 markup:
   goldmark:
     renderer:

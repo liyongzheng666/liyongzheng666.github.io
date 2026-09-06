@@ -1,0 +1,13 @@
+{{ define "main" }}
+{{ .Store.Set "enableFooterSwitches" true }}
+<div class="knowledge-layout">
+{{ partial "sidebar.html" (dict "context" . "disableSidebar" true "displayPlaceholder" false) }}
+<main id="content" class="knowledge-shell">
+  <header class="topic-header"><p class="eyebrow">NOTES & PRACTICE</p><h1>文章</h1>{{ .Content }}</header>
+  <nav class="catalog-nav" aria-label="按主题阅读">{{ range site.Data.library.topics }}<a href="/{{ .id }}/">{{ .title }}</a>{{ end }}</nav>
+  <div class="journal-list">{{ range (where site.RegularPages "Section" "blog").ByDate.Reverse }}
+    <article class="journal-entry"><div class="journal-meta"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>{{ $topic := .Params.topic }}{{ range where site.Data.library.topics "id" $topic }}<a href="/{{ .id }}/">{{ .title }}</a>{{ end }}</div><div><h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2><p>{{ .Description | default (.Summary | plainify | truncate 125) }}</p><a class="text-link" href="{{ .RelPermalink }}">阅读全文 <span aria-hidden="true">→</span></a></div></article>
+  {{ end }}</div>
+</main>
+</div>
+{{ end }}

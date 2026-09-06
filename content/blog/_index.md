@@ -1,5 +1,7 @@
 ---
-title: 博客
+title: 文章
+description: 围绕 AI 与 CAD、算法、工具和英语学习的实践记录。
+layout: journal
 ---
 
-这里收录所有公开文章，按发布时间倒序展示。
+把问题想清楚，把实践记录下来。

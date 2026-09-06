@@ -1,0 +1,1 @@
+<section class="project-grid" aria-label="项目与学习路线">{{ range where site.Data.library.projects "topic" .Page.Params.topic }}{{ partial "project-card.html" . }}{{ end }}</section>

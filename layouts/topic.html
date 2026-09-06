@@ -1,0 +1,14 @@
+{{ define "main" }}
+{{ .Store.Set "enableFooterSwitches" true }}
+{{ $topic := .Params.topic }}
+<div class="knowledge-layout">
+{{ partial "sidebar.html" (dict "context" . "disableSidebar" true "displayPlaceholder" false) }}
+<main id="content" class="knowledge-shell topic-page">
+  <a class="breadcrumb-link" href="/projects/">内容目录 /</a>
+  {{ range where site.Data.library.topics "id" $topic }}<header class="topic-header"><p class="eyebrow">{{ .number }} / {{ .label }}</p><h1>{{ .title }}</h1><p>{{ .summary }}</p></header>{{ end }}
+  {{ .Content }}
+  {{ $articles := where (where site.RegularPages "Section" "blog") "Params.topic" $topic }}
+  {{ with $articles }}<section class="home-section"><div class="section-heading"><h2>相关文章</h2></div><div class="article-rows">{{ range .ByDate.Reverse }}<a class="article-row" href="{{ .RelPermalink }}"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time><h3>{{ .Title }}</h3><span aria-hidden="true">↗</span></a>{{ end }}</div></section>{{ end }}
+</main>
+</div>
+{{ end }}

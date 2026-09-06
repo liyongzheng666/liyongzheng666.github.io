@@ -1,0 +1,139 @@
+{
+  "topics": [
+    {
+      "id": "ai-cad",
+      "number": "01",
+      "title": "AI / CAD",
+      "summary": "围绕几何工程，连接研究、学习与验证。",
+      "label": "核心方向"
+    },
+    {
+      "id": "algorithms",
+      "number": "02",
+      "title": "算法与 C++",
+      "summary": "从问题推导到代码实现，在练习中建立判断力。",
+      "label": "基础能力"
+    },
+    {
+      "id": "tooling",
+      "number": "03",
+      "title": "开发工具",
+      "summary": "终端、AI 编程与调试工具的日常使用指南。",
+      "label": "工作方法"
+    },
+    {
+      "id": "english",
+      "number": "04",
+      "title": "英语学习",
+      "summary": "长期学习计划与精读实践。",
+      "label": "持续学习"
+    }
+  ],
+  "projects": [
+    {
+      "id": "aiwithcad",
+      "topic": "ai-cad",
+      "title": "AI for CAD 研判库",
+      "description": "围绕 AI 与 CAD 的研究资料、观察与思考，作为持续维护的核心项目。",
+      "kind": "核心项目",
+      "url": "https://www.goudanx.top/AIwithCaD/",
+      "protected": true,
+      "featured": true
+    },
+    {
+      "id": "geometry-road",
+      "topic": "ai-cad",
+      "title": "几何工程师的 AI 之路",
+      "description": "从代码验证、退化输入到网格与符号计算，沿着课程逐步动手实践。",
+      "kind": "系统课程",
+      "url": "https://www.goudanx.top/geometry-engineer-ai-road/",
+      "repo": "geometry-engineer-ai-road",
+      "featured": true
+    },
+    {
+      "id": "freecad",
+      "topic": "ai-cad",
+      "title": "FreeCAD / OCCT 工程实践",
+      "description": "圆角与倒角失败的根因诊断，把几何调试整理成可复现的验证过程。",
+      "kind": "工程项目",
+      "url": "/freecad-occt-debug-kit/",
+      "repo": "freecad-occt-debug-kit",
+      "featured": true
+    },
+    {
+      "id": "print",
+      "topic": "ai-cad",
+      "title": "几何可视化工具",
+      "description": "查看几何数据与调试结果，辅助理解模型和工程问题。",
+      "kind": "交互工具",
+      "url": "https://www.goudanx.top/Print/",
+      "repo": "Print"
+    },
+    {
+      "id": "knapsack",
+      "topic": "algorithms",
+      "title": "八天背包训练",
+      "description": "从状态定义到独立解题，配套 C++ 起步代码、参考实现和测试。",
+      "kind": "学习路线",
+      "url": "/knapsack-8-days/",
+      "repo": "knapsack-dp-cpp"
+    },
+    {
+      "id": "leetcode",
+      "topic": "algorithms",
+      "title": "刷题与复盘",
+      "description": "沿用现有刷题计划和进度记录，把练习与算法文章串起来。",
+      "kind": "练习工具",
+      "url": "/leetcode-plan/"
+    },
+    {
+      "id": "fish",
+      "topic": "tooling",
+      "title": "Fish 终端配置",
+      "description": "环境配置、快捷键和常用命令速查。",
+      "kind": "使用指南",
+      "url": "https://www.goudanx.top/fish-terminal-setup-guide-pages/fish-terminal-setup/"
+    },
+    {
+      "id": "tmux",
+      "topic": "tooling",
+      "title": "tmux 与 Ghostty",
+      "description": "从会话、窗口和面板理解终端工作区。",
+      "kind": "使用指南",
+      "url": "https://www.goudanx.top/fish-terminal-setup-guide-pages/tmux-ghostty-guide/"
+    },
+    {
+      "id": "codex",
+      "topic": "tooling",
+      "title": "Codex 工作流",
+      "description": "把终端、Skills、代码审查与日常交付连成工作流程。",
+      "kind": "使用指南",
+      "url": "https://www.goudanx.top/fish-terminal-setup-guide-pages/codex-terminal-skills/"
+    },
+    {
+      "id": "claude",
+      "topic": "tooling",
+      "title": "Claude Code",
+      "description": "命令、权限、上下文与工具扩展的系统使用指南。",
+      "kind": "使用指南",
+      "url": "https://www.goudanx.top/fish-terminal-setup-guide-pages/claude-code-training/"
+    },
+    {
+      "id": "vscode",
+      "topic": "tooling",
+      "title": "VS Code 调试速查",
+      "description": "macOS 下的调试操作与常用快捷键。",
+      "kind": "使用指南",
+      "url": "https://www.goudanx.top/fish-terminal-setup-guide-pages/vscode-mac-debug-shortcuts/"
+    },
+    {
+      "id": "ielts",
+      "topic": "english",
+      "title": "雅思学习计划",
+      "description": "九个月学习路线、月度执行计划与逐篇精读产出。",
+      "kind": "学习路线",
+      "url": "https://www.goudanx.top/ielts-study-plan/",
+      "repo": "ielts-study-plan"
+    }
+  ]
+}

@@ -46,7 +46,7 @@ jobs:
         run: |
           hugo \
             --gc --minify \
-            --baseURL "https://${{ github.repository_owner }}.github.io/"
+            --baseURL "https://www.goudanx.top/"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
