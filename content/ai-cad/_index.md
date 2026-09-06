@@ -1,6 +1,6 @@
 ---
-title: AI / CAD
-description: 围绕几何工程，连接研究、学习与验证。
+title: AI Harness
+description: 围绕几何工程，连接 Agent 诊断、评估与回归验证。
 layout: topic
 topic: ai-cad
 ---

@@ -3,8 +3,8 @@
     {
       "id": "ai-cad",
       "number": "01",
-      "title": "AI / CAD",
-      "summary": "围绕几何工程，连接研究、学习与验证。",
+      "title": "AI Harness",
+      "summary": "围绕几何工程，连接 Agent 诊断、评估与回归验证。",
       "label": "核心方向"
     },
     {
@@ -27,17 +27,26 @@
       "title": "个人能力提升",
       "summary": "英语学习计划、精读实践与长期能力积累。",
       "label": "持续学习"
+    },
+    {
+      "id": "research",
+      "number": "05",
+      "title": "研究资料",
+      "summary": "AIwithCAD 赛道研判、论文与开源资料的整理。",
+      "label": "资料整理"
     }
   ],
   "projects": [
     {
-      "id": "aiwithcad",
+      "id": "freecad",
       "topic": "ai-cad",
-      "title": "AI for CAD 研判库",
-      "description": "围绕 AI 与 CAD 的研究资料、观察与思考，作为持续维护的核心项目。",
+      "title": "AI Harness",
+      "description": "围绕 FreeCAD / OCCT 的几何失败诊断，串联观测、推理、评估与回归验证。",
       "kind": "核心项目",
-      "url": "https://www.goudanx.top/AIwithCaD/",
-      "featured": true
+      "url": "/freecad-occt-debug-kit/",
+      "repo": "freecad-occt-debug-kit",
+      "featured": true,
+      "subtitle": "几何诊断与验证"
     },
     {
       "id": "geometry-road",
@@ -50,23 +59,14 @@
       "featured": true
     },
     {
-      "id": "freecad",
-      "topic": "ai-cad",
-      "title": "FreeCAD / OCCT 工程实践",
-      "description": "圆角与倒角失败的根因诊断，把几何调试整理成可复现的验证过程。",
-      "kind": "工程项目",
-      "url": "/freecad-occt-debug-kit/",
-      "repo": "freecad-occt-debug-kit",
-      "featured": true
-    },
-    {
       "id": "print",
       "topic": "ai-cad",
       "title": "几何可视化工具",
       "description": "查看几何数据与调试结果，辅助理解模型和工程问题。",
       "kind": "交互工具",
       "url": "https://www.goudanx.top/Print/",
-      "repo": "Print"
+      "repo": "Print",
+      "featured": true
     },
     {
       "id": "knapsack",
@@ -133,6 +133,14 @@
       "kind": "学习路线",
       "url": "https://www.goudanx.top/ielts-study-plan/",
       "repo": "ielts-study-plan"
+    },
+    {
+      "id": "aiwithcad",
+      "topic": "research",
+      "title": "AIwithCAD 研判库",
+      "description": "汇集 AI 与 CAD 的公司、论文和开源方向资料，记录个人研究与观察。",
+      "kind": "研究资料",
+      "url": "https://www.goudanx.top/AIwithCaD/"
     }
   ]
 }

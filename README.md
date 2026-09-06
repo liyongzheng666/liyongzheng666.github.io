@@ -1,6 +1,6 @@
 # Ally · AI 与 CAD
 
-以 AI / CAD 为核心的个人知识站，使用 Hugo 0.157.0 与 Hextra。项目、指南和文章按主题连接；功能站与配套源码仍独立维护。
+以 AI Harness 工程实践为重点的个人知识站，使用 Hugo 0.157.0 与 Hextra。项目、指南和文章按主题连接；功能站与配套源码仍独立维护。
 
 ## 本地运行
 
@@ -25,7 +25,7 @@ hugo server --disableFastRender
 | 全站导航与站点信息 | `hugo.yaml` |
 | 共用样式 | `assets/css/custom.css` |
 
-文章 front matter 的 `topic` 使用 `ai-cad`、`algorithms`、`tooling` 或 `english`。专题会自动收录相应文章；近期文章与目录数量由内容生成。独立项目在统一清单维护一次，首页和专题复用。
+文章 front matter 的 `topic` 使用 `ai-cad`、`algorithms`、`tooling`、`english`（个人能力提升）或 `research`（研究资料）。专题会自动收录相应文章；近期文章与目录数量由内容生成。独立项目在统一清单维护一次，首页和专题复用。
 
 AIwithCaD 提供独立研判站的直接阅读入口，其页面和源码在独立项目维护。刷题与背包静态应用保留原 URL。
 

@@ -1,5 +1,5 @@
 ---
-title: FreeCAD / OCCT 工程实践
+title: AI Harness · 几何诊断与验证
 description: 围绕圆角与倒角失败，建立可复现的根因诊断与验证过程。
 layout: project-detail
 topic: ai-cad
@@ -46,4 +46,4 @@ bash agent/eval/eval.sh
 
 - [几何工程师的 AI 之路](https://www.goudanx.top/geometry-engineer-ai-road/)：从学习与练习补齐工程实践所需的能力。
 - [ReAct 论文精读](/blog/paper-reading-01-react/)：理解推理与行动相互配合的基本思路。
-- [返回 AI / CAD 专题](/ai-cad/)。
+- [返回 AI Harness 专题](/ai-cad/)。
