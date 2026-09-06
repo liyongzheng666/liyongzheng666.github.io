@@ -37,7 +37,7 @@ body { color: var(--ink); }
 .source-link { font-size: .8125rem; color: var(--muted); margin-top: auto; }
 .source-link:hover { color: var(--accent); text-decoration: underline; }
 .project-card-core { border-left: 3px solid var(--accent); }
-.topic-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px; }
+.topic-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px; }
 .topic-card { padding: 8px 0; }
 .topic-number { color: var(--muted); font-size: .75rem; }
 .topic-card h3 { display: flex; justify-content: space-between; font-size: 1.2rem; margin: 12px 0; }
