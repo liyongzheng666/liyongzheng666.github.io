@@ -10,8 +10,8 @@
     {
       "id": "algorithms",
       "number": "02",
-      "title": "算法与 C++",
-      "summary": "从问题推导到代码实现，在练习中建立判断力。",
+      "title": "算法学习中心",
+      "summary": "C++ · LeetCode · 专题训练，从直觉和手算走到可提交的代码。",
       "label": "基础能力"
     },
     {
@@ -84,6 +84,14 @@
       "description": "沿用现有刷题计划和进度记录，把练习与算法文章串起来。",
       "kind": "练习工具",
       "url": "/leetcode-plan/"
+    },
+    {
+      "id": "palindrome-substrings",
+      "topic": "algorithms",
+      "title": "回文子串互动专题",
+      "description": "从 LC647 的中心扩展开始，用可暂停、可单步的演示学会回文子串。",
+      "kind": "学习路线 · 标杆章已上线",
+      "url": "/palindrome-substrings/"
     },
     {
       "id": "fish",

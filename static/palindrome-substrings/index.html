@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>回文子串互动专题 · Ally 的个人博客</title>
+  <meta name="description" content="LeetCode 回文子串 C++ 互动专题：用可暂停、可单步的演示学会双指针、中心扩展和 DP。">
+  <link rel="canonical" href="https://www.goudanx.top/palindrome-substrings/">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#lesson">跳到 LC647 标杆章</a>
+
+  <header class="topbar">
+    <a class="brand" href="/">Ally 的个人博客</a>
+    <nav aria-label="专题导航">
+      <a href="/algorithms/">算法学习中心</a>
+      <a href="/leetcode-plan/">刷题与复盘</a>
+      <a href="https://leetcode.com/problems/palindromic-substrings/" target="_blank" rel="noopener">LC647 出处</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">C++ · LeetCode · Palindrome Substrings</p>
+      <h1>回文子串互动专题</h1>
+      <p class="lead">这套专题不急着背模板。先把“连续的一段字符串是不是回文”看明白，再把它翻译成双指针、中心扩展、DP 和更高阶的字符串算法。</p>
+      <div class="hero-actions" aria-label="快捷入口">
+        <a class="button primary" href="#lesson">先学 LC647</a>
+        <a class="button" href="#roadmap">查看题目路线</a>
+      </div>
+    </section>
+
+    <section class="band intro-grid" aria-labelledby="how-title">
+      <div>
+        <p class="section-kicker">先定规则</p>
+        <h2 id="how-title">什么算“回文子串”？</h2>
+        <p>子串必须是原字符串里连续的一段。比如 <code>ababa</code> 里的 <code>aba</code> 是子串，<code>aaa</code> 不是，因为中间跳过了 <code>b</code>。回文就是从左读和从右读一样。</p>
+        <p>所以这类题常见问题只有几种：判断一段是不是回文、数一共有多少段、找最长的一段、把整串切成若干回文段，或者在多个回文段之间做选择。</p>
+      </div>
+      <ol class="learning-steps" aria-label="学习顺序">
+        <li><span>1</span><strong>先会看指针</strong><small>两头字符相等，才有继续往外扩的资格。</small></li>
+        <li><span>2</span><strong>再会数答案</strong><small>每成功扩一层，就新增一个回文子串。</small></li>
+        <li><span>3</span><strong>最后换模型</strong><small>计数用中心扩展，分割和最短切分再上 DP。</small></li>
+      </ol>
+    </section>
+
+    <section class="band" id="roadmap" aria-labelledby="roadmap-title">
+      <div class="section-heading">
+        <p class="section-kicker">由低到高</p>
+        <h2 id="roadmap-title">九题路线：从热身到高阶</h2>
+        <p>标题和难度已在 2026-09-20 按 LeetCode 官方页核对。基础主线做完前六题就够用，后三题是拓展和高阶挑战。</p>
+      </div>
+      <div class="roadmap" id="roadmapList"></div>
+      <details class="roadmap-more">
+        <summary>想挑战时再看：3 道可选拓展/高阶题</summary>
+        <p>这三题不影响基础主线完成，等前六题真正掌握后再学。</p>
+        <div class="roadmap advanced-roadmap" id="advancedRoadmap"></div>
+      </details>
+    </section>
+
+    <section class="band lesson" id="lesson" aria-labelledby="lesson-title">
+      <div class="lesson-head">
+        <div>
+          <p class="section-kicker">标杆章</p>
+          <h2 id="lesson-title">LC 647. Palindromic Substrings</h2>
+          <p>题目要求：给一个字符串 <code>s</code>，返回它里面有多少个回文子串。官方难度 Medium，约束是 <code>1 &lt;= s.length &lt;= 1000</code>，字符都是小写英文字母。</p>
+        </div>
+        <a class="source-link" href="https://leetcode.com/problems/palindromic-substrings/" target="_blank" rel="noopener">LeetCode 官方出处</a>
+      </div>
+
+      <article class="module" aria-labelledby="ask-title">
+        <h3 id="ask-title">1. 题目到底在问什么</h3>
+        <p>不要先想复杂算法。它不是问“有几种不同的字符串”，而是问“有几个位置区间”。在 <code>aaa</code> 里，左边的 <code>a</code> 和右边的 <code>a</code> 虽然长得一样，但位置不同，所以都要分别计数。</p>
+        <p>我们要做的事情就是：把所有连续区间看一遍，只要这个区间是回文，就把答案加一。</p>
+      </article>
+
+      <article class="module" aria-labelledby="hand-title">
+        <h3 id="hand-title">2. 先用 <code>s = "aaa"</code> 手算一遍</h3>
+        <div class="manual-table" aria-label="aaa 的回文子串手算表">
+          <div><b>长度 1</b><span><code>a</code>(0)、<code>a</code>(1)、<code>a</code>(2)</span><strong>3 个</strong></div>
+          <div><b>长度 2</b><span><code>aa</code>(0..1)、<code>aa</code>(1..2)</span><strong>2 个</strong></div>
+          <div><b>长度 3</b><span><code>aaa</code>(0..2)</span><strong>1 个</strong></div>
+        </div>
+        <p>所以答案是 <strong>3 + 2 + 1 = 6</strong>。中心扩展法做的事，就是用更聪明的顺序把这 6 个区间找出来。</p>
+      </article>
+
+      <article class="module demo-module" aria-labelledby="demo-title">
+        <div class="demo-copy">
+          <h3 id="demo-title">3. 跟着互动演示走</h3>
+          <p>每个回文都有一个“中心”。奇数长度的中心是一个字符，比如 <code>aba</code> 中间的 <code>b</code>；偶数长度的中心在两个字符中间，比如 <code>aa</code>。</p>
+          <p>从中心往两边扩，只要左右字符相等，就找到一个新的回文子串，答案立刻加一。</p>
+        </div>
+
+        <div class="demo" aria-label="中心扩展互动演示">
+          <div class="string-row" id="stringRow" aria-label="当前字符串字符和下标"></div>
+          <div class="demo-status">
+            <div><span>当前中心</span><strong id="centerLabel">-</strong></div>
+            <div><span>本步新区间</span><strong id="rangeLabel">-</strong></div>
+            <div><span>累计答案</span><strong id="countLabel">0</strong></div>
+          </div>
+          <p class="frame-note" id="frameNote" aria-live="polite"></p>
+          <div class="controls" aria-label="动画控制">
+            <button type="button" id="prevBtn" aria-label="上一步" title="上一步">‹</button>
+            <button type="button" id="playBtn" aria-label="播放或暂停动画" title="播放或暂停">播放</button>
+            <button type="button" id="nextBtn" aria-label="下一步" title="下一步">›</button>
+            <button type="button" id="resetBtn" aria-label="重置动画" title="重置">重置</button>
+          </div>
+          <div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
+        </div>
+      </article>
+
+      <article class="module" aria-labelledby="idea-title">
+        <h3 id="idea-title">4. 一句人话思路</h3>
+        <p><strong>把每个字符、每两个相邻字符中间都当成中心，向两边扩；每扩成功一次，就多找到一个回文子串。</strong></p>
+        <p>这就是中心扩展。它本质上还是双指针：左指针往左走，右指针往右走。</p>
+      </article>
+
+      <article class="module code-module" aria-labelledby="code-title">
+        <h3 id="code-title">5. 把思路翻译成 C++</h3>
+        <p>LeetCode 提交时只需要下面这个 <code>class Solution</code>。辅助函数 <code>expand</code> 返回“从这个中心能扩出几个回文”。</p>
+        <pre><code>class Solution {
+    int expand(const std::string&amp; s, int left, int right) {
+        int found = 0;
+        while (left &gt;= 0 &amp;&amp; right &lt; static_cast&lt;int&gt;(s.size()) &amp;&amp;
+               s[left] == s[right]) {
+            ++found;   // s[left..right] 是一个新的回文子串
+            --left;    // 继续往外看一层
+            ++right;
+        }
+        return found;
+    }
+
+public:
+    int countSubstrings(std::string s) {
+        int ans = 0;
+        for (int center = 0; center &lt; static_cast&lt;int&gt;(s.size()); ++center) {
+            ans += expand(s, center, center);     // 奇数长度
+            ans += expand(s, center, center + 1); // 偶数长度
+        }
+        return ans;
+    }
+};</code></pre>
+      </article>
+
+      <article class="module practice" aria-labelledby="practice-title">
+        <h3 id="practice-title">6. 现在轮到你</h3>
+        <p>先别急着看答案。试着口算 <code>s = "abba"</code> 有多少个回文子串，再点开提示。</p>
+        <details>
+          <summary>提示</summary>
+          <p>先数四个单字符；再看偶数中心，<code>bb</code> 和 <code>abba</code> 都会出现。</p>
+        </details>
+        <details>
+          <summary>答案与边界测试</summary>
+          <div class="tests" id="testList"></div>
+        </details>
+      </article>
+
+      <details class="deep-dive">
+        <summary>展开：DP 对照，什么时候更适合用</summary>
+        <p>如果你要反复查询某个区间 <code>s[l..r]</code> 是不是回文，可以建一张表：</p>
+        <pre><code>dp[l][r] = (s[l] == s[r]) &amp;&amp; (r - l &lt;= 1 || dp[l + 1][r - 1])</code></pre>
+        <p>它的时间也是 <code>O(n^2)</code>，但空间是 <code>O(n^2)</code>。LC647 只需要计数，所以中心扩展更轻；LC131、LC132 这类“切分”题，先用 DP 预处理回文表会更顺手。</p>
+      </details>
+
+      <aside class="note">
+        <strong>复杂度与边界</strong>
+        <p>字符串长度为 <code>n</code>。最多有 <code>2n - 1</code> 个中心，每个中心最坏扩 <code>O(n)</code>，所以时间 <code>O(n^2)</code>；只用几个变量，空间 <code>O(1)</code>。长度 1、全不相同、全相同、奇数回文、偶数回文都要测。</p>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Ally 的个人博客 · 回文子串互动专题 · LC647 标杆章</p>
+    <p>题面信息按 LeetCode 官方页面核对于 2026-09-20。</p>
+  </footer>
+
+  <script src="lessons.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
