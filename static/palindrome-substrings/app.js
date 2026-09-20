@@ -358,6 +358,15 @@
     window.addEventListener("hashchange", () => {
       const hashMatch = window.location.hash.match(/^#lesson-(.+)$/);
       if (hashMatch) selectLesson(hashMatch[1], false);
+      if (window.location.hash.startsWith("#lesson")) scrollToLesson();
+    });
+  }
+
+  function scrollToLesson() {
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        document.getElementById("lesson")?.scrollIntoView({ block: "start" });
+      });
     });
   }
 
@@ -366,4 +375,5 @@
   renderTabs();
   selectLesson(state.lessonId, false);
   bindKeyboard();
+  if (window.location.hash.startsWith("#lesson")) scrollToLesson();
 }());

@@ -638,6 +638,9 @@ p {
 
 .lesson-string-row {
   grid-template-columns: repeat(3, minmax(46px, 1fr));
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 12px 2px;
 }
 
 .secondary-row {
@@ -909,9 +912,30 @@ p {
   }
 
   .roadmap,
-  .tests,
-  .lesson-tabs {
+  .tests {
     grid-template-columns: 1fr;
+  }
+
+  .lesson-tabs {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .lesson-tab {
+    min-height: 72px;
+    padding: 8px;
+  }
+
+  .lesson-tab span {
+    font-size: 10px;
+  }
+
+  .lesson-tab strong {
+    font-size: 15px;
+  }
+
+  .lesson-tab small {
+    display: none;
   }
 
   .lesson-nav {

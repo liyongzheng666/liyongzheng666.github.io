@@ -89,8 +89,8 @@
       "id": "palindrome-substrings",
       "topic": "algorithms",
       "title": "回文子串互动专题",
-      "description": "从 LC647 的中心扩展开始，用可暂停、可单步的演示学会回文子串。",
-      "kind": "学习路线 · 标杆章已上线",
+      "description": "九道 LeetCode 从双指针、中心扩展与 DP 走到 KMP 和 Manacher，每题都有可单步演示与 C++17 解法。",
+      "kind": "学习路线 · 九题已上线",
       "url": "/palindrome-substrings/"
     },
     {
