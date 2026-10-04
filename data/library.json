@@ -94,6 +94,14 @@
       "url": "/palindrome-substrings/"
     },
     {
+      "id": "backtracking",
+      "topic": "algorithms",
+      "title": "回溯算法互动专题",
+      "description": "从 01 串起步，系统学习子集、组合、排列、去重、剪枝、回文切分、网格搜索和 LC132 的 DP 对照。",
+      "kind": "学习路线 · 十一节已上线",
+      "url": "/backtracking/"
+    },
+    {
       "id": "fish",
       "topic": "tooling",
       "title": "Fish 终端配置",
