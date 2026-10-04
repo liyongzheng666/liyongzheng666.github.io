@@ -1,20 +1,3 @@
-window.BT_TOPIC = {
-  lessonOrder: ["binary", "78", "77", "46", "90", "47", "39", "40", "131", "79", "132"],
-  lessons: [
-    { stage: "第 0 课", id: "binary", title: "生成长度 3 的 01 串", difficulty: "Warmup", url: "#", method: "递归 + 状态恢复", summary: "先把 choose / dfs / undo 看清楚。" },
-    { stage: "第 1 课", id: "78", title: "Subsets", difficulty: "Medium", url: "https://leetcode.com/problems/subsets/", method: "子集树", summary: "每个节点都是一个答案，继续向后选择。" },
-    { stage: "第 2 课", id: "77", title: "Combinations", difficulty: "Medium", url: "https://leetcode.com/problems/combinations/", method: "组合 + start", summary: "只取长度 k 的节点，start 防止逆序重复。" },
-    { stage: "第 3 课", id: "46", title: "Permutations", difficulty: "Medium", url: "https://leetcode.com/problems/permutations/", method: "排列 + used", summary: "顺序重要，用 used 标记当前路径已经拿过谁。" },
-    { stage: "第 4 课", id: "90", title: "Subsets II", difficulty: "Medium", url: "https://leetcode.com/problems/subsets-ii/", method: "子集 + 同层去重", summary: "重复元素只跳过同一层的第二条相同分支。" },
-    { stage: "第 5 课", id: "47", title: "Permutations II", difficulty: "Medium", url: "https://leetcode.com/problems/permutations-ii/", method: "排列 + 去重 used", summary: "先排序，同层相同数字只让第一个未使用副本开分支。" },
-    { stage: "第 6 课", id: "39", title: "Combination Sum", difficulty: "Medium", url: "https://leetcode.com/problems/combination-sum/", method: "复用选择 + 剪枝", summary: "下一层仍从 i 开始，表示当前数可以重复用。" },
-    { stage: "第 7 课", id: "40", title: "Combination Sum II", difficulty: "Medium", url: "https://leetcode.com/problems/combination-sum-ii/", method: "不可复用 + 去重", summary: "下一层从 i+1 开始，同层重复值跳过。" },
-    { stage: "第 8 课", id: "131", title: "Palindrome Partitioning", difficulty: "Medium", url: "https://leetcode.com/problems/palindrome-partitioning/", method: "字符串切分回溯", summary: "每次选一段回文，递归处理剩余后缀。" },
-    { stage: "第 9 课", id: "79", title: "Word Search", difficulty: "Medium", url: "https://leetcode.com/problems/word-search/", method: "网格 DFS + visited", summary: "沿路径占用格子，返回时恢复 visited。" },
-    { stage: "第 10 课", id: "132", title: "Palindrome Partitioning II", difficulty: "Hard", url: "https://leetcode.com/problems/palindrome-partitioning-ii/", method: "回文表 + 前缀 DP", summary: "目标从列出全部切法变成求最少切几刀。" }
-  ]
-};
-
 (function () {
   "use strict";
 
@@ -234,157 +217,6 @@ window.BT_TOPIC = {
     return b.frames;
   }
 
-  function combinationTrace(reuse) {
-    const nums = reuse ? [2, 3, 6, 7] : [1, 1, 2, 5];
-    const target = reuse ? 7 : 3;
-    const b = traceBuilder();
-    const ans = [];
-    const path = [];
-    const root = b.node(null, "root", "dfs(start=0,sum=0)");
-
-    function dfs(start, sum, nodeId, parentId, edgeLabel, depth) {
-      b.push({ nodeId, parentId, edgeLabel, action: "enter", line: 21, message: `进入 dfs(start=${start}, sum=${sum})。`, path, depth, variables: { start, sum, target }, answers: ans });
-      if (sum === target) {
-        ans.push([...path]);
-        b.push({ nodeId, parentId, edgeLabel, action: "answer", line: 23, message: `sum 到 target，记录 ${json(path)}。`, path, depth, variables: { sum }, answers: ans });
-        b.push({ nodeId, parentId, edgeLabel, action: "return", line: 24, message: "找到一条组合，返回并撤销最后一次选择。", path, depth, variables: { sum }, answers: ans });
-        return;
-      }
-      for (let i = start; i < nums.length; i += 1) {
-        if (!reuse && i > start && nums[i] === nums[i - 1]) {
-          b.push({ nodeId, parentId, edgeLabel, action: "skip", line: 28, message: `同层重复值 ${nums[i]} 跳过。`, path, depth, variables: { start, i, sum }, answers: ans });
-          continue;
-        }
-        if (sum + nums[i] > target) {
-          b.push({ nodeId, parentId, edgeLabel, action: "skip", line: reuse ? 27 : 29, message: `已排序且 ${sum}+${nums[i]}>${target}，后面更大，直接 break。`, path, depth, variables: { start, i, sum }, answers: ans });
-          break;
-        }
-        path.push(nums[i]);
-        b.push({ nodeId, parentId, edgeLabel, action: "choose", line: reuse ? 28 : 31, message: reuse ? `选择 ${nums[i]}，下一层仍从 i=${i} 开始，所以它可以复用。` : `选择 ${nums[i]}，下一层从 i+1=${i + 1} 开始，所以每个下标只用一次。`, path, depth, variables: { start, i, sum: sum + nums[i] }, answers: ans });
-        const childStart = reuse ? i : i + 1;
-        const child = b.node(nodeId, `take ${nums[i]}@${i}`, `dfs(start=${childStart},sum=${sum + nums[i]})`);
-        dfs(childStart, sum + nums[i], child, nodeId, `take ${nums[i]}@${i}`, depth + 1);
-        path.pop();
-        b.push({ nodeId, parentId, edgeLabel, action: "undo", line: reuse ? 30 : 33, message: `撤销 ${nums[i]}，回到 sum=${sum}，同层尝试下一个候选。`, path, depth, variables: { start, i, sum }, answers: ans });
-      }
-      b.push({ nodeId, parentId, edgeLabel, action: "return", line: reuse ? 32 : 35, message: "本层候选处理完，返回父调用。", path, depth, variables: { start, sum }, answers: ans });
-    }
-
-    dfs(0, 0, root, null, "root", 0);
-    resultFrame(b.frames, ans, 43);
-    return b.frames;
-  }
-
-  function partitionTrace() {
-    const s = "aab";
-    const b = traceBuilder();
-    const ans = [];
-    const path = [];
-    const root = b.node(null, "root", "dfs(start=0)");
-
-    function isPal(l, r) {
-      while (l < r) {
-        if (s[l++] !== s[r--]) return false;
-      }
-      return true;
-    }
-
-    function dfs(start, nodeId, parentId, edgeLabel, depth) {
-      b.push({ nodeId, parentId, edgeLabel, action: "enter", line: 28, message: `进入 dfs(start=${start})，准备从这里切下一段。`, path, depth, variables: { start }, answers: ans });
-      if (start === s.length) {
-        ans.push([...path]);
-        b.push({ nodeId, parentId, edgeLabel, action: "answer", line: 30, message: `start 到末尾，记录切法 ${json(path)}。`, path, depth, variables: { start }, answers: ans });
-        b.push({ nodeId, parentId, edgeLabel, action: "return", line: 31, message: "完整切法返回，父调用会撤销最后一段。", path, depth, variables: { start }, answers: ans });
-        return;
-      }
-      for (let end = start; end < s.length; end += 1) {
-        const piece = s.slice(start, end + 1);
-        if (!isPal(start, end)) {
-          b.push({ nodeId, parentId, edgeLabel, action: "skip", line: 34, message: `${piece} 不是回文，不能作为一段。`, path, depth, variables: { start, end, piece }, answers: ans });
-          continue;
-        }
-        path.push(piece);
-        b.push({ nodeId, parentId, edgeLabel, action: "choose", line: 35, message: `选择回文段 ${piece}，下一层从 ${end + 1} 开始切。`, path, depth, variables: { start, end, piece }, answers: ans });
-        const child = b.node(nodeId, `take ${piece}`, `dfs(start=${end + 1})`);
-        dfs(end + 1, child, nodeId, `take ${piece}`, depth + 1);
-        path.pop();
-        b.push({ nodeId, parentId, edgeLabel, action: "undo", line: 37, message: `撤销 ${piece}，回到 start=${start} 尝试更长的一段。`, path, depth, variables: { start, end }, answers: ans });
-      }
-      b.push({ nodeId, parentId, edgeLabel, action: "return", line: 39, message: `dfs(start=${start}) 返回。`, path, depth, variables: { start }, answers: ans });
-    }
-
-    dfs(0, root, null, "root", 0);
-    resultFrame(b.frames, ans, 58);
-    return b.frames;
-  }
-
-  function wordTrace() {
-    const board = [["A", "B"], ["C", "D"]];
-    const word = "ABD";
-    const b = traceBuilder();
-    const path = [];
-    const ans = [];
-    const visited = [[false, false], [false, false]];
-    const root = b.node(null, "root", "search all cells");
-
-    function snap(extra) {
-      b.push({ ...extra, variables: { ...(extra.variables || {}), visited: clone(visited), word }, board: clone(board) });
-      b.frames[b.frames.length - 1].board = clone(board);
-    }
-
-    function dfs(r, c, index, nodeId, parentId, edgeLabel, depth) {
-      snap({ nodeId, parentId, edgeLabel, action: "enter", line: 25, message: `进入 dfs(r=${r}, c=${c}, index=${index})，要匹配 ${word[index]}。`, path, depth, variables: { r, c, index }, answers: ans });
-      if (r < 0 || r >= 2 || c < 0 || c >= 2 || visited[r][c] || board[r][c] !== word[index]) {
-        snap({ nodeId, parentId, edgeLabel, action: "return", line: 27, message: "越界、已访问或字符不相等，直接失败返回。", path, depth, variables: { r, c, index }, answers: ans });
-        return false;
-      }
-      path.push(`${board[r][c]}(${r},${c})`);
-      visited[r][c] = true;
-      snap({ nodeId, parentId, edgeLabel, action: "choose", line: 30, message: `占用格子 (${r},${c})=${board[r][c]}。`, path, depth, variables: { r, c, index }, answers: ans });
-      if (index === word.length - 1) {
-        ans.push(true);
-        snap({ nodeId, parentId, edgeLabel, action: "answer", line: 32, message: "最后一个字符匹配成功，整词找到。", path, depth, variables: { r, c, index }, answers: ans });
-        visited[r][c] = false;
-        path.pop();
-        snap({ nodeId, parentId, edgeLabel, action: "undo", line: 33, message: "即使已经成功，函数返回前也恢复 visited，避免污染其他入口。", path, depth, variables: { r, c, index }, answers: ans });
-        return true;
-      }
-      for (const [dr, dc, label] of [[1, 0, "down"], [-1, 0, "up"], [0, 1, "right"], [0, -1, "left"]]) {
-        const child = b.node(nodeId, label, `dfs(${r + dr},${c + dc},${index + 1})`);
-        if (dfs(r + dr, c + dc, index + 1, child, nodeId, label, depth + 1)) {
-          visited[r][c] = false;
-          path.pop();
-          snap({ nodeId, parentId, edgeLabel, action: "return", line: 38, message: "子路径已找到答案，本层恢复后把 true 往上传。", path, depth, variables: { r, c, index }, answers: ans });
-          return true;
-        }
-      }
-      visited[r][c] = false;
-      path.pop();
-      snap({ nodeId, parentId, edgeLabel, action: "undo", line: 42, message: "四个方向都失败，恢复当前格子并返回 false。", path, depth, variables: { r, c, index }, answers: ans });
-      return false;
-    }
-
-    snap({ nodeId: root, parentId: null, edgeLabel: "root", action: "enter", line: 50, message: "从每个格子尝试作为起点；示例从 A 开始即可找到 ABD。", path, depth: 0, variables: {}, answers: ans });
-    const child = b.node(root, "start A(0,0)", "dfs(0,0,0)");
-    dfs(0, 0, 0, child, root, "start A(0,0)", 1);
-    resultFrame(b.frames, [true], 64);
-    return b.frames;
-  }
-
-  function minCutTrace() {
-    const s = "aab";
-    const frames = [];
-    const pal = [[true, true, false], [false, true, false], [false, false, true]];
-    const dp = [0, 0, 1];
-    frames.push({ board: null, dp: [0, null, null], nodeId: 1, parentId: null, edgeLabel: "root", action: "enter", message: "LC132 不列出所有切法；它把问题改成前缀最优值。", line: 28, path: [], depth: 0, variables: { i: 0, s: "aab" }, answers: [], tree: ["*#1 root dp prefix"] });
-    frames.push({ board: null, dp: [0, null, null], nodeId: 1, parentId: null, edgeLabel: "root", action: "answer", message: "前缀 a 本身是回文，所以 dp[0]=0，不需要切。", line: 33, path: ["a"], depth: 0, variables: { i: 0, pal: pal[0][0] }, answers: [0], tree: ["*#1 root dp prefix"] });
-    frames.push({ board: null, dp: [0, 0, null], nodeId: 1, parentId: null, edgeLabel: "root", action: "answer", message: "前缀 aa 也是回文，dp[1]=0。这里和 LC131 的 aa|b 会在下一步连接。", line: 33, path: ["aa"], depth: 0, variables: { i: 1, pal: pal[0][1] }, answers: [0, 0], tree: ["*#1 root dp prefix"] });
-    frames.push({ board: null, dp: [0, 0, 2], nodeId: 1, parentId: null, edgeLabel: "root", action: "choose", message: "处理 aab，先设最坏 dp[2]=2，即 a|a|b。", line: 35, path: ["a", "a", "b"], depth: 0, variables: { i: 2, best: 2 }, answers: [0, 0], tree: ["*#1 root dp prefix"] });
-    frames.push({ board: null, dp: [0, 0, 1], nodeId: 1, parentId: null, edgeLabel: "root", action: "choose", message: "最后一段 b 是回文，从 j=2 转移：dp[1]+1=1，因此最少切一次。", line: 38, path: ["aa", "b"], depth: 0, variables: { i: 2, j: 2, candidate: "dp[1]+1" }, answers: [0, 0, 1], tree: ["*#1 root dp prefix"] });
-    frames.push({ board: null, dp, nodeId: 1, parentId: null, edgeLabel: "root", action: "done", message: "最终 dp[2]=1。它没有枚举返回所有方案，只保留最优切割次数。", line: 47, path: ["aa", "b"], depth: 0, variables: { answer: 1 }, answers: [1], tree: ["*#1 root dp prefix"] });
-    return frames;
-  }
-
   const code = {};
   code.binary = String.raw`#include <iostream>
 #include <string>
@@ -582,176 +414,6 @@ int main() {
     printJson(ans);
 }`;
 
-  code.combinationSum = String.raw`#include <algorithm>
-#include <iostream>
-#include <vector>
-using namespace std;
-
-void printJson(const vector<vector<int>>& values) {
-    cout << "[";
-    for (int i = 0; i < (int)values.size(); ++i) {
-        if (i) cout << ",";
-        cout << "[";
-        for (int j = 0; j < (int)values[i].size(); ++j) {
-            if (j) cout << ",";
-            cout << values[i][j];
-        }
-        cout << "]";
-    }
-    cout << "]\n";
-}
-
-void dfs(int start, int sum, int target, const vector<int>& nums, vector<int>& path, vector<vector<int>>& ans) {
-    if (sum == target) {
-        ans.push_back(path);
-        return;
-    }
-    for (int i = start; i < (int)nums.size(); ++i) {
-        if (sum + nums[i] > target) break;
-        path.push_back(nums[i]);
-        dfs(i, sum + nums[i], target, nums, path, ans);
-        path.pop_back();
-    }
-}
-
-int main() {
-    vector<int> nums{2, 3, 6, 7};
-    vector<int> path;
-    vector<vector<int>> ans;
-    sort(nums.begin(), nums.end());
-    dfs(0, 0, 7, nums, path, ans);
-    printJson(ans);
-}`;
-
-  code.combinationSum2 = code.combinationSum
-    .replace("vector<int> nums{2, 3, 6, 7};", "vector<int> nums{1, 1, 2, 5};")
-    .replace("dfs(i, sum + nums[i], target, nums, path, ans);", "dfs(i + 1, sum + nums[i], target, nums, path, ans);")
-    .replace("if (sum + nums[i] > target) break;", "if (i > start && nums[i] == nums[i - 1]) continue;\n        if (sum + nums[i] > target) break;")
-    .replace("dfs(0, 0, 7, nums, path, ans);", "dfs(0, 0, 3, nums, path, ans);");
-
-  code.partition = String.raw`#include <iostream>
-#include <string>
-#include <vector>
-using namespace std;
-
-void printJson(const vector<vector<string>>& values) {
-    cout << "[";
-    for (int i = 0; i < (int)values.size(); ++i) {
-        if (i) cout << ",";
-        cout << "[";
-        for (int j = 0; j < (int)values[i].size(); ++j) {
-            if (j) cout << ",";
-            cout << "\"" << values[i][j] << "\"";
-        }
-        cout << "]";
-    }
-    cout << "]\n";
-}
-
-bool isPalindrome(const string& s, int left, int right) {
-    while (left < right) {
-        if (s[left++] != s[right--]) return false;
-    }
-    return true;
-}
-
-void dfs(int start, const string& s, vector<string>& path, vector<vector<string>>& ans) {
-    if (start == (int)s.size()) {
-        ans.push_back(path);
-        return;
-    }
-    for (int end = start; end < (int)s.size(); ++end) {
-        if (!isPalindrome(s, start, end)) continue;
-        path.push_back(s.substr(start, end - start + 1));
-        dfs(end + 1, s, path, ans);
-        path.pop_back();
-    }
-}
-
-int main() {
-    string s = "aab";
-    vector<string> path;
-    vector<vector<string>> ans;
-    dfs(0, s, path, ans);
-    printJson(ans);
-}`;
-
-  code.word = String.raw`#include <iostream>
-#include <string>
-#include <vector>
-using namespace std;
-
-bool dfs(int r, int c, int index, vector<vector<char>>& board, const string& word, vector<vector<int>>& visited) {
-    int rows = (int)board.size();
-    int cols = (int)board[0].size();
-    if (r < 0 || r >= rows || c < 0 || c >= cols) return false;
-    if (visited[r][c]) return false;
-    if (board[r][c] != word[index]) return false;
-    visited[r][c] = 1;
-    if (index == (int)word.size() - 1) {
-        visited[r][c] = 0;
-        return true;
-    }
-    int dr[4] = {1, -1, 0, 0};
-    int dc[4] = {0, 0, 1, -1};
-    for (int dir = 0; dir < 4; ++dir) {
-        if (dfs(r + dr[dir], c + dc[dir], index + 1, board, word, visited)) {
-            visited[r][c] = 0;
-            return true;
-        }
-    }
-    visited[r][c] = 0;
-    return false;
-}
-
-bool exist(vector<vector<char>> board, string word) {
-    vector<vector<int>> visited(board.size(), vector<int>(board[0].size(), 0));
-    for (int r = 0; r < (int)board.size(); ++r) {
-        for (int c = 0; c < (int)board[0].size(); ++c) {
-            if (dfs(r, c, 0, board, word, visited)) return true;
-        }
-    }
-    return false;
-}
-
-int main() {
-    vector<vector<char>> board{{'A', 'B'}, {'C', 'D'}};
-    cout << (exist(board, "ABD") ? "true" : "false") << "\n";
-}`;
-
-  code.minCut = String.raw`#include <algorithm>
-#include <iostream>
-#include <string>
-#include <vector>
-using namespace std;
-
-int minCut(string s) {
-    int n = (int)s.size();
-    vector<vector<int>> pal(n, vector<int>(n, 0));
-    for (int len = 1; len <= n; ++len) {
-        for (int left = 0; left + len - 1 < n; ++left) {
-            int right = left + len - 1;
-            pal[left][right] = s[left] == s[right] && (len <= 2 || pal[left + 1][right - 1]);
-        }
-    }
-    vector<int> dp(n, 0);
-    for (int i = 0; i < n; ++i) {
-        if (pal[0][i]) {
-            dp[i] = 0;
-            continue;
-        }
-        dp[i] = i;
-        for (int j = 1; j <= i; ++j) {
-            if (pal[j][i]) dp[i] = min(dp[i], dp[j - 1] + 1);
-        }
-    }
-    return dp[n - 1];
-}
-
-int main() {
-    cout << minCut("aab") << "\n";
-}`;
-
   function starterFrom(full) {
     let starter = full
       .replace(/void dfs\(([^)]*)\) \{[\s\S]*?\n\}/m, "void dfs($1) {\n    // TODO: 写终止条件、选择、递归和撤销。\n}\n")
@@ -802,7 +464,7 @@ int main() {
     "能解释某一次 return 后，父调用为什么必须 undo。"
   ];
 
-  window.BT_LESSONS = {
+  const foundations = {
     binary: lesson(
       "binary", "生成长度 3 的 01 串", "第 0 课 · 递归热身", "#",
       "建立回溯最小模型：path 记录已选前缀，pos 表示正在填第几个位置。",
@@ -904,86 +566,31 @@ int main() {
       ["答案个数应为 6。", "解释为什么 [1,1,2,2] 合法。", "解释根层第二个 1 为什么跳过。"],
       starterFrom(code.permuteDup), code.permuteDup, () => permuteTrace(true)
     ),
-    "39": lesson(
-      "39", "LC39 · 组合总和", "第 6 课 · 可复用选择", "https://leetcode.com/problems/combination-sum/",
-      "理解下一层从 i 还是 i+1 开始的语义：能不能重复使用当前候选。",
-      "给定无重复正整数 candidates 和 target，数字可以无限次使用，返回所有和为 target 的组合。",
-      { input: "candidates = [2,3,6,7], target = 7", output: "[[2,2,3],[7]]", explain: "2 可以重复取，所以会出现 [2,2,3]。" },
-      [
-        { name: "状态", text: "start 控制组合顺序，sum 表示当前路径总和。" },
-        { name: "复用", text: "选择 candidates[i] 后，下一层仍传 i。" },
-        { name: "剪枝", text: "正数且已排序，sum + candidates[i] > target 时可以 break。" }
-      ],
-      ["选择 2 后仍从 2 开始，可继续选择 2。", "当路径 [2,2,3] 达到 target，记录答案。", "返回到 [2,2] 后撤销 3，发现后续 6、7 会超 target，剪掉。", "回到根层尝试 7，得到第二个答案。"],
-      ["下一层误传 i+1 会漏掉 [2,2,3]。", "没有正数和排序前提时，不能随便 break。"],
-      commonBacktrackChecks,
-      ["比较 LC39 和 LC40 的 childStart。", "用 target=7 手算 [2,2,3] 的来源。", "说明 break 的前提是已排序且数字为正。"],
-      starterFrom(code.combinationSum), code.combinationSum, () => combinationTrace(true)
-    ),
-    "40": lesson(
-      "40", "LC40 · 组合总和 II", "第 7 课 · 不可复用去重", "https://leetcode.com/problems/combination-sum-ii/",
-      "同一题型下切换语义：每个下标只能用一次，但输入可能有重复值。",
-      "给定 candidates 和 target，每个下标最多使用一次，返回不重复组合。示例使用 [1,1,2,5], target=3。",
-      { input: "candidates = [1,1,2,5], target = 3", output: "[[1,2]]", explain: "第一个 1 和第二个 1 不能在同一层重复开等价分支。" },
-      [
-        { name: "不可复用", text: "选择 i 后下一层从 i+1 开始。" },
-        { name: "去重", text: "同层相同值跳过，防止同一组合被不同副本重复生成。" },
-        { name: "剪枝", text: "排序后超 target 直接停止当前层。" }
-      ],
-      ["根层选第一个 1，下一层可以选 2，得到 [1,2]。", "回到根层后，第二个 1 是同层重复，跳过。", "再选 2 时无法凑到 3，后面的 5 超出后 break。"],
-      ["误传 i 会重复使用同一个下标。", "不做同层去重会得到两个 [1,2]。"],
-      commonBacktrackChecks,
-      ["答案只有一个 [1,2]。", "解释第二个 1 在根层为什么跳过。", "解释第二个 1 在路径 [1] 后面是否能用。"],
-      starterFrom(code.combinationSum2), code.combinationSum2, () => combinationTrace(false)
-    ),
-    "131": lesson(
-      "131", "LC131 · 分割回文串", "第 8 课 · 字符串切分", "https://leetcode.com/problems/palindrome-partitioning/",
-      "把选择从“选数字”换成“选一段字符串”，并理解 start/end 的含义。",
-      "把字符串切成若干段，每一段都必须是回文，返回所有切法。示例 aab 有两种。",
-      { input: "s = \"aab\"", output: "[[\"a\",\"a\",\"b\"],[\"aa\",\"b\"]]", explain: "a|a|b 和 aa|b 都合法。" },
-      [
-        { name: "状态", text: "start 表示下一段必须从哪个下标开始。" },
-        { name: "选择", text: "end 从 start 往右枚举，若 s[start..end] 是回文就加入 path。" },
-        { name: "恢复", text: "递归后 pop 掉刚加入的整段字符串，不是只弹一个字符。" }
-      ],
-      ["从 start=0 可以选 a，也可以选 aa。", "选 a 后进入 start=1，再选 a、b 得到第一条。", "返回到 start=0 后撤销 a，兄弟分支选 aa，再接 b 得到第二条。", "aab 不是回文，所以作为整段会被剪掉。"],
-      ["把 LC132 的最小切分和 LC131 的全部枚举混为一谈。", "path 存的是段，不是字符下标。"],
-      commonBacktrackChecks,
-      ["手写 aab 的两条答案。", "说明 start=end+1 为什么能保证段连续。", "先用 isPalindrome 写对，再考虑 DP 预处理。"],
-      starterFrom(code.partition), code.partition, partitionTrace
-    ),
-    "79": lesson(
-      "79", "LC79 · 单词搜索", "第 9 课 · 网格路径", "https://leetcode.com/problems/word-search/",
-      "把 path 从一维选择扩展到二维格子路径，重点理解 visited 恢复。",
-      "在字符网格中寻找一个单词，相邻格子可上下左右移动，同一条路径不能重复使用同一个格子。",
-      { input: "board = [[A,B],[C,D]], word = \"ABD\"", output: "true", explain: "A -> B -> D 是一条合法路径。" },
-      [
-        { name: "状态", text: "r、c 是当前位置，index 是正在匹配 word 的第几个字符。" },
-        { name: "选择", text: "当前格子匹配后，标记 visited，再尝试四个方向。" },
-        { name: "恢复", text: "无论成功还是失败，返回前都恢复 visited[r][c]。" }
-      ],
-      ["从 A(0,0) 开始匹配 A。", "占用 A 后尝试方向，向右到 B 成功。", "占用 B 后向下到 D 成功，单词匹配完毕。", "true 往上传时每一层仍会恢复自己的 visited。"],
-      ["只恢复失败路径，不恢复成功路径，会污染其他入口或测试。", "把 visited 设成全局但忘记按路径撤销。"],
-      commonBacktrackChecks,
-      ["解释为什么不能重复使用同一格。", "说明找到一个解就可以提前返回。", "在返回 true 的路径上也要恢复 visited。"],
-      starterFrom(code.word), code.word, wordTrace
-    ),
-    "132": lesson(
-      "132", "LC132 · 分割回文串 II", "第 10 课 · DP 对照", "https://leetcode.com/problems/palindrome-partitioning-ii/",
-      "理解为什么 LC132 不适合用“列出所有切法”作为正式解：它只要最少切割次数。",
-      "把字符串切成若干回文段，求最少切几刀。示例 aab 的答案是 1，因为 aa|b。",
-      { input: "s = \"aab\"", output: "1", explain: "aa 和 b 都是回文，只切一次。" },
-      [
-        { name: "状态", text: "dp[i] 表示 s[0..i] 切成回文段的最少切割次数。" },
-        { name: "转移", text: "若 s[j..i] 是回文，则候选是 dp[j-1]+1；j=0 时为 0。" },
-        { name: "对照", text: "LC131 保存所有 path；LC132 只保存前缀最优值。" }
-      ],
-      ["先求回文表，知道 a、aa、b 是回文。", "dp[0]=0，因为 a 不用切。", "dp[1]=0，因为 aa 不用切。", "处理 aab 时，最后一段 b 从 j=2 开始，候选 dp[1]+1=1。"],
-      ["把段数当切割次数，aa|b 有 2 段但只切 1 刀。", "用回溯列出所有切法会指数爆炸，只能作为小输入理解工具。"],
-      ["能说清 dp[i] 的含义。", "能解释 j=0 为什么是 0。", "能把 LC131 的两条切法和 LC132 的最优值对应起来。"],
-      ["先写 pal 表。", "对每个 i 枚举最后一段起点 j。", "答案是 dp[n-1]，不是段数。"],
-      starterFrom(code.minCut), code.minCut, minCutTrace
-    )
+
   };
-  window.BT_FOUNDATIONS = ["binary", "78", "77", "46", "90", "47"].map((id) => window.BT_LESSONS[id]);
+  window.BT_FOUNDATIONS = ["binary", "78", "77", "46", "90", "47"].map((id) => foundations[id]);
 }());
+
+// Keep the animation anchors tied to the displayed C++ source, including after header edits.
+for (const lesson of window.BT_FOUNDATIONS) {
+  if (lesson.id === '90') {
+    lesson.code = '#include <algorithm>\n' + lesson.code.replace('    dfs(0, nums, path, ans);','    sort(nums.begin(), nums.end());\n    dfs(0, nums, path, ans);');
+  }
+  const trace = lesson.trace;
+  const lines = lesson.code.split('\n');
+  const find = needle => {const i=lines.findIndex(line=>line.includes(needle));if(i<0)throw new Error(`Missing ${lesson.id} code anchor: ${needle}`);return i+1;};
+  const end = lines.findIndex(line=>line.includes('int main()'));
+  let last = end-1;while(last>=0&&!lines[last].trim())last--;
+  lesson.trace = input => trace(input).map((frame, index, all) => {
+    const f={...frame};
+    if(f.action==='enter')f.line=find('void dfs(');
+    else if(f.action==='choose')f.line=find('path.push_back(');
+    else if(f.action==='answer')f.line=find('ans.push_back(path)');
+    else if(f.action==='undo')f.line=find(lines.some(s=>s.includes('used[i] = 0'))?'used[i] = 0':'path.pop_back()');
+    else if(f.action==='skip')f.line=find(f.message.includes('同层')?'nums[i] == nums[i - 1]':'if (used[i])');
+    else if(f.action==='prune')f.line=find('int limit');
+    else if(f.action==='return')f.line=lines.some(s=>s.trim()==='return;')&&all[index-1]?.action==='answer'?find('return;'):last+1;
+    else if(f.action==='done'){f.line=find('    printJson(ans);');f.nodeId=null;f.parentId=null;}
+    return f;
+  });
+}

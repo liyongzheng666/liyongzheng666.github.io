@@ -391,7 +391,7 @@
     const s = input && input.s ? input.s : "aabbaab";
     const n = s.length;
     const pal = Array.from({ length: n }, () => Array(n).fill(false));
-    const cut = Array.from({ length: n }, (_, i) => i);
+    const cut = Array(n).fill(0);
     const frames = [];
 
     function palView() {
@@ -416,6 +416,7 @@
     }
 
     for (let right = 0; right < n; right += 1) {
+      cut[right] = right;
       push("enter", `计算 cut[${right}]：枚举最后一段回文 s[left..${right}]`, 21, { right, currentCut: cut[right] });
       for (let left = 0; left <= right; left += 1) {
         if (!pal[left][right]) {
@@ -1020,7 +1021,7 @@ int main() {
     };
     LINE_MAP["132"] = {
       pal: findLine(byId["132"], "pal[left][right] = 1;"),
-      enter: findLine(byId["132"], "for (int right = 0;"),
+      enter: findLine(byId["132"], "cut[right] = right;"),
       prunePalindrome: findLine(byId["132"], "if (!pal[left][right]) continue;"),
       pruneNoImproveLeftZero: findLine(byId["132"], "if (left == 0)"),
       pruneNoImprove: findLine(byId["132"], "cut[right] = min(cut[right], cut[left - 1] + 1);"),
@@ -1034,3 +1035,10 @@ int main() {
   buildLineMaps();
   window.BT_ADVANCED = lessons;
 }());
+
+// Falling off a void lambda returns at its closing brace, not at the base-case return.
+for (const lesson of window.BT_ADVANCED.filter(l => ['39','40','131'].includes(l.id))) {
+  const trace = lesson.trace;
+  const end = lesson.code.split('\n').findIndex(line => line.trim() === '};') + 1;
+  lesson.trace = input => trace(input).map((frame,index,all) => frame.action==='return' && all[index-1]?.action!=='answer' ? {...frame,line:end} : frame);
+}
