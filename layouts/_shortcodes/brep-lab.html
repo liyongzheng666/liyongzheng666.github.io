@@ -1,0 +1,14 @@
+{{- $mode := .Get "mode" | default "cycle" -}}
+{{- if not (in (slice "regions" "cycle" "occt") $mode) -}}
+  {{- errorf "brep-lab: unsupported mode %q" $mode -}}
+{{- end -}}
+{{- if not (.Page.Store.Get "brep-lab-assets") -}}
+  {{- .Page.Store.Set "brep-lab-assets" true -}}
+  {{- $css := resources.FromString "usd-brep-topology/lab.css" (readFile "static/usd-brep-topology/lab.css") | fingerprint "sha256" -}}
+  {{- $js := resources.FromString "usd-brep-topology/lab.js" (readFile "static/usd-brep-topology/lab.js") | fingerprint "sha256" -}}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" crossorigin="anonymous">
+  <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous" defer></script>
+{{- end -}}
+<div class="brep-lab" data-brep-lab data-mode="{{ $mode }}" data-ready="false">
+  <noscript>此处为可交互的三维拓扑示意。请启用 JavaScript 使用旋转与逐步播放；完整拓扑关系也已列在正文中。</noscript>
+</div>
