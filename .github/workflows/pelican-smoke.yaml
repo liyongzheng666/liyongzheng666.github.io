@@ -1,0 +1,68 @@
+name: Verify Pelican Coast public delivery
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/pelican-smoke.yaml
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Verify deployed page and immutable CDN files
+        env:
+          RELEASE_REF: b6d9c70cd2cbd12f13995d13cf4fbf990829c4e3
+        run: |
+          python3 - <<'PY'
+          import hashlib, os, time, urllib.request
+          ref = os.environ['RELEASE_REF']
+          bases = [
+              'https://www.goudanx.top/pelican-coast/',
+              f'https://rawcdn.githack.com/liyongzheng666/liyongzheng666.github.io/{ref}/static/pelican-coast/',
+          ]
+          expected = {
+              'index.html': 'c89985fd53aab1c27770f6531f05804da62216cd',
+              'engine.js': '1b0453145c0dd8da6fe98d66c783f72fdbb9c721',
+              'world.js': '3a40ce77fa9542679d350ac9e1c4ad095093d78b',
+              'game.js': '4e1681cf17c334f72fd93b41494e7fe1523de523',
+          }
+          results = []
+          for base in bases:
+              for name, digest in expected.items():
+                  url = base + name
+                  error = None
+                  for attempt in range(3):
+                      try:
+                          req = urllib.request.Request(url, headers={'User-Agent': 'PelicanCoast-DeliveryCheck/1.0'})
+                          with urllib.request.urlopen(req, timeout=20) as response:
+                              status = response.status
+                              content_type = response.headers.get('Content-Type', '')
+                              body = response.read()
+                          actual = hashlib.sha1(b'blob ' + str(len(body)).encode() + b'\0' + body).hexdigest()
+                          assert status == 200, f'HTTP {status}'
+                          assert actual == digest, f'Unexpected content hash {actual}'
+                          if name == 'index.html':
+                              assert 'text/html' in content_type, f'Wrong HTML MIME type: {content_type}'
+                              assert b'./engine.js' in body and b'./world.js' in body and b'./game.js' in body
+                          else:
+                              assert 'javascript' in content_type, f'Wrong script MIME type: {content_type}'
+                          print(f'PASS | {status} | {content_type} | {len(body)} bytes | {url}', flush=True)
+                          results.append((url, True, status, content_type))
+                          error = None
+                          break
+                      except Exception as exc:
+                          error = str(exc)
+                          print(f'RETRY {attempt + 1} | {url} | {error}', flush=True)
+                          if attempt < 2:
+                              time.sleep(4)
+                  if error is not None:
+                      results.append((url, False, 0, error))
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as out:
+              out.write('# Pelican Coast delivery verification\n\n')
+              for url, ok, status, info in results:
+                  out.write(f'- {"PASS" if ok else "FAIL"}: {url} — {status} {info}\n')
+          assert all(item[1] for item in results), 'One or more public delivery checks failed'
+          print('All 8 public HTTPS delivery checks passed.', flush=True)
+          PY
