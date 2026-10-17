@@ -69,6 +69,16 @@
       "featured": true
     },
     {
+      "id": "boolean-lab",
+      "topic": "ai-cad",
+      "title": "布尔运算对比实验室",
+      "description": "SMLib / OCCT 的120个布尔场景：容差对齐、真实输入与输出、独立判据及可复现脚本。",
+      "kind": "公开测评 · 真实模型",
+      "url": "/boolean-lab/",
+      "repo": "occt-smlib-boolean-benchmark",
+      "featured": true
+    },
+    {
       "id": "knapsack",
       "topic": "algorithms",
       "title": "八天背包训练",

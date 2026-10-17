@@ -1,0 +1,581 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SMLib 与 OCCT 布尔运算对比报告</title><style>body{font:16px/1.75 system-ui,-apple-system,"PingFang SC",sans-serif;max-width:1080px;margin:0 auto;padding:36px 24px 80px;color:#172a3a;background:#f9fbfd}a{color:#0369a1}h1{font-size:30px;line-height:1.3}h2{margin-top:48px;font-size:23px}table{border-collapse:collapse;width:100%;font-size:14px;display:block;overflow:auto;margin:24px 0;background:white}th,td{padding:10px 12px;border:1px solid #dce5ed;text-align:left}th{background:#eaf2f8}code{font-size:.9em;background:#e9eef3;padding:2px 4px;border-radius:3px;overflow-wrap:anywhere}.links{padding:16px 20px;background:#e9f4f7;border-radius:12px;margin-bottom:32px}.links a{display:inline-block;margin-right:24px}strong{color:#143f5d}li{margin:10px 0}@media(max-width:640px){body{padding:24px 16px}h1{font-size:26px}table{font-size:13px}}</style><body><nav class="links"><a href="../../index.html">返回布尔实验室</a><a href="https://github.com/liyongzheng666/occt-smlib-boolean-benchmark/releases/download/v0.1.0/boolean-report-and-data.zip">下载报告与原始数据</a><a href="https://github.com/liyongzheng666/occt-smlib-boolean-benchmark">复现仓库</a></nav><h1>SMLib 与 OCCT 布尔运算对比报告</h1>
+<p>整理日期：2026-10-17；实测数据日期：2026-10-16（Asia/Shanghai）。本版独立收录布尔运算内容，覆盖 <strong>120 个场景</strong>、<strong>3720 次正式观测</strong>。重复和容差档会再次使用同一场景，不能当成新的独立模型。网页展示真实内核输出，可以旋转查看输入 A、输入 B 和结果。</p>
+<h2>主要结果</h2>
+<table>
+<thead>
+<tr>
+<th>同组判据、场景及配置</th>
+<th style="text-align:right">SMLib</th>
+<th style="text-align:right">OCCT</th>
+<th style="text-align:right">每场景重复</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>12 个基础盒体布尔，默认配置</td>
+<td style="text-align:right">12/12</td>
+<td style="text-align:right">12/12</td>
+<td style="text-align:right">10</td>
+</tr>
+<tr>
+<td>45 个微小间隙、接触、薄重叠，默认配置</td>
+<td style="text-align:right">21/45</td>
+<td style="text-align:right">33/45</td>
+<td style="text-align:right">10</td>
+</tr>
+<tr>
+<td>同 45 例，目标输入容差 1e-7</td>
+<td style="text-align:right">31/45</td>
+<td style="text-align:right">33/45</td>
+<td style="text-align:right">10</td>
+</tr>
+<tr>
+<td>同 45 例，目标输入容差 1e-5</td>
+<td style="text-align:right">21/45</td>
+<td style="text-align:right">25/45</td>
+<td style="text-align:right">10</td>
+</tr>
+<tr>
+<td>15 个球/圆柱/盒体布尔，默认配置</td>
+<td style="text-align:right">15/15</td>
+<td style="text-align:right">15/15</td>
+<td style="text-align:right">10</td>
+</tr>
+<tr>
+<td>27 个复杂曲面布尔，具有独立解析体积答案，目标 1e-7</td>
+<td style="text-align:right">24/27</td>
+<td style="text-align:right">27/27</td>
+<td style="text-align:right">5</td>
+</tr>
+<tr>
+<td>21 个复杂曲面布尔，只有必要条件，目标 1e-7</td>
+<td style="text-align:right">17/21</td>
+<td style="text-align:right">21/21</td>
+<td style="text-align:right">5</td>
+</tr>
+</tbody>
+</table>
+<p>表中通过指通过各场景声明的全部检查，包括原生有效性和点归属。<strong>必要条件通过不是完整正确性证明</strong>。不能把不同判据、不同容差、重复使用的模型混成内核总体能力分数。微小特征位于建模容差带内时，严格数学真值与内核容差语义可能冲突，表中失配也不能一概称为布尔算法错误。</p>
+<p>3720 次正式观测没有崩溃或超时。每个固定场景/配置/内核的状态、离散结果一致，测量在声明阈值内可重复；稳定失配依然是失配。这不是跨版本、跨平台、长时间内存可靠性或随机扰动稳定性认证。测试是隔离进程运行，部分批次并发；耗时只供诊断，不用于性能排名。</p>
+<h2>证据组成与计数</h2>
+<table>
+<thead>
+<tr>
+<th>批次</th>
+<th style="text-align:right">场景或场景×容差档</th>
+<th style="text-align:right">内核数</th>
+<th style="text-align:right">每项重复</th>
+<th style="text-align:right">正式观测</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>basic-default</td>
+<td style="text-align:right">12</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">10</td>
+<td style="text-align:right">240</td>
+</tr>
+<tr>
+<td>challenge-default</td>
+<td style="text-align:right">60</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">10</td>
+<td style="text-align:right">1200</td>
+</tr>
+<tr>
+<td>aligned-tolerances</td>
+<td style="text-align:right">45×2</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">10</td>
+<td style="text-align:right">1800</td>
+</tr>
+<tr>
+<td>complex-aligned</td>
+<td style="text-align:right">48</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">480</td>
+</tr>
+<tr>
+<td>合计</td>
+<td style="text-align:right">210 个场景/配置组合</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right"><strong>3720</strong></td>
+</tr>
+</tbody>
+</table>
+<p>独立模型场景数为 12+60+48=120。另有 <strong>144 次默认模型显示重放</strong>与 <strong>2 次近外切球薄透镜显示细化重放</strong>，它们存放在 <code>data/replays/</code>，不计入正式次数或提高重复分母。默认显示重放逐指标核对历史结果；近切薄透镜两次重放核对正式首轮的原生量与离散判据。</p>
+<p>公开数据中的每条记录标有 <code>public_provenance</code>（批次、正式/重放角色、来源快照）。各批次 <code>cases.json</code> 冻结输入尺寸、操作、探测点、期望值及阈值；<code>observations.jsonl</code> 为逐次原始观测；<code>summary.json/csv</code> 为逐场景聚合；<code>manifest.json</code> 保存版本、原始源文件和二进制摘要以及公开副本的处理说明。不同批次判定器版本有差别，保留原有状态名，未事后重新打分。</p>
+<h2>版本和调用方法</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>实际测试配置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SMLib</td>
+<td>10.0.0；NVIDIA USD BRep 源码 commit <code>c9c5979f04cea8c38213004d4f04df0dcfb40d05</code></td>
+</tr>
+<tr>
+<td>SMLib Python 接口</td>
+<td>本项目 C ABI 薄桥接 + Python ctypes 调用官方 C++ core；不是官方 SmPyLib wheel</td>
+</tr>
+<tr>
+<td>OCCT</td>
+<td><code>cadquery-ocp==7.9.3.1.1</code>，OCP 运行版本 <code>7.9.3.1</code>，OCCT 7.9.3 系列</td>
+</tr>
+<tr>
+<td>OCCT 操作</td>
+<td>原生 Fuse / Cut / Common，parallel=false，额外 fuzzy=0</td>
+</tr>
+<tr>
+<td>系统</td>
+<td>macOS 26.6.2 arm64；公开副本保留软件与架构信息，删除个人机器路径</td>
+</tr>
+<tr>
+<td>基础 12 例来源</td>
+<td>brepjs commit <code>ee674d6ccbf86499bf87cf508b32a77e4ca75ed9</code> 的固定盒体布尔定义；扩充场景由本项目参数化生成</td>
+</tr>
+</tbody>
+</table>
+<p>两边均未自动修复、简化结果或修改布尔算法。SMLib 构建排除了未使用且缺少声明的 ImportExport 编译单元，官方内核源码未改。复现配置、获取上游源码与构建入口见仓库 <code>README.md</code>；本报告覆盖上述已实测版本，不将其他版本的文档或代码研究当成本次运行证据。</p>
+<h2>正确性判据</h2>
+<p><strong>基础盒体。</strong> 独立 Python 参考程序按轴对齐盒体边界划分空间单元，由集合真值推导体积、外露面积、质心、包围盒、材料实体数、有界空腔数和内外点；没有调用任一被测引擎。基础阈值为体积/面积 5e-6、质心和包围盒坐标 1e-6；离散计数、空集和点状态要求一致。12 例每次 27–125 个点，整个基础批次每内核每轮 735 点。</p>
+<p><strong>微小特征与初级曲面。</strong> 采用独立盒体集合和球、圆柱解析公式，保存每例 <code>expected</code> 与 <code>tolerances</code>。微特征采样可能进入建模容差带，因此单独检查体积、面积、范围、区域数及点归属，不能仅凭点状态判定模型错误。</p>
+<p><strong>复杂曲面。</strong> 16 种几何配置分别执行并、差、交，共 48 例，涵盖偏心等/异半径球、近外切球薄透镜、正交圆柱、斜轴贯穿圆柱、斜孔盒、环面截半、环面与偏心球/圆柱、正交环面、圆锥/圆台与球/盒、三轴椭球与斜圆柱/球/盒，以及正交双孔组合工具。27 例有独立解析体积；21 例只用体积上下界、有效性、远边界点和跨操作恒等式。每例 74–96 个解析输入归属点，与输入边界的保守距离大于 1e-3。没有将 OCCT 输出作为 SMLib 标准答案。</p>
+<p><strong>原生自检。</strong> SMLib 使用递归 AssertValid 与非空流形检查；OCCT 使用 BRepCheck_Analyzer，两者覆盖不完全等价，因此同时使用共同数学判据。复杂批次还检查输入有效性。质量属性缺失标为未取得或测量问题，不能当成具体数值误差；明确 <code>native_valid=false</code> 单独记为无效结果。无材料、无有界空腔且无面边顶点的合法空集不查询未定义的质心，不把网格失败伪装为空集。</p>
+<p><strong>跨操作检查。</strong> 同一对输入应满足 <code>V(A∪B)+V(A∩B)=V(A)+V(B)</code> 和 <code>V(A−B)+V(A∩B)=V(A)</code>。复杂组 16 配置×5 次：OCCT 80/80 通过；SMLib 75 次通过，5 次正交环面并集质量属性不可得而未评估。这些只是必要条件，互相抵消的误差可能通过体积恒等式。</p>
+<h2>容差对齐与因果证据</h2>
+<p>SMLib 默认观察到 Zone 约 1e-5；OCCT 常见新建输入存储容差为 1e-7。受控实验把新建精确输入的边/点最大存储容差设为目标，分别读回输入与结果容差，结果不强制压低。1800 次微特征对齐调用的输入边/点最大值均匹配目标。复杂组 SMLib 输入最大值为 1e-7，OCCT 因变换/组合保留约 1e-7–3e-7，不宣称全过程完全一致。</p>
+<table>
+<thead>
+<tr>
+<th>设置项</th>
+<th>SMLib</th>
+<th>OCCT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>输入设置</td>
+<td>创建上下文/基本体前 SetModelSizeEstimate，随后对新建 Brep、Face、Edge、Vertex 显式 SetTolerance(tol,FALSE,FALSE)</td>
+<td>BRep_Builder UpdateFace/UpdateEdge/UpdateVertex；不强制压低已有误差</td>
+</tr>
+<tr>
+<td>1e-7 受控档</td>
+<td>model-size estimate=0.0005，实际模型坐标未缩放</td>
+<td>输入 1e-7，fuzzy=0</td>
+</tr>
+<tr>
+<td>1e-5 受控档</td>
+<td>estimate=50，输入显式设 1e-5</td>
+<td>输入提高到 1e-5，fuzzy=0</td>
+</tr>
+<tr>
+<td>读回证据</td>
+<td>微特征为输入边/点最大值；不声称全部节点逐项读回已证实</td>
+<td>微特征保存 A/B 面、边、点 min/max/count</td>
+</tr>
+<tr>
+<td>未统一部分</td>
+<td>SM_USE_OLDTOL；Approx/XSect、context 和局部策略各自管理</td>
+<td>Precision.Confusion=1e-7、Intersection=1e-9、Angular=1e-12</td>
+</tr>
+</tbody>
+</table>
+<p>SMLib estimate=0.0005 对 2 mm 模型不是按真实尺度推荐的生产配置，而是利用公开容差映射开展受控实验。只降低新建精确基本体存储容差，不能直接照搬到具有近似误差的导入模型。单改全局值的审计显示请求 Zone=1e-7 时输入最大值仍为 1e-5，薄交集仍丢失，因此请求值和实际输入值必须区分。</p>
+<p>两个边长 2 mm 的盒体，B 的 x 起点为 1.999999 mm，交集应为宽 1e-6 mm、体积 4e-6 mm³ 的薄片：</p>
+<table>
+<thead>
+<tr>
+<th>配置</th>
+<th style="text-align:right">SMLib 体积 mm³</th>
+<th style="text-align:right">OCCT 体积 mm³</th>
+<th>观察</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>各自默认</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">3.9999999996709334e-6</td>
+<td>SMLib 丢失薄片</td>
+</tr>
+<tr>
+<td>输入目标 1e-7</td>
+<td style="text-align:right">4.0000000001150227e-6</td>
+<td style="text-align:right">3.9999999996709334e-6</td>
+<td>两边保留</td>
+</tr>
+<tr>
+<td>输入目标 1e-5</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td>两边丢失</td>
+</tr>
+</tbody>
+</table>
+<p>这说明默认/输入容差是该差异的重要原因，不能进一步把每个内部阈值贡献精确拆开。采样厚度下，1e-7 档最薄通过交集均为 1e-6 mm，1e-5 档均为 1e-4 mm；只能证明已测点，不是精确临界阈值。</p>
+<p>剩余差异包含容差带内合并、包围盒查询和点归属。1e-7 档 SMLib 有 2 例仅点归属不符；去掉这项后两边各 33/45，但通过集合不同。间隙等于输入容差的并集，SMLib 保留两实体和严格体积/面积但间隙点为 boundary；OCCT 合为一实体并改变面积/体积。重叠等于输入容差的并集，SMLib 严格体积/面积通过，OCCT 略有偏离。差异不是单向一方全面更强。</p>
+<h2>复杂曲面主要差异</h2>
+<table>
+<thead>
+<tr>
+<th>SMLib 场景</th>
+<th>实测问题</th>
+<th>解释边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>两个正交环面·并</td>
+<td>输入有效；结果自检失败、非流形，合法实体质量属性不可得</td>
+<td>网格外观看似实体不能替代自检；输出最大容差约 1.316e-5</td>
+</tr>
+<tr>
+<td>两个正交环面·差/交</td>
+<td>自检通过，多个独立远边界归属点不符</td>
+<td>差集把处于两环面孔洞中的原点判为内部，难以仅用边界容差解释</td>
+</tr>
+<tr>
+<td>圆锥台与偏心球·并</td>
+<td>自检通过，10 个归属点不符</td>
+<td>点 (-1.2,0,0) 在解析圆台内部，结果查询却为外部；尚未定位造型还是分类算法</td>
+</tr>
+<tr>
+<td>三轴椭球截半·并/差/交</td>
+<td>输入有效，解析体积符合，但 AssertValid 失败</td>
+<td>自检失败与体积错误是不同结论</td>
+</tr>
+</tbody>
+</table>
+<p>OCCT 在对应 48 例当前声明检查中未出现这些问题。这里覆盖解析曲面、非均匀变换和组合工具，尚未覆盖任意 NURBS 自由曲面、修剪退化面、大规模工业零件或复杂装配。</p>
+<h2>48 个复杂布尔场景的逐例结果</h2>
+<p>分母均为 5，PASS 表示该场景全部声明检查通过。必要条件组仍保留证据限制。</p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>证据等级</th>
+<th>SMLib</th>
+<th>OCCT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>等半径偏心球透镜 · 并集</td>
+<td>解析体积及声明检查</td>
+<td>5/5 · PASS</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>等半径偏心球透镜 · 差集 A−B</td>
+<td>解析体积及声明检查</td>
+<td>5/5 · PASS</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>等半径偏心球透镜 · 交集</td>
+<td>解析体积及声明检查</td>
+<td>5/5 · PASS</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>异半径偏心球透镜 · 并集</td>
+<td>解析体积及声明检查</td>
+<td>5/5 · PASS</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>异半径偏心球透镜 · 差集 A−B</td>
+<td>解析体积及声明检查</td>
+<td>5/5 · PASS</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>异半径偏心球透镜 · 交集</td>
+<td>解析体积及声明检查</td>
+<td>5/5 · PASS</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>近外切球薄透镜 · 并集</td>
+<td>解析体积及声明检查</td>
+<td>5/5 · PASS</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>近外切球薄透镜 · 差集 A−B</td>
+<td>解析体积及声明检查</td>
+<td>5/5 · PASS</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>近外切球薄透镜 · 交集</td>
+<td>解析体积及声明检查</td>
+<td>5/5 · PASS</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>正交圆柱 Steinmetz 交体 · 并集</td>
+<td>解析体积及声明检查</td>
+<td>5/5 · PASS</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>正交圆柱 Steinmetz 交体 · 差集 A−B</td>
+<td>解析体积及声明检查</td>
+<td>5/5 · PASS</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>正交圆柱 Steinmetz 交体 · 交集</td>
+<td>解析体积及声明检查</td>
+<td>5/5 · PASS</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>球与斜轴贯穿圆柱 · 并集</td>
+<td>解析体积及声明检查</td>
+<td>5/5 · PASS</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>球与斜轴贯穿圆柱 · 差集 A−B</td>
+<td>解析体积及声明检查</td>
+<td>5/5 · PASS</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>球与斜轴贯穿圆柱 · 交集</td>
+<td>解析体积及声明检查</td>
+<td>5/5 · PASS</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>盒体与偏心斜孔圆柱 · 并集</td>
+<td>必要条件</td>
+<td>5/5 · PASS</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>盒体与偏心斜孔圆柱 · 差集 A−B</td>
+<td>必要条件</td>
+<td>5/5 · PASS</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>盒体与偏心斜孔圆柱 · 交集</td>
+<td>必要条件</td>
+<td>5/5 · PASS</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>环面沿对称平面截半 · 并集</td>
+<td>解析体积及声明检查</td>
+<td>5/5 · PASS</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>环面沿对称平面截半 · 差集 A−B</td>
+<td>解析体积及声明检查</td>
+<td>5/5 · PASS</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>环面沿对称平面截半 · 交集</td>
+<td>解析体积及声明检查</td>
+<td>5/5 · PASS</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>环面与偏心球多曲线交界 · 并集</td>
+<td>必要条件</td>
+<td>5/5 · PASS</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>环面与偏心球多曲线交界 · 差集 A−B</td>
+<td>必要条件</td>
+<td>5/5 · PASS</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>环面与偏心球多曲线交界 · 交集</td>
+<td>必要条件</td>
+<td>5/5 · PASS</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>环面与偏心竖直圆柱 · 并集</td>
+<td>必要条件</td>
+<td>5/5 · PASS</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>环面与偏心竖直圆柱 · 差集 A−B</td>
+<td>必要条件</td>
+<td>5/5 · PASS</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>环面与偏心竖直圆柱 · 交集</td>
+<td>必要条件</td>
+<td>5/5 · PASS</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>两个正交环面 · 并集</td>
+<td>必要条件</td>
+<td>0/5 · INVALID_RESULT</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>两个正交环面 · 差集 A−B</td>
+<td>必要条件</td>
+<td>0/5 · CHECK_MISMATCH</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>两个正交环面 · 交集</td>
+<td>必要条件</td>
+<td>0/5 · CHECK_MISMATCH</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>圆锥台与偏心球 · 并集</td>
+<td>必要条件</td>
+<td>0/5 · CHECK_MISMATCH</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>圆锥台与偏心球 · 差集 A−B</td>
+<td>必要条件</td>
+<td>5/5 · PASS</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>圆锥台与偏心球 · 交集</td>
+<td>必要条件</td>
+<td>5/5 · PASS</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>圆锥顶点与母线截半 · 并集</td>
+<td>解析体积及声明检查</td>
+<td>5/5 · PASS</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>圆锥顶点与母线截半 · 差集 A−B</td>
+<td>解析体积及声明检查</td>
+<td>5/5 · PASS</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>圆锥顶点与母线截半 · 交集</td>
+<td>解析体积及声明检查</td>
+<td>5/5 · PASS</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>三轴椭球与偏心斜圆柱 · 并集</td>
+<td>必要条件</td>
+<td>5/5 · PASS</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>三轴椭球与偏心斜圆柱 · 差集 A−B</td>
+<td>必要条件</td>
+<td>5/5 · PASS</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>三轴椭球与偏心斜圆柱 · 交集</td>
+<td>必要条件</td>
+<td>5/5 · PASS</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>三轴椭球与偏心球 · 并集</td>
+<td>必要条件</td>
+<td>5/5 · PASS</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>三轴椭球与偏心球 · 差集 A−B</td>
+<td>必要条件</td>
+<td>5/5 · PASS</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>三轴椭球与偏心球 · 交集</td>
+<td>必要条件</td>
+<td>5/5 · PASS</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>盒体与正交双孔组合工具 · 并集</td>
+<td>解析体积及声明检查</td>
+<td>5/5 · PASS</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>盒体与正交双孔组合工具 · 差集 A−B</td>
+<td>解析体积及声明检查</td>
+<td>5/5 · PASS</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>盒体与正交双孔组合工具 · 交集</td>
+<td>解析体积及声明检查</td>
+<td>5/5 · PASS</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>三轴椭球对称平面截半 · 并集</td>
+<td>解析体积及声明检查</td>
+<td>0/5 · INVALID_RESULT</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>三轴椭球对称平面截半 · 差集 A−B</td>
+<td>解析体积及声明检查</td>
+<td>0/5 · INVALID_RESULT</td>
+<td>5/5 · PASS</td>
+</tr>
+<tr>
+<td>三轴椭球对称平面截半 · 交集</td>
+<td>解析体积及声明检查</td>
+<td>0/5 · INVALID_RESULT</td>
+<td>5/5 · PASS</td>
+</tr>
+</tbody>
+</table>
+<h2>真实模型与展示重放</h2>
+<p>网页模型来自原生输入与布尔输出的三角化，几何量来自精确 BRep 测量。没有依据期望体积或包围盒重建外观；失败结果能三角化时保留实际网格并标记失败。空结果、无效模型、网格导出失败分别显示。原坐标为 double，绘图前居中；“原始比例”保持 X/Y/Z 比例，不意味着屏幕毫米等于模型毫米。微特征局部放大只辅助观察，不改内核输入。</p>
+<p>布尔专版共 420 个场景/配置/内核显示模型包：默认 72×2=144；两档微特征 45×2×2=180；复杂曲面 48×2=96。默认模型来自独立重放，对齐/复杂模型通常来自正式首轮。两份近外切球交集显示资源采用独立细化重放；原始正式统计和原始网格哈希保留。</p>
+<p>近外切薄透镜默认弦高 1e-3 太粗，显示用结果弦高改为 1e-5（输入仍 1e-3）；原生体积、面积、质心、包围盒、点归属、有效性和容差与正式首轮相同。细化后网格体积相对原生体积误差 SMLib 约 0.051655%、OCCT 约 0.10795%。这改善显示准确性，没有增加正式重复次数。独立重放的 measurements/verification 保存在 <code>data/replays/display-refinement/</code>。</p>
+<h2>如何复现和审计</h2>
+<p><a href="https://github.com/liyongzheng666/occt-smlib-boolean-benchmark">公开复现仓库</a> · <a href="https://github.com/liyongzheng666/occt-smlib-boolean-benchmark/releases/download/v0.1.0/boolean-report-and-data.zip">v0.1.0 报告与数据包</a> · <a href="https://github.com/liyongzheng666/occt-smlib-boolean-benchmark/releases/download/v0.1.0/boolean-lab-web.zip">完整网页包</a></p>
+<ol>
+<li>按仓库 <code>README.md</code> 创建两侧运行环境、获取锁定提交的上游源码、构建 SMLib 桥接；不使用原作者机器路径或预编译私有库。</li>
+<li>使用冻结场景及原运行设置分别运行内核，结果写入新的运行目录，不覆盖发布证据。完整批次重复 10 次，复杂批次 5 次；先运行小样本验证环境。</li>
+<li>对照每场景阈值、点状态、原生有效性和实际输入/结果容差；错误与缺失指标要保留，不自动当成零或 PASS。</li>
+<li>通过 <code>data/CHECKSUMS.sha256</code> 验证公开数据文件；各 sanitized manifest 另存原始输入文件 SHA256，可追溯其快照。公开副本已过滤无关操作，并将个人绝对路径改为符号位置，因此公开副本本身不与原件逐字节相同。</li>
+<li>网页为预计算结果浏览器，不在浏览器实时运行 CAD。代码、构建、运行、测试结果和网页部署是不同验证边界；公开数据可独立查看，不要求先成功构建全部依赖。</li>
+</ol>
+<p>本报告的整理和网站发布没有重新运行全量内核。平台或编译器不同可能导致数值差异，应使用同一判据比较，不只比较文件哈希。公开数据保存原始测量值和状态，没有因发布而调整通过标准。</p>
+<h2>上游入口</h2>
+<ul>
+<li><a href="https://github.com/NVIDIA-Omniverse/usd-brep">NVIDIA USD BRep 官方源码</a>，<a href="https://github.com/NVIDIA-Omniverse/usd-brep/tree/c9c5979f04cea8c38213004d4f04df0dcfb40d05">本次锁定提交</a>。</li>
+<li><a href="https://github.com/Open-Cascade-SAS/OCCT">Open CASCADE 官方源码</a>，<a href="https://dev.opencascade.org/doc/overview/html/specification__boolean_operations.html">OCCT 布尔运算官方说明</a>。</li>
+<li><a href="https://github.com/CadQuery/OCP">CadQuery OCP 绑定</a>，<a href="https://pypi.org/project/cadquery-ocp/7.9.3.1.1/">cadquery-ocp 7.9.3.1.1 发布页</a>。</li>
+</ul>
+<p>上游源码、依赖与资源各自遵循其许可证；本仓库实验结论仅对应固定版本和已声明场景。</p>
+</body></html>

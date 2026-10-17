@@ -1,0 +1,2175 @@
+{
+  "cases": 120,
+  "families": {
+    "gap": 21,
+    "overlap": 21,
+    "contact": 3,
+    "curved": 15,
+    "basic": 12,
+    "complex_boolean": 48
+  },
+  "native_mesh_bundles": 420,
+  "recorded_observations": 3720,
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 2315,
+      "sha256": "5f2e2fcac041ffee36f810d5ae771f9fb303f86ef4ca040009ccabb97981bd24"
+    },
+    {
+      "path": "app.js",
+      "bytes": 30331,
+      "sha256": "b73e99c11db4fa03e51b4588ef466cc9ac96d26f11543c13e7212d2a73f7f3ba"
+    },
+    {
+      "path": "data/index.json",
+      "bytes": 469048,
+      "sha256": "fad7fb6be1917770bd545d9258dc35c8c4255b3020e604770ce426c66c0e62c4"
+    },
+    {
+      "path": "data/mesh-inventory.json",
+      "bytes": 159173,
+      "sha256": "8066fb740dc91eabffdb66d51f448843d808168a0fda37a5ddfe0e04fcab64d5"
+    },
+    {
+      "path": "data/meshes/advanced__occt-near-tangent.json",
+      "bytes": 2319535,
+      "sha256": "ee05f32ef4cd3be5b7d2aca794df139679283d4d65e6b9b617624d50f5454b6f"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_box_crossed_cylinder_tool_difference.json",
+      "bytes": 156152,
+      "sha256": "c1420a445a1d5a68ff1dca5f546c7fc391f4a261807bdd0c7c534d37072401f6"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_box_crossed_cylinder_tool_intersection.json",
+      "bytes": 155391,
+      "sha256": "6d2f424e07aed3c429fcb3c5906fcd8abf258baf6a78049a8379a97447d191c5"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_box_crossed_cylinder_tool_union.json",
+      "bytes": 168186,
+      "sha256": "0b984836bc5ace1b0f4f0eb4b911a0e6413e5c874ad488a248125bcf12e2da10"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_box_oblique_cylinder_difference.json",
+      "bytes": 64660,
+      "sha256": "4311d829c65b8f08f96c2b3d62573e394ced1ce2a96f7360ae2e583827bc2699"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_box_oblique_cylinder_intersection.json",
+      "bytes": 64156,
+      "sha256": "ffc4716a52c153de1b2060112f2b714461bd1709b37fd9560cde805e95ed83e5"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_box_oblique_cylinder_union.json",
+      "bytes": 95348,
+      "sha256": "c53933bc2e25c4e665e587d395ee5ee59e5744603caf5441376740bcc99260c1"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_cone_eccentric_sphere_difference.json",
+      "bytes": 1430577,
+      "sha256": "612833dbf25b7d1319c90e7f4c6d1793d3c79dea927dcc0ed1ac1fa1c050a550"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_cone_eccentric_sphere_intersection.json",
+      "bytes": 1356051,
+      "sha256": "1279ef6d4f0df72b062df3481cba882194f219c3a5fcf166093e5226a5ddd457"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_cone_eccentric_sphere_union.json",
+      "bytes": 1550991,
+      "sha256": "7f82a9063bcbb24e87f0d8e3213467627c10e5cb80d7999774196e95f9b01c7d"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_cone_half_box_difference.json",
+      "bytes": 195723,
+      "sha256": "28177ee791336b5a5e2c07de9807b47fdfb2a0eff81c5d8e6d0f68c2e0ad4882"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_cone_half_box_intersection.json",
+      "bytes": 194753,
+      "sha256": "bcbe85a702eb134885a9b07843aed2f904113b80ed73f6a2ccf0ed1761602f0e"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_cone_half_box_union.json",
+      "bytes": 196347,
+      "sha256": "12715c48922e72674de0d4205681ab40e9d9bd5fcdd94dcb74ad9ebeb5719801"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_cylinders_orthogonal_difference.json",
+      "bytes": 121923,
+      "sha256": "ff5cf26434c45a8e1a193222cd43143eda2acb5c59a23a7bbe74ec86662559ca"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_cylinders_orthogonal_intersection.json",
+      "bytes": 94472,
+      "sha256": "c37e229fba99ec5b2e677c10359468aec88b0ec13a48f8c7101550cd4752edea"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_cylinders_orthogonal_union.json",
+      "bytes": 150742,
+      "sha256": "691e5ab34974a65985e8139c23bf082a2a5b962b5551296c797cb66e9cc3b658"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_ellipsoid_eccentric_sphere_difference.json",
+      "bytes": 5739093,
+      "sha256": "5b6f9444ea35d33eba8a3dd6333523a7b6c9236c4fed175d51102a79ed0fc2d6"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_ellipsoid_eccentric_sphere_intersection.json",
+      "bytes": 4223882,
+      "sha256": "561d8dfd65c97b43d84e826f41471c65efb928b09bbafcfbe938ae5953019774"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_ellipsoid_eccentric_sphere_union.json",
+      "bytes": 6060248,
+      "sha256": "31bbb12efb280743a1d689b8875d96ac8cc611e8f6ddf3e1cd7ac4a3c121a342"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_ellipsoid_half_box_difference.json",
+      "bytes": 3960730,
+      "sha256": "7b5e7147fac483462a55f2ce3919ceebe30b25d460161873c3d6b32e9d47f13e"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_ellipsoid_half_box_intersection.json",
+      "bytes": 4007571,
+      "sha256": "75f0f81369600b07dcf164736a7e816f387b7f14cd33e4c16efb4f5bc6c13a6c"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_ellipsoid_half_box_union.json",
+      "bytes": 3961450,
+      "sha256": "01a3edc79ef10900a34466f058ce018bc5c007e50bde64a2e0da2d2f2d494982"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_ellipsoid_oblique_cylinder_difference.json",
+      "bytes": 5099692,
+      "sha256": "1e0459a35aa421092116a5310e4994e346d2e5427b7b5db847af971598ca7127"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_ellipsoid_oblique_cylinder_intersection.json",
+      "bytes": 3003557,
+      "sha256": "3f6621a633e278fd2bd5d5ca16cb3cf8b9b8ee0f0fe53e2fd8f345c88b70db30"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_ellipsoid_oblique_cylinder_union.json",
+      "bytes": 5129709,
+      "sha256": "a5a28ec1912eefb78abf2959b0e5b21540ff4c5760b71433dc5c65e42f6a1fca"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_sphere_lens_equal_difference.json",
+      "bytes": 2941038,
+      "sha256": "ab71fc5674707eec154c20631590d90eaadcd2c9da3639dada2d97f2777bfe8b"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_sphere_lens_equal_intersection.json",
+      "bytes": 2405256,
+      "sha256": "6cb1ac0f3fdc5d3a1cca1c28f29a7188fa090de4c70d8090600c3f12a8350ee4"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_sphere_lens_equal_union.json",
+      "bytes": 3507569,
+      "sha256": "fa22f2e6e4fa527038910c4b67c7484bb77228999a15ed4ce7a8e8fbd6645df7"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_sphere_lens_unequal_difference.json",
+      "bytes": 3521918,
+      "sha256": "07ec5d180abbf679abacfd01f608fbe921e93489e30e8d3c0045e02f4d622baa"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_sphere_lens_unequal_intersection.json",
+      "bytes": 2486450,
+      "sha256": "00854e8275ff1558b7bb6c73d65a1b8b23ec024b445f8a9f6be0d0c401c7bc40"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_sphere_lens_unequal_union.json",
+      "bytes": 3774448,
+      "sha256": "4064110dd34eba7ce5802eefba28eaa98b87e715b1e8081eafb02aa0f777e234"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_sphere_near_tangent_difference.json",
+      "bytes": 2916968,
+      "sha256": "5fa171aa26c3b8d99da96c72b6b5c609ce4a868067956c164437285a6313c6de"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_sphere_near_tangent_union.json",
+      "bytes": 3939503,
+      "sha256": "c636f40c0029ecffe14a3d112e2c37d4cea2af6ce99f81c449d12d802f799877"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_sphere_oblique_cylinder_difference.json",
+      "bytes": 2449644,
+      "sha256": "7ec45446d9885c62792ec9c92f94f7592da3c08df3439678cffea183d12db6a0"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_sphere_oblique_cylinder_intersection.json",
+      "bytes": 1375410,
+      "sha256": "7cadecd50b4a26a13e7cf1fb5123d67e28ff6c119819c8cbc375fafeae59b4d8"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_sphere_oblique_cylinder_union.json",
+      "bytes": 2479602,
+      "sha256": "069e847d9f350672ccc0a7c6e71b54181276d634e7340ca7a1bafd5cd2459916"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_tori_orthogonal_difference.json",
+      "bytes": 6715884,
+      "sha256": "d99727c382dac998dce1d738949b5937daba0d7c8e3c18e0ebf29c00124a5df6"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_tori_orthogonal_intersection.json",
+      "bytes": 5014903,
+      "sha256": "b8ccb3f8f27e2b9269f6348c57a37ddb0c964f4ac5060692ba393a38e8a1d0b2"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_tori_orthogonal_union.json",
+      "bytes": 8420818,
+      "sha256": "7926342aaf62170ebe3f06923ac4838b74854f86ac3ce4f63517cbb3e05a0fba"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_torus_eccentric_cylinder_difference.json",
+      "bytes": 4636645,
+      "sha256": "c405fd23937eefb0ac521a2ed0d74ee8e99858850f703c58925ce66426054601"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_torus_eccentric_cylinder_intersection.json",
+      "bytes": 2826560,
+      "sha256": "6db178a57a709a844f43b929e0ae88e769335b3a838ab5dfc969e01c17431e53"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_torus_eccentric_cylinder_union.json",
+      "bytes": 4668004,
+      "sha256": "4ebe87dedf3b9aa78cd0daa7bd4edec747de4afcf5c502071d53088c6c072afe"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_torus_eccentric_sphere_difference.json",
+      "bytes": 5993186,
+      "sha256": "ff9579c2c0adf5a25cdbfaafc8780873db86753704fa6f5f7ca2060096cfb3c5"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_torus_eccentric_sphere_intersection.json",
+      "bytes": 4028497,
+      "sha256": "804c9b847ac2c5fb14b0f2689bdad18a282fff8c40ae95b4f412712e1eec267c"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_torus_eccentric_sphere_union.json",
+      "bytes": 6488829,
+      "sha256": "ea9ab96dbd0d7e5a92745e9ffd544e510c5f5c9c531f61e53cff535bb87aa038"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_torus_half_box_difference.json",
+      "bytes": 2983993,
+      "sha256": "aee71b36b58992afd650a2012433ead90bd8ee15155e45f60db17294f1cdab3b"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_torus_half_box_intersection.json",
+      "bytes": 2978055,
+      "sha256": "e97c0c93ae4a41e84023928689953b9da18144000c8224163b641bbae504937e"
+    },
+    {
+      "path": "data/meshes/advanced__occt__aligned_1e-7__complex_torus_half_box_union.json",
+      "bytes": 2984797,
+      "sha256": "a8f04ae0a7e0fccedfaa1c10b25a17646a12c4097c228b667efd75597d715ed5"
+    },
+    {
+      "path": "data/meshes/advanced__smlib-near-tangent.json",
+      "bytes": 2203498,
+      "sha256": "310336a1ae4f2ed017f29f3d8b94587ab76f2b873bb1e2246a94792636e04693"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_box_crossed_cylinder_tool_difference.json",
+      "bytes": 118006,
+      "sha256": "19e694eb21e0af0fb1190e43734f966f3d07e7f7ea9bfa82b5beb28512b3e651"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_box_crossed_cylinder_tool_intersection.json",
+      "bytes": 117921,
+      "sha256": "daf60bd6c80463b736f21960ed6caa00614571670dbed7217c9ad58bbf57a85b"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_box_crossed_cylinder_tool_union.json",
+      "bytes": 130865,
+      "sha256": "f7724346a4b31ab74bd0fba124efb293967e8b0037a8c33b09f1bebef62697bd"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_box_oblique_cylinder_difference.json",
+      "bytes": 43761,
+      "sha256": "17eb202b64509270f13215be8a99d75720245f556a34e105b9a3d8bdf6d69ebd"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_box_oblique_cylinder_intersection.json",
+      "bytes": 43754,
+      "sha256": "b9729aeb84e0566fd7d986af4d695918400a07676bd8b9316602267aa6f0361b"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_box_oblique_cylinder_union.json",
+      "bytes": 64758,
+      "sha256": "76bc50e9c003f101f8741cceb1c1914663e0c915fd58e760ba9e1683f98eee98"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_cone_eccentric_sphere_difference.json",
+      "bytes": 1035999,
+      "sha256": "86f8d0b0c21a6c5e92948cec0e5b443a406d9f88bb7d503c6ee4ff1d131bf6c2"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_cone_eccentric_sphere_intersection.json",
+      "bytes": 1008229,
+      "sha256": "d3ed561ea64053457ddadeac2ea043b451b671980d2b548bca628f5f1f737dea"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_cone_eccentric_sphere_union.json",
+      "bytes": 1137228,
+      "sha256": "99295d9fe25f62d80faddcea0bda3c4840fd54aeb0b33c9fe58f60250cc5a327"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_cone_half_box_difference.json",
+      "bytes": 18085,
+      "sha256": "bfccebad7268c0e341c720b139e9517ea24c1f3b1f60d361149c4786b2c7ecdf"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_cone_half_box_intersection.json",
+      "bytes": 17978,
+      "sha256": "1d389b27659aedf2f349adc14e058a020f00a6b8b3be79e587c14d8d88e83018"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_cone_half_box_union.json",
+      "bytes": 18307,
+      "sha256": "ff576ae907c9165cba57af10a390ba8d41d34e2865fcf7462e1149a4b125d025"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_cylinders_orthogonal_difference.json",
+      "bytes": 70079,
+      "sha256": "5a8c6bcab10f348a1d7756f75161fa799b11fa27bd8305d015c4c10aabba417c"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_cylinders_orthogonal_intersection.json",
+      "bytes": 53241,
+      "sha256": "b771367dd2d31712fa4e68295ea7a61536e1cfd415d98e12d52aea242da121d5"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_cylinders_orthogonal_union.json",
+      "bytes": 86999,
+      "sha256": "47c704c4b73df4eafc96f733fe9f92775b93a325ecccbf30425ab345432e372b"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_ellipsoid_eccentric_sphere_difference.json",
+      "bytes": 2791213,
+      "sha256": "1429363ec3fca8b8939e8e31b243b1b693202a0a6e6d2c923db9b0c1bb6f7470"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_ellipsoid_eccentric_sphere_intersection.json",
+      "bytes": 2249249,
+      "sha256": "431f92ef5c87ebd3bc8be31a6c311ee28fa182e6e99b4b59a8ff4295d00ac3bb"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_ellipsoid_eccentric_sphere_union.json",
+      "bytes": 3034962,
+      "sha256": "25d2dbf389f098c69c6850cc3a6186cdb842a6cd74f1df332cf61e376e0c0f68"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_ellipsoid_half_box_difference.json",
+      "bytes": 1628623,
+      "sha256": "ed3c5ead82d589e70e54c52f7d4ff27f261ff6b9f7d47d3809fbc5c7bb58a203"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_ellipsoid_half_box_intersection.json",
+      "bytes": 1620791,
+      "sha256": "f323105f6b12a6a44f2986773b5af2a40c2d6da58590a55322ff8fded2ab3640"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_ellipsoid_half_box_union.json",
+      "bytes": 1629166,
+      "sha256": "4882df4a4635f470da0b57240e89a1487085bc6b8e82a13b543d23c600299645"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_ellipsoid_oblique_cylinder_difference.json",
+      "bytes": 2134491,
+      "sha256": "4b75130c44edd425355172f4883920deb77466e2f90212ffa8177fd33086c444"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_ellipsoid_oblique_cylinder_intersection.json",
+      "bytes": 1217777,
+      "sha256": "e2f809488f6e75260408d0c64cb2c11fe79d96887d49c060da2b5a34f9acaa3b"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_ellipsoid_oblique_cylinder_union.json",
+      "bytes": 2158896,
+      "sha256": "b8041a3db621cca50c939f960bf11f529e079a44f223a4db826c020c337d4257"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_sphere_lens_equal_difference.json",
+      "bytes": 2164431,
+      "sha256": "63eea53cabc6fe8b486fabd2f0bba01989da271457772ecfef65d9917b3fcf0b"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_sphere_lens_equal_intersection.json",
+      "bytes": 1749664,
+      "sha256": "cbf28b17be5c91c73127c38ceced2102f6fdf6cac8d5d6368366e11dca03d592"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_sphere_lens_equal_union.json",
+      "bytes": 2581807,
+      "sha256": "cebbab610554c96ac81866b68dbb615421905dca613e82af43e1b5be6b9ece23"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_sphere_lens_unequal_difference.json",
+      "bytes": 3734234,
+      "sha256": "64804c437d42c60763b03cd0ceb67062ae12c10c4e34fca71f418782acbbb88d"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_sphere_lens_unequal_intersection.json",
+      "bytes": 2565646,
+      "sha256": "e204731792ac813dddec8c3beb7ccdf6be3fa8579fee0480c31685b5b4ae5a79"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_sphere_lens_unequal_union.json",
+      "bytes": 3937684,
+      "sha256": "5be381e48e2750e188c8598bab69bfd7f33a99e87c0220e5d33b908685d3ef98"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_sphere_near_tangent_difference.json",
+      "bytes": 2149119,
+      "sha256": "d630bbdf747c0e28d64124c0e01d71cea9c42dc32b582090c9c81fbc3e7433e6"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_sphere_near_tangent_union.json",
+      "bytes": 2898571,
+      "sha256": "d0faabfbbc09ba6f1448d38752c2d66da6b882d5ea0b8b089f22f623a7615f50"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_sphere_oblique_cylinder_difference.json",
+      "bytes": 2831907,
+      "sha256": "5d1d63b6e597cda80bb2bc13c9e5c5c75e674597a91594386493b10984a77bf4"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_sphere_oblique_cylinder_intersection.json",
+      "bytes": 1594688,
+      "sha256": "8bda3a4e2094721beeb590561671679651d4bd8f703fe4ca6982a9543d802872"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_sphere_oblique_cylinder_union.json",
+      "bytes": 2856056,
+      "sha256": "d48bcf5443435424ad43ef64185679c614840556f6476cdd754c147747eff5d1"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_tori_orthogonal_difference.json",
+      "bytes": 7560489,
+      "sha256": "79947b14fcbe3c51903a5f870c90452a5eacb93af3cdd1bf6a7e3d889db7afe6"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_tori_orthogonal_intersection.json",
+      "bytes": 5322458,
+      "sha256": "bfc3049cfe0184451c6f6bbe48129db2fd0dd9c96b81d37f636dbab20f0cc1fa"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_tori_orthogonal_union.json",
+      "bytes": 9827921,
+      "sha256": "1bde5b333a12d07a823459bc0cb7d27aae943365b415d25a0e0b2e2432267e5a"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_torus_eccentric_cylinder_difference.json",
+      "bytes": 5085062,
+      "sha256": "2d31aeb140b70a15e84de7f994d9d91d62f01e038a62e555cf559cce56e1f2b2"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_torus_eccentric_cylinder_intersection.json",
+      "bytes": 2973551,
+      "sha256": "7609dbac71e800e68956d6a67b92c7d5094c3bd96685eebdcd55c20813688464"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_torus_eccentric_cylinder_union.json",
+      "bytes": 5105124,
+      "sha256": "0bb379cf74a9c31b3f40842eed90d59519148d4f1c9594e2d2b53f43d844dc1a"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_torus_eccentric_sphere_difference.json",
+      "bytes": 5838326,
+      "sha256": "63cc013087eda4b25899bb4044bae6446c7f80c7f601d373e374ad5df60c334d"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_torus_eccentric_sphere_intersection.json",
+      "bytes": 3800600,
+      "sha256": "f789b89147107fe2b6c18679bdc0ea998b4c92bc01e492a1c15893ccc21e26ee"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_torus_eccentric_sphere_union.json",
+      "bytes": 6237999,
+      "sha256": "feac5a8f60bc33ef1857dbece294c2ef3ff43936dd6f61967827de3fadb87ab9"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_torus_half_box_difference.json",
+      "bytes": 3986078,
+      "sha256": "5de33595af427f0bb54e048b65b23e13d369108879180c74dce892c35f36e9ae"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_torus_half_box_intersection.json",
+      "bytes": 3969207,
+      "sha256": "ad9d1a98cabc225dbdc8bf6486e32de5984fe6aeb453aff0502c4142f5c58d18"
+    },
+    {
+      "path": "data/meshes/advanced__smlib__aligned_1e-7__complex_torus_half_box_union.json",
+      "bytes": 3986856,
+      "sha256": "4f7667ee8ec1884f0e0b16dea510ab8efadc6c62e88cce1cabd24f6a779c5d83"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-5__box_contact_difference.json",
+      "bytes": 2298,
+      "sha256": "2a66a9c05abe10646b4c13ce70acb29894c149f962994eac63c870b7ee3ad4aa"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-5__box_contact_intersection.json",
+      "bytes": 1737,
+      "sha256": "8fb33d0c5c7bed7ec677d0c4eca28775a97cbf2f3e092acb764f56f0a8fb1884"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-5__box_contact_union.json",
+      "bytes": 2636,
+      "sha256": "87757766f05215eff06dbee7d1ee23fccfde5cc54553bb3f9a5d9c4489285e7e"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-5__box_gap_1e-3_difference.json",
+      "bytes": 2502,
+      "sha256": "6a73c0718ce61fc5f49616ec9bbadcb832d989546ab98946e58838285770f496"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-5__box_gap_1e-3_intersection.json",
+      "bytes": 1941,
+      "sha256": "694aca6591af3399009ae777379780664c79a3e2e1a7d2be53f47ae6ffe2ba0e"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-5__box_gap_1e-3_union.json",
+      "bytes": 3212,
+      "sha256": "301b6c3031b6c5e713493423e81512d7046daf8fe1457ab4cbe90af9e10422a9"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-5__box_gap_1e-4_difference.json",
+      "bytes": 2370,
+      "sha256": "2422e72d6cb80f1178b97bf764ca2b59d2e0b0be23b190eded05da1aa0692e0b"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-5__box_gap_1e-4_intersection.json",
+      "bytes": 1809,
+      "sha256": "fa40e5c96f074a7a15111a3fd9de8d60d1860fb3fe0202096adfab4aff167849"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-5__box_gap_1e-4_union.json",
+      "bytes": 2948,
+      "sha256": "53164508c3247cbffcd43965c668e30659db68ff1b9bea56271cd95d7c71c630"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-5__box_gap_1e-5_difference.json",
+      "bytes": 2454,
+      "sha256": "c1a6b189c7a72d2c4fe6efafa1eb9ef4d683876f9684e67a82d2592f4804bd72"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-5__box_gap_1e-5_intersection.json",
+      "bytes": 1833,
+      "sha256": "e48661704343478fb8b75aede10e429a8eb1c86d3477b21aa20f5ec0b90eb605"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-5__box_gap_1e-5_union.json",
+      "bytes": 2860,
+      "sha256": "c4e0f8e708f8698b6680da03e3f2b69552405bf9e697e66d7799892323090bc6"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-5__box_gap_1e-6_difference.json",
+      "bytes": 2490,
+      "sha256": "3042ae54924870bbd4cb9a8ced5f8ae3e1556217a7b2ab7ba4941c1b2ff1bad6"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-5__box_gap_1e-6_intersection.json",
+      "bytes": 1857,
+      "sha256": "ed2461cb932dd5aa447152e9a26f76b0fbd518ff1f7332ff2c304d9b2185b2ba"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-5__box_gap_1e-6_union.json",
+      "bytes": 2912,
+      "sha256": "0cbc912f56cbdb7d4ccef4e807fadbeee0df1a37c0013fae29f0d5554490ed7a"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-5__box_gap_1e-7_difference.json",
+      "bytes": 2622,
+      "sha256": "400f74de74249a07e5435186f081b28254feabe2849090ed1cdf5ebecc0ddac5"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-5__box_gap_1e-7_intersection.json",
+      "bytes": 1977,
+      "sha256": "d68d89050a8823ee2473f400fe197fa01b2e1b839f86b65a260499ef21eda68d"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-5__box_gap_1e-7_union.json",
+      "bytes": 3156,
+      "sha256": "b8e78719ef8fe522caaefbf14af0015cf8faff25ab1877d46c1ba11bba94decb"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-5__box_gap_1e-8_difference.json",
+      "bytes": 2562,
+      "sha256": "b0e12419a5ec6100b728da7a6d4949ecb00ee640dddc1e3aa30ac426be4454eb"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-5__box_gap_1e-8_intersection.json",
+      "bytes": 1905,
+      "sha256": "d10686312027a3ddf0beabe3bb912721344af5982afec4503390a0705914914e"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-5__box_gap_1e-8_union.json",
+      "bytes": 3016,
+      "sha256": "88e48af9eba41c6ec8b63b8d3b3f3c5511196122febf7e2f02efa501083eac96"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-5__box_gap_1e-9_difference.json",
+      "bytes": 2598,
+      "sha256": "8ef9af4293a3d30486b90906e5ef5d00b9c19368409533f43b579b419950ecf8"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-5__box_gap_1e-9_intersection.json",
+      "bytes": 1929,
+      "sha256": "dfc4953a2db2880bee1e7d3473d68d28013f5d0c9e68280334ea8219ef6d1a3f"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-5__box_gap_1e-9_union.json",
+      "bytes": 3068,
+      "sha256": "7a504633eab73cd8e3e2d7c4bd14bd5166fbdd102da808670d447a3c1b43559b"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-5__box_overlap_1e-3_difference.json",
+      "bytes": 2370,
+      "sha256": "89129ef61d2f102b20b60403e3a2a6277dea55f5dcb2b09af6a2f4686e9e63e4"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-5__box_overlap_1e-3_intersection.json",
+      "bytes": 2370,
+      "sha256": "ebc5cfbd30ef4224c258471be3c54ae4fb5fc6ba36c67d1b071e46239b22e3ea"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-5__box_overlap_1e-3_union.json",
+      "bytes": 3076,
+      "sha256": "8741cdc6f92ced10facbd1cf0cee3710105360f09deade3302ac00338d1841ad"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-5__box_overlap_1e-4_difference.json",
+      "bytes": 2550,
+      "sha256": "ac6327cf2fb7c190a538dc03801bba5e61ce28e0526e46b54c7162684a37645b"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-5__box_overlap_1e-4_intersection.json",
+      "bytes": 2550,
+      "sha256": "4b947ae73b630fc9a20d6526fd3284979b808dea6103864b49d74185c632f8be"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-5__box_overlap_1e-4_union.json",
+      "bytes": 3416,
+      "sha256": "8ede42952278184f3ef2f3152adf804fcf9c06a47b8b394b49ca61b9d602e947"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-5__box_overlap_1e-5_difference.json",
+      "bytes": 2454,
+      "sha256": "06530cff4bfffe140623064b97ec765855e5a0023683fe7272ecdc098cfa6a25"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-5__box_overlap_1e-5_intersection.json",
+      "bytes": 1833,
+      "sha256": "b4015530502f8353ae5a152bb3b93f55ebf3df58769c5318c7713d4034550388"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-5__box_overlap_1e-5_union.json",
+      "bytes": 2860,
+      "sha256": "551f4135994463f6a69b8e91d59a02f2486936a295919811365c13f3dfd8ca22"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-5__box_overlap_1e-6_difference.json",
+      "bytes": 2598,
+      "sha256": "648842d1730821c0ca747f5017826b1b10f3f870269b9ec547ecd897f5805a2f"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-5__box_overlap_1e-6_intersection.json",
+      "bytes": 1857,
+      "sha256": "9f1dadf9eac5b290fd1d63c60b3aa9337fef096bdbdbf2ad727942ada8fdde1a"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-5__box_overlap_1e-6_union.json",
+      "bytes": 3056,
+      "sha256": "4bfb96cc1d9866be0cf8ad8d5578ed6f891b7afe70b9ae00b5c6be6903ef9dd5"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-5__box_overlap_1e-7_difference.json",
+      "bytes": 2634,
+      "sha256": "9d010bc7222b6e592a03c186e450636284a6b3d0904d3d368c14852de7f2eee4"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-5__box_overlap_1e-7_intersection.json",
+      "bytes": 1989,
+      "sha256": "64f44e9b7a8b62b7ba79fe3a8232efc5f3018937cbe7d7bc6d5fa065d633db4d"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-5__box_overlap_1e-7_union.json",
+      "bytes": 3180,
+      "sha256": "6fc42f4d7b448f56bb023c2db6fe3f4e2674dc72be979395c3e00c63c7a2d915"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-5__box_overlap_1e-8_difference.json",
+      "bytes": 2646,
+      "sha256": "c9a9882fbeca17f0c9a5a279773000164021a023b17c0cac3b7b7fbf3b1f2f9c"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-5__box_overlap_1e-8_intersection.json",
+      "bytes": 1905,
+      "sha256": "7bdccfed700f31e3ed3e2a76eb7ae606b5d221715eda5997bef3b0f0e09590c3"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-5__box_overlap_1e-8_union.json",
+      "bytes": 3128,
+      "sha256": "8ee86d463c155680f7db972ece14afcb6732ba68e7b171271e744acc5a7b5b2f"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-5__box_overlap_1e-9_difference.json",
+      "bytes": 2598,
+      "sha256": "607e195727652026dc490830a98e6ed4492f7948e16360e0ce8ac7c8fe80c738"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-5__box_overlap_1e-9_intersection.json",
+      "bytes": 1929,
+      "sha256": "27f7c2e1c47492fc49e7bf9636ba9317f1089b6ab9c77ad7b8ecbd5743e8e303"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-5__box_overlap_1e-9_union.json",
+      "bytes": 3068,
+      "sha256": "877574a8a529c67d020cdad06fcc9127b660b31c138ff064f5502921bf99582e"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-7__box_contact_difference.json",
+      "bytes": 2298,
+      "sha256": "2a66a9c05abe10646b4c13ce70acb29894c149f962994eac63c870b7ee3ad4aa"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-7__box_contact_intersection.json",
+      "bytes": 1737,
+      "sha256": "8fb33d0c5c7bed7ec677d0c4eca28775a97cbf2f3e092acb764f56f0a8fb1884"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-7__box_contact_union.json",
+      "bytes": 2636,
+      "sha256": "87757766f05215eff06dbee7d1ee23fccfde5cc54553bb3f9a5d9c4489285e7e"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-7__box_gap_1e-3_difference.json",
+      "bytes": 2502,
+      "sha256": "6a73c0718ce61fc5f49616ec9bbadcb832d989546ab98946e58838285770f496"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-7__box_gap_1e-3_intersection.json",
+      "bytes": 1941,
+      "sha256": "694aca6591af3399009ae777379780664c79a3e2e1a7d2be53f47ae6ffe2ba0e"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-7__box_gap_1e-3_union.json",
+      "bytes": 3212,
+      "sha256": "301b6c3031b6c5e713493423e81512d7046daf8fe1457ab4cbe90af9e10422a9"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-7__box_gap_1e-4_difference.json",
+      "bytes": 2370,
+      "sha256": "2422e72d6cb80f1178b97bf764ca2b59d2e0b0be23b190eded05da1aa0692e0b"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-7__box_gap_1e-4_intersection.json",
+      "bytes": 1809,
+      "sha256": "fa40e5c96f074a7a15111a3fd9de8d60d1860fb3fe0202096adfab4aff167849"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-7__box_gap_1e-4_union.json",
+      "bytes": 2948,
+      "sha256": "53164508c3247cbffcd43965c668e30659db68ff1b9bea56271cd95d7c71c630"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-7__box_gap_1e-5_difference.json",
+      "bytes": 2394,
+      "sha256": "4843e264b5a0dc3dfecb4970881aff473b9ae53b5a52ab5654fecbdf1da91c6c"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-7__box_gap_1e-5_intersection.json",
+      "bytes": 1833,
+      "sha256": "e48661704343478fb8b75aede10e429a8eb1c86d3477b21aa20f5ec0b90eb605"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-7__box_gap_1e-5_union.json",
+      "bytes": 2996,
+      "sha256": "8abd64e12291e45ed574442f746c14d97e417c567bbbb827ec362cce65e6e603"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-7__box_gap_1e-6_difference.json",
+      "bytes": 2418,
+      "sha256": "5af59825f95d14c1d62f54da90a60c9ae4359da821a1b96cc41df319d0009855"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-7__box_gap_1e-6_intersection.json",
+      "bytes": 1857,
+      "sha256": "ed2461cb932dd5aa447152e9a26f76b0fbd518ff1f7332ff2c304d9b2185b2ba"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-7__box_gap_1e-6_union.json",
+      "bytes": 3044,
+      "sha256": "7415c10551a34690960940d3a3aae7b7b0ad1bae9b71f04037c9eac22338feb1"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-7__box_gap_1e-7_difference.json",
+      "bytes": 2622,
+      "sha256": "400f74de74249a07e5435186f081b28254feabe2849090ed1cdf5ebecc0ddac5"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-7__box_gap_1e-7_intersection.json",
+      "bytes": 1977,
+      "sha256": "d68d89050a8823ee2473f400fe197fa01b2e1b839f86b65a260499ef21eda68d"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-7__box_gap_1e-7_union.json",
+      "bytes": 3156,
+      "sha256": "b8e78719ef8fe522caaefbf14af0015cf8faff25ab1877d46c1ba11bba94decb"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-7__box_gap_1e-8_difference.json",
+      "bytes": 2562,
+      "sha256": "b0e12419a5ec6100b728da7a6d4949ecb00ee640dddc1e3aa30ac426be4454eb"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-7__box_gap_1e-8_intersection.json",
+      "bytes": 1905,
+      "sha256": "d10686312027a3ddf0beabe3bb912721344af5982afec4503390a0705914914e"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-7__box_gap_1e-8_union.json",
+      "bytes": 3016,
+      "sha256": "88e48af9eba41c6ec8b63b8d3b3f3c5511196122febf7e2f02efa501083eac96"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-7__box_gap_1e-9_difference.json",
+      "bytes": 2598,
+      "sha256": "8ef9af4293a3d30486b90906e5ef5d00b9c19368409533f43b579b419950ecf8"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-7__box_gap_1e-9_intersection.json",
+      "bytes": 1929,
+      "sha256": "dfc4953a2db2880bee1e7d3473d68d28013f5d0c9e68280334ea8219ef6d1a3f"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-7__box_gap_1e-9_union.json",
+      "bytes": 3068,
+      "sha256": "7a504633eab73cd8e3e2d7c4bd14bd5166fbdd102da808670d447a3c1b43559b"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-7__box_overlap_1e-3_difference.json",
+      "bytes": 2370,
+      "sha256": "89129ef61d2f102b20b60403e3a2a6277dea55f5dcb2b09af6a2f4686e9e63e4"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-7__box_overlap_1e-3_intersection.json",
+      "bytes": 2370,
+      "sha256": "ebc5cfbd30ef4224c258471be3c54ae4fb5fc6ba36c67d1b071e46239b22e3ea"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-7__box_overlap_1e-3_union.json",
+      "bytes": 3076,
+      "sha256": "8741cdc6f92ced10facbd1cf0cee3710105360f09deade3302ac00338d1841ad"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-7__box_overlap_1e-4_difference.json",
+      "bytes": 2550,
+      "sha256": "ac6327cf2fb7c190a538dc03801bba5e61ce28e0526e46b54c7162684a37645b"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-7__box_overlap_1e-4_intersection.json",
+      "bytes": 2550,
+      "sha256": "4b947ae73b630fc9a20d6526fd3284979b808dea6103864b49d74185c632f8be"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-7__box_overlap_1e-4_union.json",
+      "bytes": 3416,
+      "sha256": "8ede42952278184f3ef2f3152adf804fcf9c06a47b8b394b49ca61b9d602e947"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-7__box_overlap_1e-5_difference.json",
+      "bytes": 2442,
+      "sha256": "182f23f832927e7e5358f404c73fd73aa4755a693408c2449e81ccb04c081fd2"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-7__box_overlap_1e-5_intersection.json",
+      "bytes": 2442,
+      "sha256": "d1f43ea351c980f94637c6e84bc0a7e2e661eb7084433e135324673e22f39dab"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-7__box_overlap_1e-5_union.json",
+      "bytes": 3180,
+      "sha256": "717cd87a689cad5565c613916b69857e5832da201200c0ec78d2ac5400946238"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-7__box_overlap_1e-6_difference.json",
+      "bytes": 2478,
+      "sha256": "ada9639e756820471cf70607db49f0358dba18b4681b9e945e107d17a05e1742"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-7__box_overlap_1e-6_intersection.json",
+      "bytes": 2478,
+      "sha256": "9444ff9e296426c50b4faa40ac3657013d476e8e45bb175bf7e502d5ad77c733"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-7__box_overlap_1e-6_union.json",
+      "bytes": 3232,
+      "sha256": "edc54075328137d81a0fa9edca8383b6b6830c796b67c869f6eef31e75a1b944"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-7__box_overlap_1e-7_difference.json",
+      "bytes": 2634,
+      "sha256": "9d010bc7222b6e592a03c186e450636284a6b3d0904d3d368c14852de7f2eee4"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-7__box_overlap_1e-7_intersection.json",
+      "bytes": 1989,
+      "sha256": "64f44e9b7a8b62b7ba79fe3a8232efc5f3018937cbe7d7bc6d5fa065d633db4d"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-7__box_overlap_1e-7_union.json",
+      "bytes": 3180,
+      "sha256": "6fc42f4d7b448f56bb023c2db6fe3f4e2674dc72be979395c3e00c63c7a2d915"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-7__box_overlap_1e-8_difference.json",
+      "bytes": 2646,
+      "sha256": "c9a9882fbeca17f0c9a5a279773000164021a023b17c0cac3b7b7fbf3b1f2f9c"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-7__box_overlap_1e-8_intersection.json",
+      "bytes": 1905,
+      "sha256": "7bdccfed700f31e3ed3e2a76eb7ae606b5d221715eda5997bef3b0f0e09590c3"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-7__box_overlap_1e-8_union.json",
+      "bytes": 3128,
+      "sha256": "8ee86d463c155680f7db972ece14afcb6732ba68e7b171271e744acc5a7b5b2f"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-7__box_overlap_1e-9_difference.json",
+      "bytes": 2598,
+      "sha256": "607e195727652026dc490830a98e6ed4492f7948e16360e0ce8ac7c8fe80c738"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-7__box_overlap_1e-9_intersection.json",
+      "bytes": 1929,
+      "sha256": "27f7c2e1c47492fc49e7bf9636ba9317f1089b6ab9c77ad7b8ecbd5743e8e303"
+    },
+    {
+      "path": "data/meshes/occt__aligned_1e-7__box_overlap_1e-9_union.json",
+      "bytes": 3068,
+      "sha256": "877574a8a529c67d020cdad06fcc9127b660b31c138ff064f5502921bf99582e"
+    },
+    {
+      "path": "data/meshes/occt__default__basic_difference_contained.json",
+      "bytes": 2804,
+      "sha256": "0b881a8263f77ef0146b6e2d2d5571a6af4f963bb44b7c68963c33c2e21bf41d"
+    },
+    {
+      "path": "data/meshes/occt__default__basic_difference_disjoint.json",
+      "bytes": 2322,
+      "sha256": "21e9d8df06c088d3fd84fdfb93b11d5c436cd7487ef62ac11993035989cb0216"
+    },
+    {
+      "path": "data/meshes/occt__default__basic_difference_overlap.json",
+      "bytes": 2298,
+      "sha256": "f61eeb0c6faeca6ba7b973d9758de2d9c28ae6c8b0f54d2f96ee00e2170e1d7e"
+    },
+    {
+      "path": "data/meshes/occt__default__basic_intersection_contained.json",
+      "bytes": 2298,
+      "sha256": "717b454450ad0f819ce29c82f5ad19ab43dfd6211163cdfe768728ff8378b360"
+    },
+    {
+      "path": "data/meshes/occt__default__basic_intersection_disjoint.json",
+      "bytes": 1761,
+      "sha256": "be6aa45ed745cea1ef18f90d34769b7676ed443aa0df102a057081aa0c004f0b"
+    },
+    {
+      "path": "data/meshes/occt__default__basic_intersection_identical.json",
+      "bytes": 2298,
+      "sha256": "024731e12bea637c99a0bf49063bb603c305db06ee09c0ee96764c09751e50b1"
+    },
+    {
+      "path": "data/meshes/occt__default__basic_intersection_overlap.json",
+      "bytes": 2298,
+      "sha256": "b0af549e3ca7d9f82b255d6df0b57f619bcb49bf3e2f4f71e07283d9f92dc425"
+    },
+    {
+      "path": "data/meshes/occt__default__basic_union_contained.json",
+      "bytes": 2298,
+      "sha256": "e4aa93fa5cd52a92dbe7183097e8927d78c83a6c3e8cec0d9d7a31a6f22d4909"
+    },
+    {
+      "path": "data/meshes/occt__default__basic_union_disjoint.json",
+      "bytes": 2852,
+      "sha256": "b5f7c8ad883644cbea46985a2ac14cf62581157a3caa93f8d7f84388b8ffb001"
+    },
+    {
+      "path": "data/meshes/occt__default__basic_union_identical.json",
+      "bytes": 2298,
+      "sha256": "9352ce655c4426204d069e12c8b8b2b085197fbf25fbf16ba3e02dcae41aea47"
+    },
+    {
+      "path": "data/meshes/occt__default__basic_union_overlap.json",
+      "bytes": 2972,
+      "sha256": "9be6018a25168dec02858f1ea46803d4bcb77b28296702cf2f08abd1f3bfedcc"
+    },
+    {
+      "path": "data/meshes/occt__default__basic_union_touching.json",
+      "bytes": 2636,
+      "sha256": "61d4f83e0591cf591b2412076d757b595d919b395fa931c3cb9817d2e8044ce8"
+    },
+    {
+      "path": "data/meshes/occt__default__box_contact_difference.json",
+      "bytes": 2298,
+      "sha256": "2a66a9c05abe10646b4c13ce70acb29894c149f962994eac63c870b7ee3ad4aa"
+    },
+    {
+      "path": "data/meshes/occt__default__box_contact_intersection.json",
+      "bytes": 1737,
+      "sha256": "8fb33d0c5c7bed7ec677d0c4eca28775a97cbf2f3e092acb764f56f0a8fb1884"
+    },
+    {
+      "path": "data/meshes/occt__default__box_contact_union.json",
+      "bytes": 2636,
+      "sha256": "87757766f05215eff06dbee7d1ee23fccfde5cc54553bb3f9a5d9c4489285e7e"
+    },
+    {
+      "path": "data/meshes/occt__default__box_gap_1e-3_difference.json",
+      "bytes": 2502,
+      "sha256": "6a73c0718ce61fc5f49616ec9bbadcb832d989546ab98946e58838285770f496"
+    },
+    {
+      "path": "data/meshes/occt__default__box_gap_1e-3_intersection.json",
+      "bytes": 1941,
+      "sha256": "694aca6591af3399009ae777379780664c79a3e2e1a7d2be53f47ae6ffe2ba0e"
+    },
+    {
+      "path": "data/meshes/occt__default__box_gap_1e-3_union.json",
+      "bytes": 3212,
+      "sha256": "301b6c3031b6c5e713493423e81512d7046daf8fe1457ab4cbe90af9e10422a9"
+    },
+    {
+      "path": "data/meshes/occt__default__box_gap_1e-4_difference.json",
+      "bytes": 2370,
+      "sha256": "2422e72d6cb80f1178b97bf764ca2b59d2e0b0be23b190eded05da1aa0692e0b"
+    },
+    {
+      "path": "data/meshes/occt__default__box_gap_1e-4_intersection.json",
+      "bytes": 1809,
+      "sha256": "fa40e5c96f074a7a15111a3fd9de8d60d1860fb3fe0202096adfab4aff167849"
+    },
+    {
+      "path": "data/meshes/occt__default__box_gap_1e-4_union.json",
+      "bytes": 2948,
+      "sha256": "53164508c3247cbffcd43965c668e30659db68ff1b9bea56271cd95d7c71c630"
+    },
+    {
+      "path": "data/meshes/occt__default__box_gap_1e-5_difference.json",
+      "bytes": 2394,
+      "sha256": "4843e264b5a0dc3dfecb4970881aff473b9ae53b5a52ab5654fecbdf1da91c6c"
+    },
+    {
+      "path": "data/meshes/occt__default__box_gap_1e-5_intersection.json",
+      "bytes": 1833,
+      "sha256": "e48661704343478fb8b75aede10e429a8eb1c86d3477b21aa20f5ec0b90eb605"
+    },
+    {
+      "path": "data/meshes/occt__default__box_gap_1e-5_union.json",
+      "bytes": 2996,
+      "sha256": "8abd64e12291e45ed574442f746c14d97e417c567bbbb827ec362cce65e6e603"
+    },
+    {
+      "path": "data/meshes/occt__default__box_gap_1e-6_difference.json",
+      "bytes": 2418,
+      "sha256": "5af59825f95d14c1d62f54da90a60c9ae4359da821a1b96cc41df319d0009855"
+    },
+    {
+      "path": "data/meshes/occt__default__box_gap_1e-6_intersection.json",
+      "bytes": 1857,
+      "sha256": "ed2461cb932dd5aa447152e9a26f76b0fbd518ff1f7332ff2c304d9b2185b2ba"
+    },
+    {
+      "path": "data/meshes/occt__default__box_gap_1e-6_union.json",
+      "bytes": 3044,
+      "sha256": "7415c10551a34690960940d3a3aae7b7b0ad1bae9b71f04037c9eac22338feb1"
+    },
+    {
+      "path": "data/meshes/occt__default__box_gap_1e-7_difference.json",
+      "bytes": 2622,
+      "sha256": "400f74de74249a07e5435186f081b28254feabe2849090ed1cdf5ebecc0ddac5"
+    },
+    {
+      "path": "data/meshes/occt__default__box_gap_1e-7_intersection.json",
+      "bytes": 1977,
+      "sha256": "d68d89050a8823ee2473f400fe197fa01b2e1b839f86b65a260499ef21eda68d"
+    },
+    {
+      "path": "data/meshes/occt__default__box_gap_1e-7_union.json",
+      "bytes": 3156,
+      "sha256": "b8e78719ef8fe522caaefbf14af0015cf8faff25ab1877d46c1ba11bba94decb"
+    },
+    {
+      "path": "data/meshes/occt__default__box_gap_1e-8_difference.json",
+      "bytes": 2562,
+      "sha256": "b0e12419a5ec6100b728da7a6d4949ecb00ee640dddc1e3aa30ac426be4454eb"
+    },
+    {
+      "path": "data/meshes/occt__default__box_gap_1e-8_intersection.json",
+      "bytes": 1905,
+      "sha256": "d10686312027a3ddf0beabe3bb912721344af5982afec4503390a0705914914e"
+    },
+    {
+      "path": "data/meshes/occt__default__box_gap_1e-8_union.json",
+      "bytes": 3016,
+      "sha256": "88e48af9eba41c6ec8b63b8d3b3f3c5511196122febf7e2f02efa501083eac96"
+    },
+    {
+      "path": "data/meshes/occt__default__box_gap_1e-9_difference.json",
+      "bytes": 2598,
+      "sha256": "8ef9af4293a3d30486b90906e5ef5d00b9c19368409533f43b579b419950ecf8"
+    },
+    {
+      "path": "data/meshes/occt__default__box_gap_1e-9_intersection.json",
+      "bytes": 1929,
+      "sha256": "dfc4953a2db2880bee1e7d3473d68d28013f5d0c9e68280334ea8219ef6d1a3f"
+    },
+    {
+      "path": "data/meshes/occt__default__box_gap_1e-9_union.json",
+      "bytes": 3068,
+      "sha256": "7a504633eab73cd8e3e2d7c4bd14bd5166fbdd102da808670d447a3c1b43559b"
+    },
+    {
+      "path": "data/meshes/occt__default__box_overlap_1e-3_difference.json",
+      "bytes": 2370,
+      "sha256": "89129ef61d2f102b20b60403e3a2a6277dea55f5dcb2b09af6a2f4686e9e63e4"
+    },
+    {
+      "path": "data/meshes/occt__default__box_overlap_1e-3_intersection.json",
+      "bytes": 2370,
+      "sha256": "ebc5cfbd30ef4224c258471be3c54ae4fb5fc6ba36c67d1b071e46239b22e3ea"
+    },
+    {
+      "path": "data/meshes/occt__default__box_overlap_1e-3_union.json",
+      "bytes": 3076,
+      "sha256": "8741cdc6f92ced10facbd1cf0cee3710105360f09deade3302ac00338d1841ad"
+    },
+    {
+      "path": "data/meshes/occt__default__box_overlap_1e-4_difference.json",
+      "bytes": 2550,
+      "sha256": "ac6327cf2fb7c190a538dc03801bba5e61ce28e0526e46b54c7162684a37645b"
+    },
+    {
+      "path": "data/meshes/occt__default__box_overlap_1e-4_intersection.json",
+      "bytes": 2550,
+      "sha256": "4b947ae73b630fc9a20d6526fd3284979b808dea6103864b49d74185c632f8be"
+    },
+    {
+      "path": "data/meshes/occt__default__box_overlap_1e-4_union.json",
+      "bytes": 3416,
+      "sha256": "8ede42952278184f3ef2f3152adf804fcf9c06a47b8b394b49ca61b9d602e947"
+    },
+    {
+      "path": "data/meshes/occt__default__box_overlap_1e-5_difference.json",
+      "bytes": 2442,
+      "sha256": "182f23f832927e7e5358f404c73fd73aa4755a693408c2449e81ccb04c081fd2"
+    },
+    {
+      "path": "data/meshes/occt__default__box_overlap_1e-5_intersection.json",
+      "bytes": 2442,
+      "sha256": "d1f43ea351c980f94637c6e84bc0a7e2e661eb7084433e135324673e22f39dab"
+    },
+    {
+      "path": "data/meshes/occt__default__box_overlap_1e-5_union.json",
+      "bytes": 3180,
+      "sha256": "717cd87a689cad5565c613916b69857e5832da201200c0ec78d2ac5400946238"
+    },
+    {
+      "path": "data/meshes/occt__default__box_overlap_1e-6_difference.json",
+      "bytes": 2478,
+      "sha256": "ada9639e756820471cf70607db49f0358dba18b4681b9e945e107d17a05e1742"
+    },
+    {
+      "path": "data/meshes/occt__default__box_overlap_1e-6_intersection.json",
+      "bytes": 2478,
+      "sha256": "9444ff9e296426c50b4faa40ac3657013d476e8e45bb175bf7e502d5ad77c733"
+    },
+    {
+      "path": "data/meshes/occt__default__box_overlap_1e-6_union.json",
+      "bytes": 3232,
+      "sha256": "edc54075328137d81a0fa9edca8383b6b6830c796b67c869f6eef31e75a1b944"
+    },
+    {
+      "path": "data/meshes/occt__default__box_overlap_1e-7_difference.json",
+      "bytes": 2634,
+      "sha256": "9d010bc7222b6e592a03c186e450636284a6b3d0904d3d368c14852de7f2eee4"
+    },
+    {
+      "path": "data/meshes/occt__default__box_overlap_1e-7_intersection.json",
+      "bytes": 1989,
+      "sha256": "64f44e9b7a8b62b7ba79fe3a8232efc5f3018937cbe7d7bc6d5fa065d633db4d"
+    },
+    {
+      "path": "data/meshes/occt__default__box_overlap_1e-7_union.json",
+      "bytes": 3180,
+      "sha256": "6fc42f4d7b448f56bb023c2db6fe3f4e2674dc72be979395c3e00c63c7a2d915"
+    },
+    {
+      "path": "data/meshes/occt__default__box_overlap_1e-8_difference.json",
+      "bytes": 2646,
+      "sha256": "c9a9882fbeca17f0c9a5a279773000164021a023b17c0cac3b7b7fbf3b1f2f9c"
+    },
+    {
+      "path": "data/meshes/occt__default__box_overlap_1e-8_intersection.json",
+      "bytes": 1905,
+      "sha256": "7bdccfed700f31e3ed3e2a76eb7ae606b5d221715eda5997bef3b0f0e09590c3"
+    },
+    {
+      "path": "data/meshes/occt__default__box_overlap_1e-8_union.json",
+      "bytes": 3128,
+      "sha256": "8ee86d463c155680f7db972ece14afcb6732ba68e7b171271e744acc5a7b5b2f"
+    },
+    {
+      "path": "data/meshes/occt__default__box_overlap_1e-9_difference.json",
+      "bytes": 2598,
+      "sha256": "607e195727652026dc490830a98e6ed4492f7948e16360e0ce8ac7c8fe80c738"
+    },
+    {
+      "path": "data/meshes/occt__default__box_overlap_1e-9_intersection.json",
+      "bytes": 1929,
+      "sha256": "27f7c2e1c47492fc49e7bf9636ba9317f1089b6ab9c77ad7b8ecbd5743e8e303"
+    },
+    {
+      "path": "data/meshes/occt__default__box_overlap_1e-9_union.json",
+      "bytes": 3068,
+      "sha256": "877574a8a529c67d020cdad06fcc9127b660b31c138ff064f5502921bf99582e"
+    },
+    {
+      "path": "data/meshes/occt__default__curved_box_contains_sphere_difference.json",
+      "bytes": 1949828,
+      "sha256": "5c1e1772f3fab5d3c11a28562ad1842d389bf80392e62be8eee1f8e462d52c35"
+    },
+    {
+      "path": "data/meshes/occt__default__curved_box_contains_sphere_intersection.json",
+      "bytes": 1948710,
+      "sha256": "98049ffd2ea42098517fa9e44af1d3806a3292057d43c3dca7321898234a0745"
+    },
+    {
+      "path": "data/meshes/occt__default__curved_box_contains_sphere_union.json",
+      "bytes": 975558,
+      "sha256": "49724458c26f3ebb62356a5b2e0d809254f3f5501b95d527d534a8eaf0be1d53"
+    },
+    {
+      "path": "data/meshes/occt__default__curved_cylinder_half_box_difference.json",
+      "bytes": 52584,
+      "sha256": "e28f45d551199c73b401aafcf329ed12eaff15def558cb7da9bbe79342b3c5ac"
+    },
+    {
+      "path": "data/meshes/occt__default__curved_cylinder_half_box_intersection.json",
+      "bytes": 52630,
+      "sha256": "437060ce04b635fca719fd34c41877b5d93c3aa79eece4c609f33329e6a99aed"
+    },
+    {
+      "path": "data/meshes/occt__default__curved_cylinder_half_box_union.json",
+      "bytes": 53208,
+      "sha256": "2a0155245efd56091205a6a2de5ace1459d75a008a4758cdb838e6768fbef3dd"
+    },
+    {
+      "path": "data/meshes/occt__default__curved_cylinder_through_box_difference.json",
+      "bytes": 50151,
+      "sha256": "2d870f79c1923efa689fe55300c71df8143e6814a7ef58a49917740f1279c85f"
+    },
+    {
+      "path": "data/meshes/occt__default__curved_cylinder_through_box_intersection.json",
+      "bytes": 49512,
+      "sha256": "898fa4ebf22fcd6e34faa18364be5819632c89bb81b7230f0423ca09a59319ba"
+    },
+    {
+      "path": "data/meshes/occt__default__curved_cylinder_through_box_union.json",
+      "bytes": 74660,
+      "sha256": "6132dca781a154ac466ce7b4584d2d7cf6a189cf3327b0768666bca3b977b7fc"
+    },
+    {
+      "path": "data/meshes/occt__default__curved_sphere_cylinder_difference.json",
+      "bytes": 1681225,
+      "sha256": "3acc7e252bd5dbc054d4a04c3e77ea38cc9d7dca6eaa037e0728ff80a782357d"
+    },
+    {
+      "path": "data/meshes/occt__default__curved_sphere_cylinder_intersection.json",
+      "bytes": 1334578,
+      "sha256": "dc7c857a49dd25102f675259686f10f2472323bb2e4cc7bce4db2d942b6af2cb"
+    },
+    {
+      "path": "data/meshes/occt__default__curved_sphere_cylinder_union.json",
+      "bytes": 1706920,
+      "sha256": "82781d22643f297cac9ad8f9056fd823adbe62b706eac530bc699710eb225eec"
+    },
+    {
+      "path": "data/meshes/occt__default__curved_sphere_half_box_difference.json",
+      "bytes": 1471875,
+      "sha256": "0a29c36d2ae9ec04e30853718a1457f7b63377465b9726122e2b759db66fb0f2"
+    },
+    {
+      "path": "data/meshes/occt__default__curved_sphere_half_box_intersection.json",
+      "bytes": 1482110,
+      "sha256": "147208a6752f1fbfbfced0292fc5e82be6a817d7c5b9d25d5662469c74bf4d0f"
+    },
+    {
+      "path": "data/meshes/occt__default__curved_sphere_half_box_union.json",
+      "bytes": 1472547,
+      "sha256": "bf29826cd748ff975d1d17a7350e37e14f1da066e63ff3555d8f25329104f767"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-5__box_contact_difference.json",
+      "bytes": 751,
+      "sha256": "fd0e69f658a364aab3fad8f5789893a8442cdbfb37ab2d88f3bfefa873b34b04"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-5__box_contact_intersection.json",
+      "bytes": 605,
+      "sha256": "a179788cc601d411cb91f843093609c4985cb672d0bde7378baf2046bcb06add"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-5__box_contact_union.json",
+      "bytes": 751,
+      "sha256": "1e69bb50c19e80ed8e48a619ade550dbfdd51055aebfa743629f17ac56c3d7a3"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-5__box_gap_1e-3_difference.json",
+      "bytes": 887,
+      "sha256": "545a2eb520582e03d0030c967a8a27b5cf0c7da92dc65ac617c3fad59d57e4eb"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-5__box_gap_1e-3_intersection.json",
+      "bytes": 741,
+      "sha256": "cda2ff354433bfaecfbe534b056d9caeff1cd153b1e3a14df51778cc84f891c9"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-5__box_gap_1e-3_union.json",
+      "bytes": 1170,
+      "sha256": "c171e35c8b72780daafc70f1ea9c09191085bc085a1c2a3f71f74be463849899"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-5__box_gap_1e-4_difference.json",
+      "bytes": 887,
+      "sha256": "ccb8be47e083d2930b9968f1ad28f470a36d30e2b424d98485e11785ea9151e4"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-5__box_gap_1e-4_intersection.json",
+      "bytes": 741,
+      "sha256": "30c1f641caa40ebc38bcfa4ae73cce9d12284cc32a96864c1098c8ad11422218"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-5__box_gap_1e-4_union.json",
+      "bytes": 1170,
+      "sha256": "4edf18ce9d66bc7d24d0b255dfe3d0f0298ccf3e01a6bdfa919eeaf5f4b3b57f"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-5__box_gap_1e-5_difference.json",
+      "bytes": 887,
+      "sha256": "6ddca09caa6d4878250202c9f78854cf74b3574b6ffe005f3a18775b59e54fa3"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-5__box_gap_1e-5_intersection.json",
+      "bytes": 741,
+      "sha256": "e850fb998410492701b3f4b037d1a21237635493493fae2b042952522d0ce377"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-5__box_gap_1e-5_union.json",
+      "bytes": 1170,
+      "sha256": "37c5c650b6faa50106ce19bbf7bf6fb4256d1429cf3018e7f296e1bc016dfe54"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-5__box_gap_1e-6_difference.json",
+      "bytes": 955,
+      "sha256": "40026355f46689ebfd8278961d10556a008d07f896d9c90361a97d16e4e542a7"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-5__box_gap_1e-6_intersection.json",
+      "bytes": 741,
+      "sha256": "61425ed67bcb5d2e55bf460e0ee749f1dc320a47954f825df82803d5884f373c"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-5__box_gap_1e-6_union.json",
+      "bytes": 955,
+      "sha256": "635d906fd094a898009ae836be89ddbe16dc3253dc66982725a27849661a75d5"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-5__box_gap_1e-7_difference.json",
+      "bytes": 955,
+      "sha256": "23ded674b307ceb1e69221130ce3f1b8c4a6fc7a74fba462c0902c0c210b76ad"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-5__box_gap_1e-7_intersection.json",
+      "bytes": 741,
+      "sha256": "dd64d98b1a42303d5c858760043b6660e9955e44249c6fa33d11edb8f616cb0f"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-5__box_gap_1e-7_union.json",
+      "bytes": 955,
+      "sha256": "69053945830986c47aa1fd2af288ad5ea507717a8cbbfc1e8e8b088b2d7a7eb0"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-5__box_gap_1e-8_difference.json",
+      "bytes": 941,
+      "sha256": "54f17a835296fb87a3de1a39f911c830727e6dcbe9fc5f532cec138ac22b6c10"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-5__box_gap_1e-8_intersection.json",
+      "bytes": 741,
+      "sha256": "474419e573fd54d13062e186f993b829909b643fb02611e62cfcf2e50b212472"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-5__box_gap_1e-8_union.json",
+      "bytes": 955,
+      "sha256": "2ca38242b0d57126e8265d5a80324c5e63428917813cde6a94c9679c5289b561"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-5__box_gap_1e-9_difference.json",
+      "bytes": 931,
+      "sha256": "4bf4767b0e4b09ac906ee584d6c46cb39eb3a4fb782fb6ffc9ba283ec31e6148"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-5__box_gap_1e-9_intersection.json",
+      "bytes": 741,
+      "sha256": "c55f7711f981f5742f8c60ce454ef52b3d9e2c4d9d7855d7b4fc181ef70b3338"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-5__box_gap_1e-9_union.json",
+      "bytes": 955,
+      "sha256": "70e319ebb2085a458fc5ee42848d0081ddf5536e02a8d4541aa5480eff71c0e2"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-5__box_overlap_1e-3_difference.json",
+      "bytes": 955,
+      "sha256": "4c7b2772055eab4f0e10d2232c0b8a3dab6d48e08b21e3be6d23ea0479c75dac"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-5__box_overlap_1e-3_intersection.json",
+      "bytes": 955,
+      "sha256": "f4e47a905d082303cb0e488853daf7a60c1596777ecdebd0d04bbe182e1dadf7"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-5__box_overlap_1e-3_union.json",
+      "bytes": 955,
+      "sha256": "c18d31ad3062f076a31e15db18bc56f6972d55427f73f81ee4d373a88c86e820"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-5__box_overlap_1e-4_difference.json",
+      "bytes": 859,
+      "sha256": "2176ff2b26d43b95fc667c9b0723c5ca3129fdb53b6dace18b1de4433f45eed6"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-5__box_overlap_1e-4_intersection.json",
+      "bytes": 859,
+      "sha256": "33c97cfeaff86df5e4073b4bd7fcc70541f778bbe67cb9e96203d5510bd0d842"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-5__box_overlap_1e-4_union.json",
+      "bytes": 907,
+      "sha256": "1d2b13bc3609e32282aa2f48f6f2bb81fada080991784d259212cd9603fa431c"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-5__box_overlap_1e-5_difference.json",
+      "bytes": 915,
+      "sha256": "b3bb82dbdadc7be995dd6c808692efb1503e9abba6602f1856ada8e8ade3fb01"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-5__box_overlap_1e-5_intersection.json",
+      "bytes": 741,
+      "sha256": "b1404af11a94efbd5439651f6f8e5cdbdb850c6b68bc20621d48f1922f6cbf83"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-5__box_overlap_1e-5_union.json",
+      "bytes": 955,
+      "sha256": "c20dc7da9cd917f96243821d868aacaa2bd62be33d4b558ca6bd9b1e03b6d4bf"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-5__box_overlap_1e-6_difference.json",
+      "bytes": 887,
+      "sha256": "ae563da9bdfc4b5b5b4f83b376fd71371e0b87646f49419fd630a131089bf719"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-5__box_overlap_1e-6_intersection.json",
+      "bytes": 741,
+      "sha256": "8cc50aad6a612340b6b76ef72a6bbc030fb1ea1c8beaff1c5374d20faabfb7ce"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-5__box_overlap_1e-6_union.json",
+      "bytes": 955,
+      "sha256": "bac78e246450f2a499414293407770efc151feb2c16932fb611d7b23a27f7f11"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-5__box_overlap_1e-7_difference.json",
+      "bytes": 887,
+      "sha256": "a65b8b2fc02f47509903709e7f2cc04d45e2bdd2565a3971375df2d92f5a4484"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-5__box_overlap_1e-7_intersection.json",
+      "bytes": 741,
+      "sha256": "f4ed61469b06320db5f7ef42c46f14be25c79b528acc745f28b2c81e79435b66"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-5__box_overlap_1e-7_union.json",
+      "bytes": 955,
+      "sha256": "c3e98d4bbc35b33db74e2215e9f40683195fff7496a909727548ea4a7f0fb138"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-5__box_overlap_1e-8_difference.json",
+      "bytes": 887,
+      "sha256": "aed922f068ee5c6a9b214ecd9e39af807675d13b6fc4777edaf9cfb0cef5e045"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-5__box_overlap_1e-8_intersection.json",
+      "bytes": 741,
+      "sha256": "f508349021aa41478550cd3aa9034834c3e2653d251a38ef558a813053440b88"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-5__box_overlap_1e-8_union.json",
+      "bytes": 955,
+      "sha256": "3bbc1a101619f2ffbe10d0babed0cb437353d5b577cb90c3453611a5b43461a0"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-5__box_overlap_1e-9_difference.json",
+      "bytes": 887,
+      "sha256": "cd6fa85ecbd249811da09fb72c234fd934e727bb75e827ef1da49a81150fa478"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-5__box_overlap_1e-9_intersection.json",
+      "bytes": 741,
+      "sha256": "a51e257c22265a67e9be934a0a179be87a05d7e65b94796b1a64914b5d9ceb76"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-5__box_overlap_1e-9_union.json",
+      "bytes": 955,
+      "sha256": "51e42df2b7b91cb782ede67373bb0af7ea55a11f3edf3dc61148971b3ad00971"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-7__box_contact_difference.json",
+      "bytes": 751,
+      "sha256": "fd0e69f658a364aab3fad8f5789893a8442cdbfb37ab2d88f3bfefa873b34b04"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-7__box_contact_intersection.json",
+      "bytes": 605,
+      "sha256": "a179788cc601d411cb91f843093609c4985cb672d0bde7378baf2046bcb06add"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-7__box_contact_union.json",
+      "bytes": 751,
+      "sha256": "1e69bb50c19e80ed8e48a619ade550dbfdd51055aebfa743629f17ac56c3d7a3"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-7__box_gap_1e-3_difference.json",
+      "bytes": 887,
+      "sha256": "545a2eb520582e03d0030c967a8a27b5cf0c7da92dc65ac617c3fad59d57e4eb"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-7__box_gap_1e-3_intersection.json",
+      "bytes": 741,
+      "sha256": "cda2ff354433bfaecfbe534b056d9caeff1cd153b1e3a14df51778cc84f891c9"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-7__box_gap_1e-3_union.json",
+      "bytes": 1170,
+      "sha256": "c171e35c8b72780daafc70f1ea9c09191085bc085a1c2a3f71f74be463849899"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-7__box_gap_1e-4_difference.json",
+      "bytes": 887,
+      "sha256": "ccb8be47e083d2930b9968f1ad28f470a36d30e2b424d98485e11785ea9151e4"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-7__box_gap_1e-4_intersection.json",
+      "bytes": 741,
+      "sha256": "30c1f641caa40ebc38bcfa4ae73cce9d12284cc32a96864c1098c8ad11422218"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-7__box_gap_1e-4_union.json",
+      "bytes": 1170,
+      "sha256": "4edf18ce9d66bc7d24d0b255dfe3d0f0298ccf3e01a6bdfa919eeaf5f4b3b57f"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-7__box_gap_1e-5_difference.json",
+      "bytes": 887,
+      "sha256": "6ddca09caa6d4878250202c9f78854cf74b3574b6ffe005f3a18775b59e54fa3"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-7__box_gap_1e-5_intersection.json",
+      "bytes": 741,
+      "sha256": "e850fb998410492701b3f4b037d1a21237635493493fae2b042952522d0ce377"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-7__box_gap_1e-5_union.json",
+      "bytes": 1170,
+      "sha256": "37c5c650b6faa50106ce19bbf7bf6fb4256d1429cf3018e7f296e1bc016dfe54"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-7__box_gap_1e-6_difference.json",
+      "bytes": 887,
+      "sha256": "0d925e155da2613f63f3a72ce0c1218e42627a04a375436e0fc368634f21b8b5"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-7__box_gap_1e-6_intersection.json",
+      "bytes": 741,
+      "sha256": "61425ed67bcb5d2e55bf460e0ee749f1dc320a47954f825df82803d5884f373c"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-7__box_gap_1e-6_union.json",
+      "bytes": 1170,
+      "sha256": "9f6c555b3b7600545c88a333291120aac982cd893b3792bbeaa2caedb7d79cbf"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-7__box_gap_1e-7_difference.json",
+      "bytes": 887,
+      "sha256": "4ff2f2fd2ceb6c6c70fc32f6228c4df9637f30ff3540597752cdc13fa1928825"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-7__box_gap_1e-7_intersection.json",
+      "bytes": 741,
+      "sha256": "dd64d98b1a42303d5c858760043b6660e9955e44249c6fa33d11edb8f616cb0f"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-7__box_gap_1e-7_union.json",
+      "bytes": 1170,
+      "sha256": "41eb816c777dc34d9cc72065f14b210fdf14f42c2f918bfd3c67374685aa75f7"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-7__box_gap_1e-8_difference.json",
+      "bytes": 927,
+      "sha256": "aeb544ae75095f5ef910a42cdac9c4a9b936aee2cc47623514c4805fcbd7fb12"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-7__box_gap_1e-8_intersection.json",
+      "bytes": 741,
+      "sha256": "474419e573fd54d13062e186f993b829909b643fb02611e62cfcf2e50b212472"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-7__box_gap_1e-8_union.json",
+      "bytes": 955,
+      "sha256": "2ca38242b0d57126e8265d5a80324c5e63428917813cde6a94c9679c5289b561"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-7__box_gap_1e-9_difference.json",
+      "bytes": 955,
+      "sha256": "3b900c583fc09a8329ddaa687f5d5e2ca81c0020041241d5fc87036ad692000d"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-7__box_gap_1e-9_intersection.json",
+      "bytes": 741,
+      "sha256": "c55f7711f981f5742f8c60ce454ef52b3d9e2c4d9d7855d7b4fc181ef70b3338"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-7__box_gap_1e-9_union.json",
+      "bytes": 955,
+      "sha256": "70e319ebb2085a458fc5ee42848d0081ddf5536e02a8d4541aa5480eff71c0e2"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-7__box_overlap_1e-3_difference.json",
+      "bytes": 955,
+      "sha256": "4c7b2772055eab4f0e10d2232c0b8a3dab6d48e08b21e3be6d23ea0479c75dac"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-7__box_overlap_1e-3_intersection.json",
+      "bytes": 955,
+      "sha256": "f4e47a905d082303cb0e488853daf7a60c1596777ecdebd0d04bbe182e1dadf7"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-7__box_overlap_1e-3_union.json",
+      "bytes": 955,
+      "sha256": "9e89d927a7cf472f4a59af305bb596fdd466a1dedb933cb94f6cf524f81be83f"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-7__box_overlap_1e-4_difference.json",
+      "bytes": 859,
+      "sha256": "120d10be520fd14bd23f8469b6ab028c25cea5b48b3661cdd7fdd2e7b95ebd95"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-7__box_overlap_1e-4_intersection.json",
+      "bytes": 859,
+      "sha256": "33c97cfeaff86df5e4073b4bd7fcc70541f778bbe67cb9e96203d5510bd0d842"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-7__box_overlap_1e-4_union.json",
+      "bytes": 907,
+      "sha256": "15680616870eb251c841e31a00d6469689e558267b423f2f78ed381de0d48b8a"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-7__box_overlap_1e-5_difference.json",
+      "bytes": 955,
+      "sha256": "a7f78cde2d548cfc952e7e77a83e395414b4dfa35568f06663998f201c59c705"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-7__box_overlap_1e-5_intersection.json",
+      "bytes": 955,
+      "sha256": "e1603b6ef5fdb4da93b5a557373789cdae4f4be0f7466fa0a838ce5c56b0888d"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-7__box_overlap_1e-5_union.json",
+      "bytes": 955,
+      "sha256": "ab4062351686a6be870deca4239605d59ff3b96f36cd8477c0191585241121ef"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-7__box_overlap_1e-6_difference.json",
+      "bytes": 955,
+      "sha256": "0ea8600b784cc60b1695f80c2939d603db67c8725cf105ce5bb346afa4c26054"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-7__box_overlap_1e-6_intersection.json",
+      "bytes": 955,
+      "sha256": "fbc4e8ad593a703353ee989c5c1abbb31b4305bc33e2ec7247c5818daa3b6f98"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-7__box_overlap_1e-6_union.json",
+      "bytes": 955,
+      "sha256": "a7c3fce0c7c944d229225e2806515a66d99441bc4610a668fd56745f387cdb3a"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-7__box_overlap_1e-7_difference.json",
+      "bytes": 921,
+      "sha256": "1bc54fc90e888b30ddd860080edad270b68e3c9717fba46dfeb0e77c3b46c447"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-7__box_overlap_1e-7_intersection.json",
+      "bytes": 741,
+      "sha256": "f4ed61469b06320db5f7ef42c46f14be25c79b528acc745f28b2c81e79435b66"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-7__box_overlap_1e-7_union.json",
+      "bytes": 955,
+      "sha256": "c3e98d4bbc35b33db74e2215e9f40683195fff7496a909727548ea4a7f0fb138"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-7__box_overlap_1e-8_difference.json",
+      "bytes": 887,
+      "sha256": "aed922f068ee5c6a9b214ecd9e39af807675d13b6fc4777edaf9cfb0cef5e045"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-7__box_overlap_1e-8_intersection.json",
+      "bytes": 741,
+      "sha256": "f508349021aa41478550cd3aa9034834c3e2653d251a38ef558a813053440b88"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-7__box_overlap_1e-8_union.json",
+      "bytes": 955,
+      "sha256": "3bbc1a101619f2ffbe10d0babed0cb437353d5b577cb90c3453611a5b43461a0"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-7__box_overlap_1e-9_difference.json",
+      "bytes": 887,
+      "sha256": "cd6fa85ecbd249811da09fb72c234fd934e727bb75e827ef1da49a81150fa478"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-7__box_overlap_1e-9_intersection.json",
+      "bytes": 741,
+      "sha256": "a51e257c22265a67e9be934a0a179be87a05d7e65b94796b1a64914b5d9ceb76"
+    },
+    {
+      "path": "data/meshes/smlib__aligned_1e-7__box_overlap_1e-9_union.json",
+      "bytes": 955,
+      "sha256": "51e42df2b7b91cb782ede67373bb0af7ea55a11f3edf3dc61148971b3ad00971"
+    },
+    {
+      "path": "data/meshes/smlib__default__basic_difference_contained.json",
+      "bytes": 898,
+      "sha256": "a620787abcbedc3812fe98e88da54041ec6a8663e62759865eba3bf9e80fa856"
+    },
+    {
+      "path": "data/meshes/smlib__default__basic_difference_disjoint.json",
+      "bytes": 759,
+      "sha256": "1267056db04c00ac2aaa88039cc126e89dc7e3e8a227de2ae0991522981eb0c4"
+    },
+    {
+      "path": "data/meshes/smlib__default__basic_difference_overlap.json",
+      "bytes": 751,
+      "sha256": "d8c24ed695ecbbffbd693123f9e61a13e5cb82e7a5c57ad822270d605cb7fbdf"
+    },
+    {
+      "path": "data/meshes/smlib__default__basic_intersection_contained.json",
+      "bytes": 751,
+      "sha256": "ef50dd166ea42e3458924a850da2d003a97960aa2e87583c15d6b09d175d1585"
+    },
+    {
+      "path": "data/meshes/smlib__default__basic_intersection_disjoint.json",
+      "bytes": 613,
+      "sha256": "c29c947eedd9db6999070493c5455e445ec65a2861026b49aaae71cd169cb03d"
+    },
+    {
+      "path": "data/meshes/smlib__default__basic_intersection_identical.json",
+      "bytes": 751,
+      "sha256": "21ceb8b63c14451c91daf648336eeaad04df3bd04b1dd4a8fe64a905843a20ef"
+    },
+    {
+      "path": "data/meshes/smlib__default__basic_intersection_overlap.json",
+      "bytes": 751,
+      "sha256": "d2d8e21c99f43b33f39aed1d38bda0dda166bde23d839765995f252d115cfd12"
+    },
+    {
+      "path": "data/meshes/smlib__default__basic_union_contained.json",
+      "bytes": 751,
+      "sha256": "4a27de40044d755b845fbe10c976f2dcd3a24733da1c30322b53590dc5717677"
+    },
+    {
+      "path": "data/meshes/smlib__default__basic_union_disjoint.json",
+      "bytes": 914,
+      "sha256": "53adf1d3f7327199923956ab10660301f23e26cad2752c8d0f467e8f40095362"
+    },
+    {
+      "path": "data/meshes/smlib__default__basic_union_identical.json",
+      "bytes": 751,
+      "sha256": "21ceb8b63c14451c91daf648336eeaad04df3bd04b1dd4a8fe64a905843a20ef"
+    },
+    {
+      "path": "data/meshes/smlib__default__basic_union_overlap.json",
+      "bytes": 751,
+      "sha256": "12d2ab3117249f0e09357133a807b51049aa99096743260c6945391e09c74b0d"
+    },
+    {
+      "path": "data/meshes/smlib__default__basic_union_touching.json",
+      "bytes": 751,
+      "sha256": "4710f9892259b94ec3263308eac45668a00f3439036d9b882b5b0b502a87c81a"
+    },
+    {
+      "path": "data/meshes/smlib__default__box_contact_difference.json",
+      "bytes": 751,
+      "sha256": "fd0e69f658a364aab3fad8f5789893a8442cdbfb37ab2d88f3bfefa873b34b04"
+    },
+    {
+      "path": "data/meshes/smlib__default__box_contact_intersection.json",
+      "bytes": 605,
+      "sha256": "a179788cc601d411cb91f843093609c4985cb672d0bde7378baf2046bcb06add"
+    },
+    {
+      "path": "data/meshes/smlib__default__box_contact_union.json",
+      "bytes": 751,
+      "sha256": "1e69bb50c19e80ed8e48a619ade550dbfdd51055aebfa743629f17ac56c3d7a3"
+    },
+    {
+      "path": "data/meshes/smlib__default__box_gap_1e-3_difference.json",
+      "bytes": 887,
+      "sha256": "545a2eb520582e03d0030c967a8a27b5cf0c7da92dc65ac617c3fad59d57e4eb"
+    },
+    {
+      "path": "data/meshes/smlib__default__box_gap_1e-3_intersection.json",
+      "bytes": 741,
+      "sha256": "cda2ff354433bfaecfbe534b056d9caeff1cd153b1e3a14df51778cc84f891c9"
+    },
+    {
+      "path": "data/meshes/smlib__default__box_gap_1e-3_union.json",
+      "bytes": 1170,
+      "sha256": "c171e35c8b72780daafc70f1ea9c09191085bc085a1c2a3f71f74be463849899"
+    },
+    {
+      "path": "data/meshes/smlib__default__box_gap_1e-4_difference.json",
+      "bytes": 887,
+      "sha256": "ccb8be47e083d2930b9968f1ad28f470a36d30e2b424d98485e11785ea9151e4"
+    },
+    {
+      "path": "data/meshes/smlib__default__box_gap_1e-4_intersection.json",
+      "bytes": 741,
+      "sha256": "30c1f641caa40ebc38bcfa4ae73cce9d12284cc32a96864c1098c8ad11422218"
+    },
+    {
+      "path": "data/meshes/smlib__default__box_gap_1e-4_union.json",
+      "bytes": 1170,
+      "sha256": "4edf18ce9d66bc7d24d0b255dfe3d0f0298ccf3e01a6bdfa919eeaf5f4b3b57f"
+    },
+    {
+      "path": "data/meshes/smlib__default__box_gap_1e-5_difference.json",
+      "bytes": 887,
+      "sha256": "6ddca09caa6d4878250202c9f78854cf74b3574b6ffe005f3a18775b59e54fa3"
+    },
+    {
+      "path": "data/meshes/smlib__default__box_gap_1e-5_intersection.json",
+      "bytes": 741,
+      "sha256": "e850fb998410492701b3f4b037d1a21237635493493fae2b042952522d0ce377"
+    },
+    {
+      "path": "data/meshes/smlib__default__box_gap_1e-5_union.json",
+      "bytes": 1170,
+      "sha256": "37c5c650b6faa50106ce19bbf7bf6fb4256d1429cf3018e7f296e1bc016dfe54"
+    },
+    {
+      "path": "data/meshes/smlib__default__box_gap_1e-6_difference.json",
+      "bytes": 955,
+      "sha256": "40026355f46689ebfd8278961d10556a008d07f896d9c90361a97d16e4e542a7"
+    },
+    {
+      "path": "data/meshes/smlib__default__box_gap_1e-6_intersection.json",
+      "bytes": 741,
+      "sha256": "61425ed67bcb5d2e55bf460e0ee749f1dc320a47954f825df82803d5884f373c"
+    },
+    {
+      "path": "data/meshes/smlib__default__box_gap_1e-6_union.json",
+      "bytes": 955,
+      "sha256": "635d906fd094a898009ae836be89ddbe16dc3253dc66982725a27849661a75d5"
+    },
+    {
+      "path": "data/meshes/smlib__default__box_gap_1e-7_difference.json",
+      "bytes": 955,
+      "sha256": "23ded674b307ceb1e69221130ce3f1b8c4a6fc7a74fba462c0902c0c210b76ad"
+    },
+    {
+      "path": "data/meshes/smlib__default__box_gap_1e-7_intersection.json",
+      "bytes": 741,
+      "sha256": "dd64d98b1a42303d5c858760043b6660e9955e44249c6fa33d11edb8f616cb0f"
+    },
+    {
+      "path": "data/meshes/smlib__default__box_gap_1e-7_union.json",
+      "bytes": 955,
+      "sha256": "69053945830986c47aa1fd2af288ad5ea507717a8cbbfc1e8e8b088b2d7a7eb0"
+    },
+    {
+      "path": "data/meshes/smlib__default__box_gap_1e-8_difference.json",
+      "bytes": 941,
+      "sha256": "54f17a835296fb87a3de1a39f911c830727e6dcbe9fc5f532cec138ac22b6c10"
+    },
+    {
+      "path": "data/meshes/smlib__default__box_gap_1e-8_intersection.json",
+      "bytes": 741,
+      "sha256": "474419e573fd54d13062e186f993b829909b643fb02611e62cfcf2e50b212472"
+    },
+    {
+      "path": "data/meshes/smlib__default__box_gap_1e-8_union.json",
+      "bytes": 955,
+      "sha256": "2ca38242b0d57126e8265d5a80324c5e63428917813cde6a94c9679c5289b561"
+    },
+    {
+      "path": "data/meshes/smlib__default__box_gap_1e-9_difference.json",
+      "bytes": 931,
+      "sha256": "4bf4767b0e4b09ac906ee584d6c46cb39eb3a4fb782fb6ffc9ba283ec31e6148"
+    },
+    {
+      "path": "data/meshes/smlib__default__box_gap_1e-9_intersection.json",
+      "bytes": 741,
+      "sha256": "c55f7711f981f5742f8c60ce454ef52b3d9e2c4d9d7855d7b4fc181ef70b3338"
+    },
+    {
+      "path": "data/meshes/smlib__default__box_gap_1e-9_union.json",
+      "bytes": 955,
+      "sha256": "70e319ebb2085a458fc5ee42848d0081ddf5536e02a8d4541aa5480eff71c0e2"
+    },
+    {
+      "path": "data/meshes/smlib__default__box_overlap_1e-3_difference.json",
+      "bytes": 955,
+      "sha256": "4c7b2772055eab4f0e10d2232c0b8a3dab6d48e08b21e3be6d23ea0479c75dac"
+    },
+    {
+      "path": "data/meshes/smlib__default__box_overlap_1e-3_intersection.json",
+      "bytes": 955,
+      "sha256": "f4e47a905d082303cb0e488853daf7a60c1596777ecdebd0d04bbe182e1dadf7"
+    },
+    {
+      "path": "data/meshes/smlib__default__box_overlap_1e-3_union.json",
+      "bytes": 955,
+      "sha256": "b155a899a46742f39f697d0f37b823d7b682d6aa9222cee6a4d2b3b6f7121a1c"
+    },
+    {
+      "path": "data/meshes/smlib__default__box_overlap_1e-4_difference.json",
+      "bytes": 859,
+      "sha256": "2176ff2b26d43b95fc667c9b0723c5ca3129fdb53b6dace18b1de4433f45eed6"
+    },
+    {
+      "path": "data/meshes/smlib__default__box_overlap_1e-4_intersection.json",
+      "bytes": 859,
+      "sha256": "33c97cfeaff86df5e4073b4bd7fcc70541f778bbe67cb9e96203d5510bd0d842"
+    },
+    {
+      "path": "data/meshes/smlib__default__box_overlap_1e-4_union.json",
+      "bytes": 907,
+      "sha256": "15680616870eb251c841e31a00d6469689e558267b423f2f78ed381de0d48b8a"
+    },
+    {
+      "path": "data/meshes/smlib__default__box_overlap_1e-5_difference.json",
+      "bytes": 915,
+      "sha256": "b3bb82dbdadc7be995dd6c808692efb1503e9abba6602f1856ada8e8ade3fb01"
+    },
+    {
+      "path": "data/meshes/smlib__default__box_overlap_1e-5_intersection.json",
+      "bytes": 741,
+      "sha256": "b1404af11a94efbd5439651f6f8e5cdbdb850c6b68bc20621d48f1922f6cbf83"
+    },
+    {
+      "path": "data/meshes/smlib__default__box_overlap_1e-5_union.json",
+      "bytes": 955,
+      "sha256": "c20dc7da9cd917f96243821d868aacaa2bd62be33d4b558ca6bd9b1e03b6d4bf"
+    },
+    {
+      "path": "data/meshes/smlib__default__box_overlap_1e-6_difference.json",
+      "bytes": 887,
+      "sha256": "ae563da9bdfc4b5b5b4f83b376fd71371e0b87646f49419fd630a131089bf719"
+    },
+    {
+      "path": "data/meshes/smlib__default__box_overlap_1e-6_intersection.json",
+      "bytes": 741,
+      "sha256": "8cc50aad6a612340b6b76ef72a6bbc030fb1ea1c8beaff1c5374d20faabfb7ce"
+    },
+    {
+      "path": "data/meshes/smlib__default__box_overlap_1e-6_union.json",
+      "bytes": 955,
+      "sha256": "bac78e246450f2a499414293407770efc151feb2c16932fb611d7b23a27f7f11"
+    },
+    {
+      "path": "data/meshes/smlib__default__box_overlap_1e-7_difference.json",
+      "bytes": 887,
+      "sha256": "a65b8b2fc02f47509903709e7f2cc04d45e2bdd2565a3971375df2d92f5a4484"
+    },
+    {
+      "path": "data/meshes/smlib__default__box_overlap_1e-7_intersection.json",
+      "bytes": 741,
+      "sha256": "f4ed61469b06320db5f7ef42c46f14be25c79b528acc745f28b2c81e79435b66"
+    },
+    {
+      "path": "data/meshes/smlib__default__box_overlap_1e-7_union.json",
+      "bytes": 955,
+      "sha256": "c3e98d4bbc35b33db74e2215e9f40683195fff7496a909727548ea4a7f0fb138"
+    },
+    {
+      "path": "data/meshes/smlib__default__box_overlap_1e-8_difference.json",
+      "bytes": 887,
+      "sha256": "aed922f068ee5c6a9b214ecd9e39af807675d13b6fc4777edaf9cfb0cef5e045"
+    },
+    {
+      "path": "data/meshes/smlib__default__box_overlap_1e-8_intersection.json",
+      "bytes": 741,
+      "sha256": "f508349021aa41478550cd3aa9034834c3e2653d251a38ef558a813053440b88"
+    },
+    {
+      "path": "data/meshes/smlib__default__box_overlap_1e-8_union.json",
+      "bytes": 955,
+      "sha256": "3bbc1a101619f2ffbe10d0babed0cb437353d5b577cb90c3453611a5b43461a0"
+    },
+    {
+      "path": "data/meshes/smlib__default__box_overlap_1e-9_difference.json",
+      "bytes": 887,
+      "sha256": "cd6fa85ecbd249811da09fb72c234fd934e727bb75e827ef1da49a81150fa478"
+    },
+    {
+      "path": "data/meshes/smlib__default__box_overlap_1e-9_intersection.json",
+      "bytes": 741,
+      "sha256": "a51e257c22265a67e9be934a0a179be87a05d7e65b94796b1a64914b5d9ceb76"
+    },
+    {
+      "path": "data/meshes/smlib__default__box_overlap_1e-9_union.json",
+      "bytes": 955,
+      "sha256": "51e42df2b7b91cb782ede67373bb0af7ea55a11f3edf3dc61148971b3ad00971"
+    },
+    {
+      "path": "data/meshes/smlib__default__curved_box_contains_sphere_difference.json",
+      "bytes": 1436921,
+      "sha256": "5fd851eca165d5963c5590c0c834e409d4f1c6977ad06fa4d7a33913d23ead0c"
+    },
+    {
+      "path": "data/meshes/smlib__default__curved_box_contains_sphere_intersection.json",
+      "bytes": 1436647,
+      "sha256": "7a99f5e34f07af68fcc6ab714f4019fcdd8acd5283aaf95d62737ac0182b5e09"
+    },
+    {
+      "path": "data/meshes/smlib__default__curved_box_contains_sphere_union.json",
+      "bytes": 718717,
+      "sha256": "363b834183640ea6f5dfec4ef6fba742e38feb211419ed3a4759dcd88b893373"
+    },
+    {
+      "path": "data/meshes/smlib__default__curved_cylinder_half_box_difference.json",
+      "bytes": 24177,
+      "sha256": "005c63c255ed900fd5a12815a676922a911586526069ec64ab0442eefcd9ab80"
+    },
+    {
+      "path": "data/meshes/smlib__default__curved_cylinder_half_box_intersection.json",
+      "bytes": 24048,
+      "sha256": "ff6ed008107eb669f9913ca767b059bc654a7c6c9b5787282bfa982ec23c5ae9"
+    },
+    {
+      "path": "data/meshes/smlib__default__curved_cylinder_half_box_union.json",
+      "bytes": 24416,
+      "sha256": "a8f4724f80c360e7234c5ede3e6cf8d0e0275f09735e4bd0eb9be47337e96e1d"
+    },
+    {
+      "path": "data/meshes/smlib__default__curved_cylinder_through_box_difference.json",
+      "bytes": 34844,
+      "sha256": "e23f7280dfeae69d4c605c56472efdbdae64d093842eff24b24e53af20d470df"
+    },
+    {
+      "path": "data/meshes/smlib__default__curved_cylinder_through_box_intersection.json",
+      "bytes": 34696,
+      "sha256": "e83174c9c01f348faef6f961a82cb97b8ff58d337dc7f0bcff1ae4be31b3ac0e"
+    },
+    {
+      "path": "data/meshes/smlib__default__curved_cylinder_through_box_union.json",
+      "bytes": 53423,
+      "sha256": "71ebd5c29ef9405486af5b0625808aac856507b6473a05a9e3e615e34c56375b"
+    },
+    {
+      "path": "data/meshes/smlib__default__curved_sphere_cylinder_difference.json",
+      "bytes": 1248241,
+      "sha256": "09414549bfe6a818070dd467e9caa03a0a880b10bfcd3239fe93dee1703f4d70"
+    },
+    {
+      "path": "data/meshes/smlib__default__curved_sphere_cylinder_intersection.json",
+      "bytes": 986616,
+      "sha256": "922b499aa3831278b26658a829c363b2fd4a00d3e91d999e4baa158bc14bdadb"
+    },
+    {
+      "path": "data/meshes/smlib__default__curved_sphere_cylinder_union.json",
+      "bytes": 1270374,
+      "sha256": "763ecbd7428c077b6ad367695e6b3a7f71b3c58af6de6b1724e43791d6a3dca5"
+    },
+    {
+      "path": "data/meshes/smlib__default__curved_sphere_half_box_difference.json",
+      "bytes": 1080147,
+      "sha256": "051be894d8c54bb3e2227852622838aa05ffb048afd3c8acf9dcb9ff945aa337"
+    },
+    {
+      "path": "data/meshes/smlib__default__curved_sphere_half_box_intersection.json",
+      "bytes": 1074856,
+      "sha256": "f7bc0e26bc4474b713bbe5b80683b89f5d2ad6b72723738b540e677ab57f4ff4"
+    },
+    {
+      "path": "data/meshes/smlib__default__curved_sphere_half_box_union.json",
+      "bytes": 1080627,
+      "sha256": "28bc2030dc4515c7c2079df4d259adab5a5127846b138434dccf03b6ff990e03"
+    },
+    {
+      "path": "data/reports/boolean.html",
+      "bytes": 24912,
+      "sha256": "b72b6a68f8037a4a2a01f08c0f868287cfd02bf85da330c8d881c1690ce051dc"
+    },
+    {
+      "path": "index.html",
+      "bytes": 7241,
+      "sha256": "76613dbe36a3aee19c22877500fdaf8d8db7653675bb0f444fb6ad054e34f488"
+    },
+    {
+      "path": "overview.js",
+      "bytes": 12699,
+      "sha256": "d44077ca5943f7f12d1e36545e544deba4f14fcf2bba80f45ccf6fbd59eec219"
+    },
+    {
+      "path": "style.css",
+      "bytes": 28236,
+      "sha256": "97ccfaea7f63c56c8020e5458b744f2c905744f46e6273444dad23470804f5a5"
+    },
+    {
+      "path": "vendor/OrbitControls.js",
+      "bytes": 38703,
+      "sha256": "b97879c748170baadeb3fb84cea1ffdf4674e283dc06042f34e2acb95a76042c"
+    },
+    {
+      "path": "vendor/THREE-LICENSE.txt",
+      "bytes": 1081,
+      "sha256": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601"
+    },
+    {
+      "path": "vendor/three.core.js",
+      "bytes": 1403455,
+      "sha256": "eb077d2417f61d3e6d9264c317cabc4ea35769ed6b0ab533067292a550784c20"
+    },
+    {
+      "path": "vendor/three.module.js",
+      "bytes": 603113,
+      "sha256": "c8211c69345d2e9949dc7a8ac969380497aa0600a5a8ac6a459c8cd02dd9cb8a"
+    }
+  ]
+}
